@@ -4,8 +4,8 @@ es/upv/no2v1/Avisador.java
  es.upv.no2v1.Avisador$2
 es/upv/no2v1/TramaIBeacon.java
  es.upv.no2v1.TramaIBeacon
-es/upv/no2v1/CallbackLocalizacion.java
- es.upv.no2v1.CallbackLocalizacion
+es/upv/no2v1/MainActivity.java
+ es.upv.no2v1.MainActivity
 es/upv/no2v1/Medicion.java
  es.upv.no2v1.Medicion
 es/upv/no2v1/BuildConfig.java
@@ -24,5 +24,5 @@ es/upv/no2v1/DetectarBeacon.java
  es.upv.no2v1.DetectarBeacon
  es.upv.no2v1.DetectarBeacon$1
  es.upv.no2v1.DetectarBeacon$2
-es/upv/no2v1/MainActivity.java
- es.upv.no2v1.MainActivity
+es/upv/no2v1/CallbackLocalizacion.java
+ es.upv.no2v1.CallbackLocalizacion

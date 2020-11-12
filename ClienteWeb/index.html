@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href="estilos.css" rel="stylesheet">
+	<link href="./styles/estilos.css" rel="stylesheet">
 
 	</head>
 
@@ -13,10 +13,10 @@
 
 	<header>
 	
-	<img class="logo" src="LOGOTIPO.jpeg" alt="logo">
+	<img class="logo" src="./recursos/LOGOTIPO.jpeg" alt="logo">
 	<nav>
 		<ul class="nav-botones">
-			<li><a href="#">Mi Sensor</a></li>
+			<li><a href="miSensor.html">Mi Sensor</a></li>
 			<li><a href="#">Mostrar Estaciones</a></li>
 			<li><a href="#">Centrar Mapa</a></li>
 			<li><a href="#">Vista Satélite</a></li>
@@ -35,7 +35,7 @@
 	
 	<div id="map"></div>
 	
-	<script src="mapa.js"></script>
+	<script src="./js/mapa.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRSSIm-4PpXMn23vNcaPQKbqCnRvMN9Ww&libraries=visualization&callback=initMap"></script>
 	
 	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
@@ -54,8 +54,8 @@
         </script>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="scripts.js"></script>
-	<script src="firebase.js"></script>   
+	<script src="./js/scripts.js"></script>
+	<script src="./js/firebase.js"></script>   
 	
 	</body>
 </html>

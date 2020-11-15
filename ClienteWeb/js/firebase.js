@@ -31,17 +31,26 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     const Valor = document.querySelector("#Valor");
     const NumSerie = document.querySelector("NumSerie");
     
-    db.collection("Mediciones").doc("06VpBL7d66GeT9zCmaIG").get().then(function(doc) {
+    db.collection("Usuarios").doc("FXT3LMEeACdvG8A8Mi5Q").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
         if (doc.exists) {
             console.log("Document data: ", doc.data());
+            var IDSensor2 = doc.data().idsensor;
             
+            db.collection("Mediciones").doc("06VpBL7d66GeT9zCmaIG").get().then(function(doc2) { //Comprobamos que ese Usuario tiene una Medicion
+                if(doc2.exists){
+                    var IDSensor3 = doc2.data().IDSensor;
+                    if(IDSensor3 == IDSensor2){
+                        IDSensor.innerHTML += "<p> " + doc2.data().IDSensor + " </p>";
+                        Latitud.innerHTML += "<p> " + doc2.data().Latitud + " </p>";
+                        Longitud.innerHTML += "<p> " + doc2.data().Longitud + " </p>";
+                        MomentoUnix.innerHTML += "<p> " + doc2.data().Momento + " </p>";
+                        Valor.innerHTML += "<p> " + doc2.data().Valor + " </p>";
+                        NumSerie.innerHTML += "<p> " + "06VpBL7d66GeT9zCmaIG" + " </p>";
+                    }
+                }
+            });
             //Aqui dentro pondremos la info del sensor a la pagina web
-            IDSensor.innerHTML += "<p> " + doc.data().IDSensor + " </p>";
-            Latitud.innerHTML += "<p> " + doc.data().Latitud + " </p>";
-            Longitud.innerHTML += "<p> " + doc.data().Longitud + " </p>";
-            MomentoUnix.innerHTML += "<p> " + doc.data().Momento + " </p>";
-            Valor.innerHTML += "<p> " + doc.data().Valor + " </p>";
-            NumSerie.innerHTML += "<p> " + "06VpBL7d66GeT9zCmaIG" + " </p>";
+
             
         } else {
             console.log("No se ha encontrado el documento");

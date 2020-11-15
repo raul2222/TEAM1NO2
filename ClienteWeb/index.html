@@ -9,7 +9,7 @@
 
 	</head>
 
-	<body onload="getMediciones()">
+	<body onload="getMediciones() ; markerUbicacion()">
 
 	<header>
 	
@@ -39,7 +39,8 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRSSIm-4PpXMn23vNcaPQKbqCnRvMN9Ww&libraries=visualization&callback=initMap"></script>
 	
 	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script><!-- Conectamos con Firestore -->
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script><!-- Conectamos con Firestore -->
+	
       
         <script>
             var firebaseConfig = {
@@ -55,7 +56,9 @@
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="./js/scripts.js"></script>
-	<script src="./js/firebase.js"></script>   
+	<script src="./js/firebase.js"></script>
+	<script src="./js/markerUbicacion.js"></script>
+   
 	
 	</body>
 </html>

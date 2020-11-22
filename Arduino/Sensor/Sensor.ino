@@ -66,7 +66,7 @@ void setup() {
 
   //Configure WDT for 120 seconds
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = 32769;    // CRV = timeout * 32768 + 1
+  NRF_WDT->CRV            = 3932159;    // CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
   NRF_WDT->TASKS_START    = 1;        // Start WDT       
 

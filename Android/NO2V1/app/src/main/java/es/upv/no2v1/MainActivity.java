@@ -1,19 +1,18 @@
 package es.upv.no2v1;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     // pedir permisos
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public void darPermisosApp(){
+    private void darPermisosApp(){
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED){
@@ -57,12 +56,21 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
     }
 
-    public void iniciarWebView(){
+    private void iniciarWebView(){
         webView = (WebView) findViewById(R.id.webview);
+        webView.setWebViewClient(new MyBrowser());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
-        webView.loadUrl("http://www.beecop.ovh/no2/index.html");
+        webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
+    }
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
 

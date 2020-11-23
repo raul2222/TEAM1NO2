@@ -9,18 +9,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LMV405UA77e2548a]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -56,6 +61,13 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -177,26 +189,30 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1048" y="892" width="472" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606087579771">
+      <screen x="0" y="23" width="2560" height="1364" />
+    </state>
+    <state x="1048" y="892" width="472" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606087579771" />
     <state x="87" y="205" width="1849" height="1039" key="AVDManager" timestamp="1604644990412">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state x="87" y="205" width="1849" height="1039" key="AVDManager/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604644990412" />
-    <state width="2005" height="350" key="GridCell.Tab.0.bottom" timestamp="1604661029388">
+    <state width="1121" height="308" key="GridCell.Tab.0.bottom" timestamp="1606087670735">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
-    <state width="2005" height="350" key="GridCell.Tab.0.bottom/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604661029388" />
-    <state width="2005" height="350" key="GridCell.Tab.0.center" timestamp="1604661029387">
+    <state width="1121" height="308" key="GridCell.Tab.0.bottom/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606087670735" />
+    <state width="1121" height="308" key="GridCell.Tab.0.center" timestamp="1606087670735">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
-    <state width="2005" height="350" key="GridCell.Tab.0.center/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604661029387" />
-    <state width="2005" height="350" key="GridCell.Tab.0.left" timestamp="1604661029387">
+    <state width="1121" height="308" key="GridCell.Tab.0.center/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606087670735" />
+    <state width="1121" height="308" key="GridCell.Tab.0.left" timestamp="1606087670734">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
-    <state width="2005" height="350" key="GridCell.Tab.0.left/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604661029387" />
-    <state width="2005" height="350" key="GridCell.Tab.0.right" timestamp="1604661029388">
+    <state width="1121" height="308" key="GridCell.Tab.0.left/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606087670734" />
+    <state width="1121" height="308" key="GridCell.Tab.0.right" timestamp="1606087670735">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
-    <state width="2005" height="350" key="GridCell.Tab.0.right/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604661029388" />
+    <state width="1121" height="308" key="GridCell.Tab.0.right/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606087670735" />
     <state width="2005" height="350" key="GridCell.Tab.1.bottom" timestamp="1604645027265">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>

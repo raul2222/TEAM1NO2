@@ -34,7 +34,7 @@ public class DetectarBeacon {
                 buscarEsteDispositivoBTLE(miUUID);
             }
         };
-        timer.scheduleAtFixedRate(task, new Date(), 1200*22);
+        timer.scheduleAtFixedRate(task, new Date(), 1000*30);
 
         //buscarEsteDispositivoBTLE(miUUID);
     }
@@ -54,9 +54,9 @@ public class DetectarBeacon {
                 String uuidString = Utilidades.bytesToString(tib.getUUID());
 
                 if (uuidString.compareTo(dispositivoBuscado) == 0) {
+                    // se para hasta una proxima llamada desde avisador
                     detenerBusquedaDispositivosBTLE();
                     mostrarInformacionDispositivoBTLE(bluetoothDevice, rssi, bytes);
-                    //callSleep(10200); // Sleep ten seconds
                 } else {
                     //Log.d( MainActivity.ETIQUETA_LOG, " * UUID buscado >" +
                     //        Utilidades.uuidToString( dispositivoBuscado ) + "< no concuerda con este uuid = >" +

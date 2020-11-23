@@ -3,6 +3,7 @@
     font-family: "Arial";
 }
 
+<<<<<<< HEAD
 li, a {
     font-weight: 700;
     font-size: 32px;
@@ -30,6 +31,9 @@ header img {
 .nav_links {
     list-style: none;
 }
+=======
+
+>>>>>>> develop
 
 .contenido {
     display: flex;
@@ -72,7 +76,11 @@ header img {
     box-sizing:border-box;
     background-color: #D1EEDE;
     margin: auto;
+<<<<<<< HEAD
     padding: 15px 40.5%;
+=======
+    padding: 15px 50%;
+>>>>>>> develop
 }
 
 .caja p {

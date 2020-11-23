@@ -43,6 +43,8 @@ public class Firebase {
                     }
                 });
 
+        //Comprobar valor máximo y si supera el límite llamar a EnviarNotificación
+
     }
 }
 

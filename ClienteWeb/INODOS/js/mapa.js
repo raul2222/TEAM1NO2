@@ -3,6 +3,11 @@ let map;
 var heatMapData = [];
 var heatmap;
 
+<<<<<<< HEAD
+=======
+const locationEstacion = { lat: 38.96819788848196, lng: -0.19047359706012285 };
+
+>>>>>>> develop
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 38.99574102, lng: -0.15975315 },
@@ -169,11 +174,43 @@ function initMap() {
   }
 ]
   });
+<<<<<<< HEAD
   //medidasRandom();
   //heatmap.setMap(map);
   //subirMedidas();
 }
 
+=======
+    
+    
+    
+  //medidasRandom();
+  //heatmap.setMap(map);
+  //subirMedidas();
+    
+    //Marker en el mapa
+    const image =
+    'images/iconoEstacion.png'; //Referencia al icono del marker
+    
+    const estacionMarker = new google.maps.Marker({ //Aqui creamos el marker
+        position: locationEstacion,
+        map,
+        title: "Estacion de medida oficial de Gandia",
+        icon: image,
+    });
+    
+    //Creamos un pequeño pop-up con la medición de la estación
+    var contentString = '<h5> <br>' + "Valor NO2: 2 " + '<h5>'
+    var infoEstacion = new google.maps.InfoWindow({ //Añadimos InfoWindow (popup)
+        content: contentString
+    });
+    estacionMarker.addListener('click', function(){ //Le pasamos la info al popup
+        infoEstacion.open(map, estacionMarker);
+    });
+}
+
+
+>>>>>>> develop
 function medidasRandom(){
     heatMapData = [
   new google.maps.LatLng(38.9920962, -0.179),

@@ -66,11 +66,11 @@ public class Localizacion implements LocationListener {
         Log.d(ETIQUETA_LOG,"Momento:" + String.valueOf(new Momento().getMomento()));
         Log.d(ETIQUETA_LOG,"Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
 
-        //CharSequence text = "Momento: " + String.valueOf(new Momento().getMomento()) + "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
-        //int duration = Toast.LENGTH_LONG;
+        CharSequence text = "Momento: " + String.valueOf(new Momento().getMomento()) + "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
+        int duration = Toast.LENGTH_LONG;
 
-        //Toast toast = Toast.makeText(mainActivity, text, duration);
-        //toast.show();
+        Toast toast = Toast.makeText(mainActivity, text, duration);
+        toast.show();
         medicion.setLat(String.valueOf(latitud));
         medicion.setLongi(String.valueOf(longitud));
 

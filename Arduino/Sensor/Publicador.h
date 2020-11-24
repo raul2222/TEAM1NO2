@@ -71,7 +71,8 @@ public:
 											(*this).RSSI // rssi
 									);
 
-	
+
+  /*
 	Globales::elPuerto.escribir( "   publicarNO2(): valor=" );
 	Globales::elPuerto.escribir( valorNO2 );
 	Globales::elPuerto.escribir( "   contador=" );
@@ -79,7 +80,7 @@ public:
 	Globales::elPuerto.escribir( "   todo="  );
 	Globales::elPuerto.escribir( major );
 	Globales::elPuerto.escribir( "\n" );
-	
+	*/
 
 	//
 	// 2. esperamos el tiempo que nos digan

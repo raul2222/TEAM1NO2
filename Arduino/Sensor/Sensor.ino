@@ -29,7 +29,7 @@ namespace Globales {
   
   LED elLED ( /* NUMERO DEL PIN LED = */ 7 );
 
-  PuertoSerie elPuerto ( /* velocidad = */ 9600 ); // 115200 o 9600 o ...
+  //PuertoSerie elPuerto ( /* velocidad = */ 9600 ); // 115200 o 9600 o ...
 
   // Serial1 en el ejemplo de Curro creo que es la conexión placa-sensor 
 };
@@ -65,12 +65,14 @@ void inicializarPlaquita () {
 void setup() {
 
   //Configure WDT for 120 seconds
+  
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
   NRF_WDT->CRV            = 3932159;    // CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
-  NRF_WDT->TASKS_START    = 1;        // Start WDT       
-
-  Globales::elPuerto.esperarDisponible();
+  NRF_WDT->TASKS_START    = 1;        // Start WDT    
+  
+  //para arrancar sin encender el minitor serial
+  //Globales::elPuerto.esperarDisponible();
 
   // 
   // 
@@ -97,7 +99,7 @@ void setup() {
   // 
   esperar( 1000 );
 
-  Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
+  //Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
 
 } // setup ()
 
@@ -106,14 +108,14 @@ void setup() {
 inline void lucecitas() {
   using namespace Globales;
 
-  elLED.brillar( 100 ); // 100 encendido
-  esperar ( 100 ); //  100 apagado
-  elLED.brillar( 100 ); // 100 encendido
-  esperar ( 100 ); //  100 apagado
-  Globales::elLED.brillar( 100 ); // 100 encendido
-  esperar ( 100 ); //  100 apagado
-  Globales::elLED.brillar( 1000 ); // 1000 encendido
-  esperar ( 100 ); //  100 apagado
+  elLED.brillar( 50 ); // 100 encendido
+  esperar ( 50 ); //  100 apagado
+  //elLED.brillar( 100 ); // 100 encendido
+  //esperar ( 100 ); //  100 apagado
+  //Globales::elLED.brillar( 100 ); // 100 encendido
+  //esperar ( 100 ); //  100 apagado
+  //Globales::elLED.brillar( 1000 ); // 1000 encendido
+  //esperar ( 100 ); //  100 apagado
 } // ()
 
 // --------------------------------------------------------------
@@ -131,13 +133,15 @@ void loop () {
   using namespace Globales;
 
     // Reload the WDTs RR[0] reload register
+
   NRF_WDT->RR[0] = WDT_RR_RR_Reload;
+
 
   cont++;
 
-  elPuerto.escribir( "\n---- loop(): empieza " );
-  elPuerto.escribir( cont );
-  elPuerto.escribir( "\n" );
+  //elPuerto.escribir( "\n---- loop(): empieza " );
+  //elPuerto.escribir( cont );
+  //elPuerto.escribir( "\n" );
 
 
   lucecitas();
@@ -149,7 +153,7 @@ void loop () {
   
   elPublicador.publicarNO2( valorNO2,
 							cont,
-							2000 // intervalo de emisión
+							1000 // intervalo de emisión
 							);
   /*
   // 
@@ -185,14 +189,14 @@ void loop () {
 
   elPublicador.laEmisora.detenerAnuncio();
 
-  esperar( 7000 );
+  esperar( 8000 );
   
   // 
   // 
   // 
-  elPuerto.escribir( "---- loop(): acaba **** " );
-  elPuerto.escribir( cont );
-  elPuerto.escribir( "\n" );
+  //elPuerto.escribir( "---- loop(): acaba **** " );
+  //elPuerto.escribir( cont );
+  //elPuerto.escribir( "\n" );
   
 } // loop ()
 // --------------------------------------------------------------

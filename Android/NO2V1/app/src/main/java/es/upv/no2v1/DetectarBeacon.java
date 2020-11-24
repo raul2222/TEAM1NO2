@@ -91,7 +91,7 @@ public class DetectarBeacon {
         //Log.d(ETIQUETA_LOG, " Ultimo_contador : " + contador);
         if (contador != contadorMajor) { // si el contador es distinto enviamos la lectura del sensor
             Log.d(ETIQUETA_LOG, " Valor : " + minor);
-            Log.d(ETIQUETA_LOG, " el contador es distinto. Bien!!! ");
+            Log.d(ETIQUETA_LOG, "******* el contador es distinto. Bien!!! ********");
             contador = contadorMajor; // guardo el ultimo valor del contador en variable global
 
             medicion.setIdsen("1");

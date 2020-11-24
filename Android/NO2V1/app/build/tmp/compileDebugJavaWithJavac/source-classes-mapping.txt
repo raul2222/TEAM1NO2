@@ -1,7 +1,5 @@
-es/upv/no2v1/Avisador.java
- es.upv.no2v1.Avisador
- es.upv.no2v1.Avisador$1
- es.upv.no2v1.Avisador$2
+es/upv/no2v1/CallbackLocalizacion.java
+ es.upv.no2v1.CallbackLocalizacion
 es/upv/no2v1/TramaIBeacon.java
  es.upv.no2v1.TramaIBeacon
 es/upv/no2v1/DetectarBeacon.java
@@ -16,14 +14,16 @@ es/upv/no2v1/Utilidades.java
  es.upv.no2v1.Utilidades
 es/upv/no2v1/Localizacion.java
  es.upv.no2v1.Localizacion
-es/upv/no2v1/CallbackLocalizacion.java
- es.upv.no2v1.CallbackLocalizacion
 es/upv/no2v1/Momento.java
  es.upv.no2v1.Momento
 es/upv/no2v1/Firebase.java
  es.upv.no2v1.Firebase
  es.upv.no2v1.Firebase$1
  es.upv.no2v1.Firebase$2
+es/upv/no2v1/Avisador.java
+ es.upv.no2v1.Avisador
+ es.upv.no2v1.Avisador$1
+ es.upv.no2v1.Avisador$2
 es/upv/no2v1/MainActivity.java
  es.upv.no2v1.MainActivity
  es.upv.no2v1.MainActivity$1

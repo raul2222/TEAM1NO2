@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(1, 10, this).encenderAvisador();
+        new Avisador(5, 25, this).encenderAvisador();
     }
 
     // pedir permisos

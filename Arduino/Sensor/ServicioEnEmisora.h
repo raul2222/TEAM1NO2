@@ -159,8 +159,8 @@ public:
 	// .........................................................
 	void activar() {
 	  err_t error = (*this).laCaracteristica.begin();
-	  Globales::elPuerto.escribir(  " (*this).laCaracteristica.begin(); error = " );
-	  Globales::elPuerto.escribir(  error );
+	  //Globales::elPuerto.escribir(  " (*this).laCaracteristica.begin(); error = " );
+	  //Globales::elPuerto.escribir(  error );
 	} // ()
 
   }; // class Caracteristica
@@ -245,4 +245,3 @@ public:
 // ----------------------------------------------------------
 // ----------------------------------------------------------
 // ----------------------------------------------------------
-

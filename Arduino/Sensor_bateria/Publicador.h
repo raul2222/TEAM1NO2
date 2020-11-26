@@ -59,14 +59,14 @@ public:
   // ............................................................
   // ............................................................
   void publicarNO2( int16_t valorNO2, uint8_t contador,
-					long tiempoEspera ) {
+					long tiempoEspera, uint8_t nivel_bat ) {
 
 	//
 	// 1. empezamos anuncio
 	//
   
-	uint16_t major =  (MedicionesID::NO2 << 8) + contador;
-  //uint16_t major =  (nivel_bat << 8) + contador;
+	//uint16_t major =  (MedicionesID::NO2 << 8) + contador;
+  uint16_t major =  (nivel_bat << 8) + contador;
  
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
 											major,

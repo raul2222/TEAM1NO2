@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //quitar el navigation bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //mantener la pantalla encendida del movil encendida
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //dar los permisos necesarios para el funcionamiento de la aplicación
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(25, 33, this).encenderAvisador();
+        new Avisador(25, 27, this).encenderAvisador();
     }
 
     // pedir permisos
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         webView.getSettings().setJavaScriptEnabled(true);
         //webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
-        //webView.getSettings().getLoadWithOverviewMode();
+        //webView.getSettings().setUseWideViewPort(true);
+
         webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
     }
 

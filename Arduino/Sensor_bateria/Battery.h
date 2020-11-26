@@ -7,9 +7,10 @@
 #ifndef BATTERY_H_INCLUIDO
 #define BATTERY_H_INCLUIDO
 #include <Arduino.h>
+#include "Arduino_nRF5x_lowPower.h" // LowPower Library for nRF5x
 
 // ----------------------------------------------------------
-#define PIN_VBAT   A3   // this is just a mock read, we'll use the light sensor, so we can run the test
+#define PIN_VBAT   A3   
 #define PIN_MOSFET   19
 #define VBAT_MV_PER_LSB   (0.73242188F)   // 3.0V ADC range and 12-bit ADC resolution = 3000mV/4096
 #define VBAT_DIVIDER      (0.5F)          // 150K + 150K voltage divider on VBAT
@@ -20,11 +21,14 @@
 // ----------------------------------------------------------
 class BATTERY {
 private:
+
+  Arduino_nRF5x_lowPower low;
   uint32_t vbat_pin = PIN_VBAT; 
 
+  // readVBAT -> float
   float readVBAT(void) {
+      low.enableDCDC();
       float raw;
-    
       // Set the analog reference to 3.0V (default = 3.6V)
       analogReference(AR_INTERNAL_3_0);
     
@@ -40,27 +44,30 @@ private:
       // Set the ADC back to the default settings
       analogReference(AR_DEFAULT);
       analogReadResolution(10);
+      //Disable Mosfet because the current flow to ground
+      stopMosfet();
+      low.disableDCDC();
       // Convert the raw value to compensated mv, taking the resistor-
       // divider into account (providing the actual LIPO voltage)
       // ADC range is 0..3000mV and resolution is 12-bit (0..4095)
       return raw * REAL_VBAT_MV_PER_LSB;
-  }
+  }//()
 
-
+  // float -> mvToPercent-> uint8_T
   uint8_t mvToPercent(float mvolts) {
-    if(mvolts<3300)
-      return 0;
-  
-    if(mvolts <3600) {
-      mvolts -= 3300;
-      return mvolts/30;
-    }
-    mvolts -= 3600;
-    uint8_t res = 14.7 + (mvolts * 0.15F );
-    if (res > 100){
-      return 100;
-    }
-    return res;  // thats mvolts /6.66666666
+      if(mvolts<3300)
+        return 0;
+    
+      if(mvolts <3600) {
+        mvolts -= 3300;
+        return mvolts/30;
+      }
+      mvolts -= 3600;
+      uint8_t res = 14.7 + (mvolts * 0.15F );
+      if (res > 100){
+        return 100;
+      }
+      return res;  // thats mvolts /6.66666666
   }
 
 public:
@@ -72,8 +79,12 @@ public:
     digitalWrite(PIN_MOSFET, LOW);
   }
 
+  void stopMosfet(void){
+    digitalWrite(PIN_MOSFET, HIGH);
+  }
+
   // .........................................................
-  // .........................................................
+  // obtenerProcerntaje -> uint8_T
   uint8_t obtenerPorcentaje(){
     float vbat_mv = 0;
     float vbat_temp = 0;

@@ -55,7 +55,7 @@ public class Avisador {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Log.d(ETIQUETA_LOG,"llamada a enviarFirebase desde tarea recursiva");
+                Log.d(ETIQUETA_LOG,"llamada a enviar Firebase desde tarea recursiva");
                 enviarFirebase();
             }
         };

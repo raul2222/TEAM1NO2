@@ -8,48 +8,69 @@ var btn = document.getElementById("popup");
 var span = document.getElementsByClassName("close")[0];
 
 
+
+
+
+
 function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiSensor
   console.log("Si que entra en la función");
   
-  const IDSensor = document.querySelector("#IDSensor");
+  let IDSensor = document.querySelector("#IDSensor");
  
-  const Valor = document.querySelector("#Valor");
-  
-  db.collection("Mediciones").doc("06VpBL7d66GeT9zCmaIG").get().then(function(doc) {
-      if (doc.exists) {
-          console.log("Document data: ", doc.data());
-          //  valores vacios
+  let Valor = document.querySelector("#Valor");
 
-          IDSensor.innerHTML = "IDSensor:";
-          Valor.innerHTML = "Valor:";
-          
-          //Aqui dentro pondremos la info del sensor a la pagina web
-          IDSensor.innerHTML += "<p> " + doc.data().IDSensor + " </p>";
-          Valor.innerHTML += "<p> " + doc.data().Valor + " </p>";
-          console.log(IDSensor.innerHTML);
-          
-      } else {
-          console.log("No se ha encontrado el documento");
+  var ultimoValor;
+
+  var cont = 0;
+
+
+  
+  db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+
+      if(cont == 0){
+        ultimoValor = doc.data().Valor; // cojo tadas mediciones del sensor
+        cont++;
+        document.getElementById("Valor").value = ultimoValor;
       }
-  }).catch(function(error) {
-      console.log("Error intentando coger el documento: ", error);
-  });
+
+
+      //console.log(ultimoValor);
+    });
+
+  })
+
+      //if (doc.exists) {
+
+        /*.then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+          });*/
+      
+
+
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      })
+
+      document.getElementById("IDSensor").value = 1;
+      //console.log(ultimoValor);
+      //document.getElementById("Valor").value = "" + ultimoValor;
+          
+    
 }
 
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
   getInfoMiSensor(); //llamo a la función que me obtiene la informacion de mi sensor
-
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
   getInfoMiSensor();
-
-  
-
   
 }
 

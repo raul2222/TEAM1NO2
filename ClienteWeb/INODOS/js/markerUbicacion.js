@@ -2,6 +2,12 @@
 var marker;
 var cont = 0;
 
+//------------------------------------------//
+//------------------------------------------//
+// markerUbicacion() --> 
+//------------------------------------------//
+//------------------------------------------//
+
 function markerUbicacion(){
     /*db.collection("Mediciones").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -13,7 +19,7 @@ function markerUbicacion(){
         marker.setMap(null)
     }
     
-    db.collection("Sensores").where("serialnumber", "==", "erwtfw4352452").get().then(function(querySnapshot){
+    db.collection("Sensores").where("serialnumber", "==", "erwtfw4352452").get().then(function(querySnapshot){ //ultima lat i long
         querySnapshot.forEach(function(doc){
             console.log(doc.data().ultimalat + ", " + doc.data().ultimalng)
             marker = new google.maps.Marker({

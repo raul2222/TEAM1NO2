@@ -259,33 +259,29 @@
 
 			<!-- Central Modal Medium Info -->
 			<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-				aria-hidden="true">
+				aria-hidden="true" style="z-index: 2000;">
 				<div class="modal-dialog modal-notify modal-info" role="document">
 					<!--Content-->
 					<div class="modal-content">
 						<!--Header-->
 						<div class="modal-header">
-							<p class="heading lead">Vista Previa</p>
+							<p class="heading lead">Información</p>
 
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true" class="white-text">&times;</span>
-							</button>
+							
 						</div>
 
 						<!--Body-->
 						<div class="modal-body">
 							<div class="text-center">
 								<i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-								<div class="primeraColumna">
-									<p style="font-weight: 700"></p>
-									<br>
-									<p id="IDSensor">ID del Sensor:</p>									
-								</div>
-								<div class="segundaColumna">
-									<p style="font-weight: 700"></p>
-									<br>
-									<p id="Valor">Valor:</p>
-								</div>
+								<div class="input-group-prepend">
+									<span class="input-group-text">IDSensor</span>
+								  </div>
+								  <input id="IDSensor" readonly type="text" class="form-control">
+								  <div class="input-group-prepend">
+									<span class="input-group-text">Valor</span>
+								  </div>
+								  <input id="Valor" readonly type="text" class="form-control">
 							</div>
 						</div>
 
@@ -350,8 +346,7 @@
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
 
-	<script src="js/popUpInfoSensor.js"></script>
-    
+    <script src="js/popUpInfoSensor.js"></script>
     <script src="js/markerUbicacion.js"></script>
 
 

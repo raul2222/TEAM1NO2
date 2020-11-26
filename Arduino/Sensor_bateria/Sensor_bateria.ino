@@ -32,6 +32,8 @@ namespace Globales {
   
   LED elLED ( /* NUMERO DEL PIN LED = */ 7 );
 
+  Arduino_nRF5x_lowPower lowPower52840;
+
   //PuertoSerie elPuerto ( /* velocidad = */ 9600 ); // 115200 o 9600 o ... //Ya no es necesario el monitor
 
   // Serial1 en el ejemplo de Curro creo que es la conexión placa-sensor 
@@ -64,7 +66,7 @@ void inicializarPlaquita () {
   // delay(60*60*1000);
 
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
-  nRF5x_lowPower.disableDCDC(); 
+  Globales::lowPower52840.disableDCDC(); 
   
   //Configure WDT for 120 seconds
   
@@ -109,8 +111,8 @@ void setup() {
 // --------------------------------------------------------------
 inline void lucecitas() {
   using namespace Globales;
-  elLED.brillar( 40 ); // 100 encendido
-  esperar ( 40 ); //  100 apagado
+  elLED.brillar( 40 ); // 40 encendido
+  esperar ( 10 ); //  10 apagado
 } // ()
 
 // --------------------------------------------------------------
@@ -140,10 +142,7 @@ void loop () {
   // 
   // mido y publico
   // 
-
-  nRF5x_lowPower.enableDCDC();
   battery = bat.obtenerPorcentaje();
-  nRF5x_lowPower.disableDCDC(); 
   int valorNO2 = elMedidor.medirNO2();
 
   elPublicador.publicarNO2( valorNO2,
@@ -184,10 +183,8 @@ void loop () {
 
   tiempo = 0;
   while (tiempo <= 2) {
-      //nRF5x_lowPower.powerMode(POWER_MODE_CONSTANT_LATENCY);
-      //nRF5x_lowPower.powerMode(POWER_MODE_OFF);
-      nRF5x_lowPower.powerMode(POWER_MODE_LOW_POWER);
-      delay(5500);
+      setLowPower();
+      delay(5900);
       tiempo++;
   }
   
@@ -201,6 +198,12 @@ void loop () {
   //elPuerto.escribir( "\n" );
   
 } // loop ()
+
+inline void setLowPower(void){
+    //nRF5x_lowPower.powerMode(POWER_MODE_CONSTANT_LATENCY);
+    //nRF5x_lowPower.powerMode(POWER_MODE_OFF);
+      Globales::lowPower52840.powerMode(POWER_MODE_LOW_POWER);
+}
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 // --------------------------------------------------------------

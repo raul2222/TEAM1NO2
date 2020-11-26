@@ -86,9 +86,15 @@ public class DetectarBeacon {
 
     public void setearMedicion(String major, int minor) {
         int contadorMajor = Integer.parseInt(major.substring(3, 5), 16); // extraer contador
-        //Log.d(ETIQUETA_LOG, " Valor : " + minor);
-        //Log.d(ETIQUETA_LOG, " contadorMajor : " + contadorMajor);
-        //Log.d(ETIQUETA_LOG, " Ultimo_contador : " + contador);
+        //extraer valor bateria
+        int bateria = Integer.parseInt(major.substring(0, 2), 16);
+        /*
+        Log.d(ETIQUETA_LOG, " Valor : " + minor);
+        Log.d(ETIQUETA_LOG, " Mayor : " + major);
+        Log.d(ETIQUETA_LOG, " contadorMajor : " + contadorMajor);
+        Log.d(ETIQUETA_LOG, " Ultimo_contador : " + contador);
+        Log.d(ETIQUETA_LOG, " Bateria : " + bateria);
+        */
         if (contador != contadorMajor) { // si el contador es distinto enviamos la lectura del sensor
             Log.d(ETIQUETA_LOG, " Valor : " + minor);
             Log.d(ETIQUETA_LOG, "******* el contador es distinto. Bien!!! ********");
@@ -96,6 +102,7 @@ public class DetectarBeacon {
 
             medicion.setIdsen("1");
             medicion.setValor(String.valueOf(minor));
+            medicion.setBat(String.valueOf(bateria));
             medicion.setMomento(String.valueOf( new Momento().getMomento()));
         }
     }

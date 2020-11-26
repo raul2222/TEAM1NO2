@@ -1,10 +1,14 @@
 package es.upv.no2v1;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -26,8 +30,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //quitar el navigation bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
+        }
+        if (Build.VERSION.SDK_INT >= 19) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+        getWindow().getDecorView().setSystemUiVisibility(R.color.black);
         //mantener la pantalla encendida del movil encendida
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //dar los permisos necesarios para el funcionamiento de la aplicación
@@ -35,7 +50,18 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(5, 25, this).encenderAvisador();
+        new Avisador(25, 27, this).encenderAvisador();
+    }
+
+    public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 
     // pedir permisos
@@ -57,11 +83,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarWebView(){
-        webView = (WebView) findViewById(R.id.webview);
+        webView = findViewById(R.id.webView);
         webView.setWebViewClient(new MyBrowser());
+
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
-        webView.getSettings().setUseWideViewPort(true);
+        //webView.getSettings().setLoadWithOverviewMode(true);
+        //webView.getSettings().setUseWideViewPort(true);
+
         webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
     }
 

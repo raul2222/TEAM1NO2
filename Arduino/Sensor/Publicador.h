@@ -25,8 +25,8 @@ private:
 public:
   EmisoraBLE laEmisora {
 	"TEAM1NO2", //  nombre emisora
-	  0xFFFF, // fabricanteID
-	  4 // txPower
+	  0xF11F, // fabricanteID
+	  3 // txPower
 	  };
   
   const int RSSI = -53; // por poner algo, de momento no lo uso
@@ -38,9 +38,9 @@ public:
   // ............................................................
   // ............................................................
   enum MedicionesID  {
-	NO2 = 11,
-	TEMPERATURA = 12,
-	RUIDO = 13
+  	NO2 = 1,
+  	TEMPERATURA = 2,
+  	RUIDO = 3
   };
 
   // ............................................................
@@ -53,7 +53,7 @@ public:
   // ............................................................
   // ............................................................
   void encenderEmisora() {
-	(*this).laEmisora.encenderEmisora();
+	  (*this).laEmisora.encenderEmisora();
   } // ()
 
   // ............................................................
@@ -64,14 +64,18 @@ public:
 	//
 	// 1. empezamos anuncio
 	//
-	uint16_t major = (MedicionesID::NO2 << 8) + contador;
+  
+	uint16_t major =  (MedicionesID::NO2 << 8) + contador;
+  //uint16_t major =  (nivel_bat << 8) + contador;
+ 
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
 											major,
 											valorNO2, // minor
 											(*this).RSSI // rssi
 									);
 
-	
+
+  /*
 	Globales::elPuerto.escribir( "   publicarNO2(): valor=" );
 	Globales::elPuerto.escribir( valorNO2 );
 	Globales::elPuerto.escribir( "   contador=" );
@@ -79,7 +83,7 @@ public:
 	Globales::elPuerto.escribir( "   todo="  );
 	Globales::elPuerto.escribir( major );
 	Globales::elPuerto.escribir( "\n" );
-	
+	*/
 
 	//
 	// 2. esperamos el tiempo que nos digan

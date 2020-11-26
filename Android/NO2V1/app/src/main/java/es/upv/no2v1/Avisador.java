@@ -2,6 +2,7 @@ package es.upv.no2v1;
 
 import android.app.Activity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Date;
 import java.util.Timer;
@@ -54,13 +55,14 @@ public class Avisador {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                Log.d(ETIQUETA_LOG,"llamada a enviarFirebase desde tarea recursiva");
+                Log.d(ETIQUETA_LOG,"llamada a enviar Firebase desde tarea recursiva");
                 enviarFirebase();
             }
         };
         timer.scheduleAtFixedRate(task, new Date(), _minutosAlarma*1000*60);
 
     }
+
 
     //enviar datos al servidor la llamada puede ser desde
     //un cambio mayor a distancia o por tienpo entre medidas
@@ -69,24 +71,39 @@ public class Avisador {
         Log.d(ETIQUETA_LOG,"enviarDatosFirebase");
         // si medición a pasado por la detección de beacon
         if (medicion.getIdsen() != "0") {
+            Log.d(ETIQUETA_LOG,"el idSensor es distinto a 0");
             //si la medición tiene latitud y longitud
             if(medicion.getLat() != "" && medicion.getLongi() !="") {
-
+                Log.d(ETIQUETA_LOG,"hay lat y long");
                 try {
-                    long segundosAlarma = _minutosAlarma * 60;
-                    long diff = new Momento().getMomento() - Long.valueOf(medicion.getMomento());
 
+                    long segundosAlarma = _minutosAlarma * 60;
+                    long momnetoActual = new Momento().getMomento();
+
+                    if (medicion.getMomento() == ""){
+                        Log.d(ETIQUETA_LOG, "getmomentoVacio");
+                    }
+                    long momentoDeLaUltimaMedicion = Long.parseLong(medicion.getMomento());
+
+                    long diff = new Momento().getMomento() - Long.parseLong(medicion.getMomento());
 
                     if (diff < segundosAlarma) {
-                        Log.d(ETIQUETA_LOG, "lectura no antigua");
+                        Log.d(ETIQUETA_LOG, "********  lectura no antigua ***********");
+
+
+
                         fb.enviarMedicion(medicion.getIdsen(), medicion.getLat(), medicion.getLongi(),
-                                medicion.getValor(), medicion.getMomento());
+                                medicion.getValor(), medicion.getMomento(), medicion.getBat());
+
                         medicion.borrarMedicion();
                     } else {
                         Log.d(ETIQUETA_LOG, "lectura es muyyy antigua");
                     }
 
                 } catch (Exception ex){
+
+                    Log.d(ETIQUETA_LOG, "error antes de firebase");
+
                     Log.d(ETIQUETA_LOG, ex.toString());
                 }
 

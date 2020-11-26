@@ -10,9 +10,10 @@ const locationEstacion = { lat: 38.96819788848196, lng: -0.19047359706012285 };
 >>>>>>> develop
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 38.99574102, lng: -0.15975315 },
+    center: { lat: 38.981761, lng: -0.169679 },
 	disableDefaultUI: true,
-    zoom: 16,
+    gestureHandling: "greedy",
+    zoom: 14,
     styles: [
   {
     "elementType": "geometry",

@@ -16,10 +16,6 @@ es/upv/no2v1/Localizacion.java
  es.upv.no2v1.Localizacion
 es/upv/no2v1/Momento.java
  es.upv.no2v1.Momento
-es/upv/no2v1/Firebase.java
- es.upv.no2v1.Firebase
- es.upv.no2v1.Firebase$1
- es.upv.no2v1.Firebase$2
 es/upv/no2v1/DetectarBeacon.java
  es.upv.no2v1.DetectarBeacon
  es.upv.no2v1.DetectarBeacon$1
@@ -28,3 +24,7 @@ es/upv/no2v1/MainActivity.java
  es.upv.no2v1.MainActivity
  es.upv.no2v1.MainActivity$1
  es.upv.no2v1.MainActivity$MyBrowser
+es/upv/no2v1/Firebase.java
+ es.upv.no2v1.Firebase
+ es.upv.no2v1.Firebase$1
+ es.upv.no2v1.Firebase$2

@@ -52,7 +52,7 @@ namespace Globales {
 
   Medidor elMedidor;
 
-  //BATTERY bat;
+  BATTERY bat;
 
 }; // namespace
 
@@ -141,15 +141,15 @@ void loop () {
   // mido y publico
   // 
 
-  //nRF5x_lowPower.enableDCDC();
-  //battery = bat.obtenerPorcentaje();
-  //nRF5x_lowPower.disableDCDC(); 
+  nRF5x_lowPower.enableDCDC();
+  battery = bat.obtenerPorcentaje();
+  nRF5x_lowPower.disableDCDC(); 
   int valorNO2 = elMedidor.medirNO2();
 
   elPublicador.publicarNO2( valorNO2,
 							cont,
-							1000 // intervalo de emisión
-							);
+							1000, // intervalo de emisión
+							battery);
   /*
   // mido y publico
   // 

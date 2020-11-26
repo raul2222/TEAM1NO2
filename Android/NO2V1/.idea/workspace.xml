@@ -9,23 +9,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/DetectarBeacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/DetectarBeacon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor/EmisoraBLE.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor/EmisoraBLE.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor/Publicador.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor/Publicador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor/Sensor.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor/Sensor.ino" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor/ServicioEnEmisora.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor/ServicioEnEmisora.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

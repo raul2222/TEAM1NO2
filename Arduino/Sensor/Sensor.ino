@@ -14,9 +14,12 @@
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 #include <bluefruit.h>
+#include "Arduino_nRF5x_lowPower.h" // LowPower Library for nRF5x
 
 #undef min // vaya tela, están definidos en bluefruit.h y  !
 #undef max // colisionan con los de la biblioteca estándar
+
+
 
 // --------------------------------------------------------------
 // --------------------------------------------------------------
@@ -55,7 +58,18 @@ namespace Globales {
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
-  // de momento nada
+  // Esperar 75 minutos para el heater del sensor
+  // delay(75*60*1000);
+
+  //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
+  nRF5x_lowPower.disableDCDC(); 
+  
+  //Configure WDT for 120 seconds
+  
+  NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
+  NRF_WDT->CRV            = (3932159 / 3);    // now(120s/3) CRV = timeout * 32768 + 1
+  NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
+  NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
 } // ()
 
@@ -64,14 +78,9 @@ void inicializarPlaquita () {
 // --------------------------------------------------------------
 void setup() {
 
-  //Configure WDT for 120 seconds
+
   
-  NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = 3932159;    // CRV = timeout * 32768 + 1
-  NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
-  NRF_WDT->TASKS_START    = 1;        // Start WDT    
-  
-  //para arrancar sin encender el minitor serial
+  //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
   // 
@@ -108,14 +117,8 @@ void setup() {
 inline void lucecitas() {
   using namespace Globales;
 
-  elLED.brillar( 50 ); // 100 encendido
-  esperar ( 50 ); //  100 apagado
-  //elLED.brillar( 100 ); // 100 encendido
-  //esperar ( 100 ); //  100 apagado
-  //Globales::elLED.brillar( 100 ); // 100 encendido
-  //esperar ( 100 ); //  100 apagado
-  //Globales::elLED.brillar( 1000 ); // 1000 encendido
-  //esperar ( 100 ); //  100 apagado
+  elLED.brillar( 40 ); // 100 encendido
+  esperar ( 40 ); //  100 apagado
 } // ()
 
 // --------------------------------------------------------------
@@ -132,17 +135,11 @@ void loop () {
   using namespace Loop;
   using namespace Globales;
 
-    // Reload the WDTs RR[0] reload register
-
-  NRF_WDT->RR[0] = WDT_RR_RR_Reload;
-
-
   cont++;
 
   //elPuerto.escribir( "\n---- loop(): empieza " );
   //elPuerto.escribir( cont );
   //elPuerto.escribir( "\n" );
-
 
   lucecitas();
 
@@ -185,11 +182,20 @@ void loop () {
   // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
   elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
   */
-  esperar( 500 );
 
   elPublicador.laEmisora.detenerAnuncio();
 
-  esperar( 8000 );
+  int tiempo = 0;
+  while (tiempo < 3) {
+      //nRF5x_lowPower.powerMode(POWER_MODE_CONSTANT_LATENCY);
+      //nRF5x_lowPower.powerMode(POWER_MODE_OFF);
+      nRF5x_lowPower.powerMode(POWER_MODE_LOW_POWER);
+      delay(6500);
+      tiempo++;
+  }
+  
+  // Reload the WDTs RR[0] reload register
+  NRF_WDT->RR[0] = WDT_RR_RR_Reload; 
   
   // 
   // 
@@ -203,3 +209,10 @@ void loop () {
 // --------------------------------------------------------------
 // --------------------------------------------------------------
 // --------------------------------------------------------------
+
+/**@brief Function for putting the chip into sleep mode.
+ *
+ * @note This function will not return.
+ */
+
+  

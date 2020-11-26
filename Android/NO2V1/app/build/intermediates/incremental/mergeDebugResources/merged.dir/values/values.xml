@@ -3674,7 +3674,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-    <style name="Theme.NO2V1" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+    <style name="Theme.NO2V1" parent="Theme.MaterialComponents.Light.Dialog.Alert.Bridge">
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>

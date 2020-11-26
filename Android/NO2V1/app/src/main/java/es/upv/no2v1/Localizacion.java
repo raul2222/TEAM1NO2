@@ -63,10 +63,10 @@ public class Localizacion implements LocationListener {
         latitud = location.getLatitude();
         longitud = location.getLongitude();
         momentoultimaLocazion = new Momento().getMomento();
-        Log.d(ETIQUETA_LOG,"Momento:" + String.valueOf(new Momento().getMomento()));
+        Log.d(ETIQUETA_LOG,"Momento:" + new Momento().getMomento());
         Log.d(ETIQUETA_LOG,"Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
 
-        CharSequence text = "Momento: " + String.valueOf(new Momento().getMomento()) + "Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
+        CharSequence text = "Momento: " + String.valueOf(new Momento().getMomento()) + " Latitude: " + location.getLatitude() + ", Longitude: " + location.getLongitude();
         int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(mainActivity, text, duration);

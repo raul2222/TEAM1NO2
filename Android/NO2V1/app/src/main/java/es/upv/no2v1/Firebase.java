@@ -19,7 +19,7 @@ public class Firebase {
 
     }
 
-    public void enviarMedicion(String idsen, String lat, String longi, String valor, String momento) {
+    public void enviarMedicion(String idsen, String lat, String longi, String valor, String momento, String bateria) {
         Log.d(ETIQUETA_LOG, "empiezo a enviar a Firebase");
         Map<String, Object> dato = new HashMap<>();
         dato.put("IDSensor", idsen);
@@ -27,6 +27,7 @@ public class Firebase {
         dato.put("Longitud", longi);
         dato.put("Valor", valor);
         dato.put("Momento", momento);
+        dato.put("Bateria", bateria);
 
 
 

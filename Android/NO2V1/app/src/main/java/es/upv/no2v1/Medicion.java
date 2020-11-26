@@ -6,6 +6,7 @@ public class Medicion {
     private  String longi;
     private String valor;
     private String momento;
+    private String bat;
 
     public String getIdsen() {
         return idsen;
@@ -21,6 +22,14 @@ public class Medicion {
 
     public void setLat(String lat) {
         this.lat = lat;
+    }
+
+    public String getBat() {
+        return bat;
+    }
+
+    public void setBat(String lat) {
+        this.bat = lat;
     }
 
     public String getLongi() {
@@ -53,14 +62,16 @@ public class Medicion {
         this.longi = "";
         this.valor = "";
         this.momento = "";
+        this.bat = "";
     }
 
-    public Medicion(String  idsen, String lat, String longi, String valor, String moment) {
+    public Medicion(String  idsen, String lat, String longi, String valor, String moment, String bat) {
         this.idsen = idsen;
         this.lat = lat;
         this.longi = longi;
         this.valor = valor;
         this.momento = moment;
+        this.bat = bat;
     }
 
     public void borrarMedicion(){
@@ -69,6 +80,7 @@ public class Medicion {
         //this.longi = "";
         this.valor = "";
         this.momento = "";
+        this.bat = "";
     }
 
 }

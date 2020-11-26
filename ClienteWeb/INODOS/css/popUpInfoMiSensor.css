@@ -18,26 +18,29 @@
     
     background-color: #fdf9f9;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 9px;
-    border: 4px solid rgb(72, 192, 223);
-    width: 40%; /* Could be more or less, depending on screen size */
-    border-radius: 40px;
+    padding: 5px;
+    border: 2px solid rgb(72, 192, 223);
+    width: 50%; /* Could be more or less, depending on screen size */
+    border-radius: 25px;
     box-shadow: 0 0 5px #CCC;
-    ;
-    
+    margin-top: 300px;
   }
   
   
   /* The Close Button */
-  .close {
-    
-    color: rgb(10, 10, 10);
+  /*.close {
+    color: #050505;
     float: right;
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
-  
     
   }
+
+
+ 
+
+
+  
   
   .close:hover,
   .close:focus {
@@ -46,7 +49,7 @@
     cursor: pointer;
     
       
-  }
+  }*/
   
   
   

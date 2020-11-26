@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(5, 25, this).encenderAvisador();
+        new Avisador(25, 33, this).encenderAvisador();
     }
 
     // pedir permisos
@@ -57,11 +57,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void iniciarWebView(){
-        webView = findViewById(R.id.webview);
+        webView = findViewById(R.id.webView);
         webView.setWebViewClient(new MyBrowser());
+
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setLoadWithOverviewMode(true);
+        //webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
+        //webView.getSettings().getLoadWithOverviewMode();
         webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
     }
 

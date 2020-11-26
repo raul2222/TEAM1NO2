@@ -24,10 +24,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +42,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[4SDQ6SOJYPV8DEWG]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LMV405UA77e2548a]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -206,6 +213,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1658" y="210" key="#com.intellij.ide.util.MemberChooser" timestamp="1606414834289">
+      <screen x="0" y="23" width="2560" height="1364" />
+    </state>
+    <state x="1658" y="210" key="#com.intellij.ide.util.MemberChooser/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606414834289" />
     <state x="1048" y="892" width="472" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606087579771">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
@@ -215,29 +226,29 @@
     </state>
     <state x="87" y="205" width="1849" height="1039" key="AVDManager/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349210" />
     <state x="87" y="205" width="1849" height="1039" key="AVDManager/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606401864471" />
-    <state width="1336" height="390" key="GridCell.Tab.0.bottom" timestamp="1606402349137">
-      <screen x="0" y="23" width="1080" height="1854" />
+    <state width="2426" height="417" key="GridCell.Tab.0.bottom" timestamp="1606414623258">
+      <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state width="1336" height="390" key="GridCell.Tab.0.bottom/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349137" />
-    <state width="1336" height="390" key="GridCell.Tab.0.bottom/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606402206154" />
+    <state width="2426" height="417" key="GridCell.Tab.0.bottom/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606414623258" />
     <state width="1336" height="340" key="GridCell.Tab.0.bottom/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606383578547" />
-    <state width="1336" height="390" key="GridCell.Tab.0.center" timestamp="1606402349137">
-      <screen x="0" y="23" width="1080" height="1854" />
+    <state width="2426" height="417" key="GridCell.Tab.0.center" timestamp="1606414623257">
+      <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state width="1336" height="390" key="GridCell.Tab.0.center/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349137" />
-    <state width="1336" height="390" key="GridCell.Tab.0.center/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606402206153" />
+    <state width="2426" height="417" key="GridCell.Tab.0.center/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606414623257" />
     <state width="1336" height="340" key="GridCell.Tab.0.center/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606383578546" />
-    <state width="1336" height="390" key="GridCell.Tab.0.left" timestamp="1606402349136">
-      <screen x="0" y="23" width="1080" height="1854" />
+    <state width="2426" height="417" key="GridCell.Tab.0.left" timestamp="1606414623256">
+      <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state width="1336" height="390" key="GridCell.Tab.0.left/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349136" />
-    <state width="1336" height="390" key="GridCell.Tab.0.left/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606402206153" />
+    <state width="2426" height="417" key="GridCell.Tab.0.left/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606414623256" />
     <state width="1336" height="340" key="GridCell.Tab.0.left/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606383578545" />
-    <state width="1336" height="390" key="GridCell.Tab.0.right" timestamp="1606402349137">
-      <screen x="0" y="23" width="1080" height="1854" />
+    <state width="2426" height="417" key="GridCell.Tab.0.right" timestamp="1606414623257">
+      <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state width="1336" height="390" key="GridCell.Tab.0.right/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349137" />
-    <state width="1336" height="390" key="GridCell.Tab.0.right/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606402206154" />
+    <state width="2426" height="417" key="GridCell.Tab.0.right/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606414623257" />
     <state width="1336" height="340" key="GridCell.Tab.0.right/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606383578546" />
     <state width="2005" height="350" key="GridCell.Tab.1.bottom" timestamp="1604645027265">
       <screen x="0" y="23" width="2560" height="1364" />

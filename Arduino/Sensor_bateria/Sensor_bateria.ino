@@ -69,7 +69,7 @@ void inicializarPlaquita () {
   //Configure WDT for 120 seconds
   
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = (3932159 / 3);    // now(120s/2) CRV = timeout * 32768 + 1
+  NRF_WDT->CRV            = (3932159 / 3);    // now(120s/3) CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
   NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
@@ -187,7 +187,7 @@ void loop () {
       //nRF5x_lowPower.powerMode(POWER_MODE_CONSTANT_LATENCY);
       //nRF5x_lowPower.powerMode(POWER_MODE_OFF);
       nRF5x_lowPower.powerMode(POWER_MODE_LOW_POWER);
-      delay(5100);
+      delay(5500);
       tiempo++;
   }
   

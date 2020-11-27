@@ -7,15 +7,13 @@ public class Medicion {
     private String valor;
     private String momento;
     private String bat;
-    private String ultimaMedicion;
+    private Long ultimaMedicion;
 
-    public String getUltimaMedicion() {
+    public Long getUltimaMedicion() {
         return ultimaMedicion;
     }
 
-    public Long getUltimaMedicionLong(){return Long.parseLong(ultimaMedicion);}
-
-    public void setUltimaMedicion(String ultimaMedicion) {
+    public void setUltimaMedicion(Long ultimaMedicion) {
         this.ultimaMedicion = ultimaMedicion;
     }
 
@@ -83,6 +81,7 @@ public class Medicion {
         this.valor = valor;
         this.momento = moment;
         this.bat = bat;
+        this.ultimaMedicion = Long.parseLong(moment);
     }
 
     public void borrarMedicion(){

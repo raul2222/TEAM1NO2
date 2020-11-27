@@ -13,6 +13,8 @@ public class Medicion {
         return ultimaMedicion;
     }
 
+    public Long getUltimaMedicionLong(){return Long.parseLong(ultimaMedicion);}
+
     public void setUltimaMedicion(String ultimaMedicion) {
         this.ultimaMedicion = ultimaMedicion;
     }

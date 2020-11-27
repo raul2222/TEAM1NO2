@@ -6,13 +6,18 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+<<<<<<< Updated upstream
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+=======
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="no2" />
+>>>>>>> Stashed changes
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
@@ -29,12 +34,15 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Medicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Medicion.java" afterDir="false" />
     </list>
+=======
+    <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[7TSOCEZ9YLGM4HYD]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

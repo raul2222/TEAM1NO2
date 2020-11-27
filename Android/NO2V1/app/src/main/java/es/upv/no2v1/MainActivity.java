@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(25, 27, this).encenderAvisador();
+        new Avisador(5, 25, this).encenderAvisador();
     }
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {

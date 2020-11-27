@@ -36,7 +36,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
             
-            db.collection("Mediciones").doc("0jWZyo0ySn4W8TmohXe5").get().then(function(doc2) { //Comprobamos que ese Usuario tiene una Medicion
+            db.collection("Mediciones").doc("0hgU3CpvoKlk9Ukj8lXC").get().then(function(doc2) { //Comprobamos que ese Usuario tiene una Medicion
                 if(doc2.exists){
                     var IDSensor3 = doc2.data().IDSensor;
                     if(IDSensor3 == IDSensor2){

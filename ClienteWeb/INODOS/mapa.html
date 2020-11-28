@@ -89,11 +89,8 @@
 						alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li class="fh5co-active"><a href="mapa.html">Mapa</a></li>
-					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#intervalModal">
-						Elegir intervalo de tiempo
-					</a></li>
+					<li class="fh5co-active"><a href="index.html">Home</a></li>
+					<li><a href="mapa.html">Mapa</a></li>
 					<li><a href="informacion.html">Información</a></li>
 					<li><a href="contacto.html">Contacto</a></li>
 				</ul>
@@ -111,27 +108,6 @@
 			</div>
 
 		</aside>
-
-		<div class="modal" id="intervalModal" style="z-index: 2000;" tabindex="-1" role="dialog" aria-labelledby="intervalModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <h5 class="modal-title" id="intervalModalLabel">Elegir intervalo</h5>
-				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="modal-body">
-				  <input type="date" id="fechaInicio" class="form-control">
-				  <input type="date" id="fechaFin" class="form-control">
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-				  <button type="button" id="intervalButton" onclick="aplicarIntervaloDeTiempo()" class="btn btn-primary">Obtener</button>
-				</div>
-			  </div>
-			</div>
-		  </div>
 
 		<!--
 

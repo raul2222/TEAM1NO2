@@ -7,15 +7,6 @@ public class Medicion {
     private String valor;
     private String momento;
     private String bat;
-    private String ultimaMedicion;
-
-    public String getUltimaMedicion() {
-        return ultimaMedicion;
-    }
-
-    public void setUltimaMedicion(String ultimaMedicion) {
-        this.ultimaMedicion = ultimaMedicion;
-    }
 
     public String getIdsen() {
         return idsen;

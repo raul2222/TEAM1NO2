@@ -14,6 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Foreground.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,21 +23,66 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Avisador.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/CallbackLocalizacion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/DetectarBeacon$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/DetectarBeacon$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/DetectarBeacon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Firebase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Localizacion.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/MainActivity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$2.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Medicion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Momento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/TramaIBeacon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/es/upv/no2v1/Utilidades.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/legacy_multidex_aapt_derived_proguard_rules/debug/manifest_keep.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/legacy_multidex_aapt_derived_proguard_rules/debug/manifest_keep.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/out/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifest/debug/out/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_manifests/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador$1.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador$2.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador$2.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Avisador.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/CallbackLocalizacion.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/DetectarBeacon$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/DetectarBeacon$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/DetectarBeacon.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$1.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase$2.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Firebase.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Localizacion.dex" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/MainActivity.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Medicion.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Momento.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/TramaIBeacon.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/es/upv/no2v1/Utilidades.dex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/values_values.arsc.flat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Avisador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/CallbackLocalizacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Location/CallbackLocalizacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/DetectarBeacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/iBeacon/DetectarBeacon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Adapter/Firebase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Localizacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Location/Localizacion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Medicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Models/Medicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Momento.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Utils/Momento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/TramaIBeacon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/iBeacon/TramaIBeacon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/es/upv/no2v1/Utils/Utilidades.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,6 +273,10 @@
     </state>
     <state x="87" y="205" width="1849" height="1039" key="AVDManager/0.23.1080.1854@0.23.1080.1854" timestamp="1606402349210" />
     <state x="87" y="205" width="1849" height="1039" key="AVDManager/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1606401864471" />
+    <state x="2881" y="463" key="AndroidCreateResourceDirectoryDialog" timestamp="1606567855366">
+      <screen x="2560" y="-476" width="1440" height="2537" />
+    </state>
+    <state x="2881" y="463" key="AndroidCreateResourceDirectoryDialog/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606567855366" />
     <state width="2426" height="417" key="GridCell.Tab.0.bottom" timestamp="1606414623258">
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
@@ -266,5 +317,9 @@
       <screen x="0" y="23" width="2560" height="1364" />
     </state>
     <state width="2005" height="350" key="GridCell.Tab.1.right/2560.-476.1440.2537/0.23.2560.1364@0.23.2560.1364" timestamp="1604645027265" />
+    <state x="3070" y="486" key="chooseDestDirectoryDialog" timestamp="1606568267566">
+      <screen x="2560" y="-476" width="1440" height="2537" />
+    </state>
+    <state x="3070" y="486" key="chooseDestDirectoryDialog/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606568267566" />
   </component>
 </project>

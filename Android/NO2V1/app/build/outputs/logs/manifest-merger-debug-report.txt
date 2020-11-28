@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
 MERGED from [androidx.multidex:multidex:2.0.0] /Users/raul/.gradle/caches/transforms-2/files-2.1/50d7c09e9636fb6410096492af455428/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.2.1] /Users/raul/.gradle/caches/transforms-2/files-2.1/f8aaae792a30a1f56b0d58cd10f75c0e/material-1.2.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/raul/.gradle/caches/transforms-2/files-2.1/0a5045bc66945a7765a6f0a1f5ff6c5e/constraintlayout-2.0.4/AndroidManifest.xml:2:1-11:12
@@ -59,20 +59,20 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/raul/.gradle/caches/t
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] /Users/raul/.gradle/caches/transforms-2/files-2.1/bc08a9b8e8d88a4a706f5b1d66b83db9/jetified-annotation-experimental-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:17.1.0] /Users/raul/.gradle/caches/transforms-2/files-2.1/ac411d41ba44e897fc383a0c096cb75f/jetified-protolite-well-known-types-17.1.0/AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.28.0] /Users/raul/.gradle/caches/transforms-2/files-2.1/af1aceeddfddfe8433b60faf6ef2e76e/jetified-grpc-android-1.28.0/AndroidManifest.xml:2:1-13:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
-INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
+INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:3:5-27
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
-		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
-		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-36:12
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:1-35:12
 		INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:2:11-69
@@ -113,7 +113,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:18.0.0] /U
 	android:name
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:11:22-64
 application
-ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:15:5-34:19
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:15:5-33:19
 MERGED from [com.google.android.material:material:1.2.1] /Users/raul/.gradle/caches/transforms-2/files-2.1/f8aaae792a30a1f56b0d58cd10f75c0e/material-1.2.1/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.2.1] /Users/raul/.gradle/caches/transforms-2/files-2.1/f8aaae792a30a1f56b0d58cd10f75c0e/material-1.2.1/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] /Users/raul/.gradle/caches/transforms-2/files-2.1/0a5045bc66945a7765a6f0a1f5ff6c5e/constraintlayout-2.0.4/AndroidManifest.xml:9:5-20
@@ -170,20 +170,26 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /Users/raul
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:23:9-43
 	android:usesCleartextTraffic
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:20:9-44
-activity#es.upv.no2v1.MainActivity
-ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:24:9-33:20
 	android:name
-		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:24:19-47
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:22:9-28
+service#es.upv.no2v1.Foreground
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:25:9-47
+	android:name
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:25:18-44
+activity#es.upv.no2v1.MainActivity
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:27:9-32:20
+	android:name
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:27:19-47
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:28:13-32:29
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
 ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:29:17-69
 	android:name
 		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:31:17-77
+ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:31:27-74
+		ADDED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml:30:27-74
 uses-sdk
 INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/src/main/AndroidManifest.xml

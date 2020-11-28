@@ -2,13 +2,17 @@ package es.upv.no2v1;
 
 import android.app.Activity;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.os.SystemClock.sleep;
+import es.upv.no2v1.Adapter.Firebase;
+import es.upv.no2v1.Location.CallbackLocalizacion;
+import es.upv.no2v1.Location.Localizacion;
+import es.upv.no2v1.Models.Medicion;
+import es.upv.no2v1.Utils.Momento;
+import es.upv.no2v1.iBeacon.DetectarBeacon;
 
 public class Avisador {
 

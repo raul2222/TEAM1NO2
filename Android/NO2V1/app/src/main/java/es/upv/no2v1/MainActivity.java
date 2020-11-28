@@ -2,6 +2,7 @@ package es.upv.no2v1;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -30,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent serviceIntent = new Intent(this, Foreground.class);
+        serviceIntent.putExtra("inputExtra", "NO2_FOREGROUND");
+        ContextCompat.startForegroundService(this, serviceIntent);
+
 
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);

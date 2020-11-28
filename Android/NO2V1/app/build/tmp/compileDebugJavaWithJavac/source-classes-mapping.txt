@@ -1,30 +1,34 @@
+es/upv/no2v1/BuildConfig.java
+ es.upv.no2v1.BuildConfig
+es/upv/no2v1/iBeacon/TramaIBeacon.java
+ es.upv.no2v1.iBeacon.TramaIBeacon
+es/upv/no2v1/Models/Medicion.java
+ es.upv.no2v1.Models.Medicion
 es/upv/no2v1/Avisador.java
  es.upv.no2v1.Avisador
  es.upv.no2v1.Avisador$1
  es.upv.no2v1.Avisador$2
-es/upv/no2v1/TramaIBeacon.java
- es.upv.no2v1.TramaIBeacon
-es/upv/no2v1/CallbackLocalizacion.java
- es.upv.no2v1.CallbackLocalizacion
-es/upv/no2v1/Medicion.java
- es.upv.no2v1.Medicion
-es/upv/no2v1/BuildConfig.java
- es.upv.no2v1.BuildConfig
-es/upv/no2v1/Utilidades.java
- es.upv.no2v1.Utilidades
-es/upv/no2v1/Localizacion.java
- es.upv.no2v1.Localizacion
-es/upv/no2v1/Momento.java
- es.upv.no2v1.Momento
-es/upv/no2v1/DetectarBeacon.java
- es.upv.no2v1.DetectarBeacon
- es.upv.no2v1.DetectarBeacon$1
- es.upv.no2v1.DetectarBeacon$2
+es/upv/no2v1/Location/Localizacion.java
+ es.upv.no2v1.Location.Localizacion
+es/upv/no2v1/Utils/Utilidades.java
+ es.upv.no2v1.Utils.Utilidades
+es/upv/no2v1/iBeacon/DetectarBeacon.java
+ es.upv.no2v1.iBeacon.DetectarBeacon
+ es.upv.no2v1.iBeacon.DetectarBeacon$1
+ es.upv.no2v1.iBeacon.DetectarBeacon$2
+es/upv/no2v1/Location/CallbackLocalizacion.java
+ es.upv.no2v1.Location.CallbackLocalizacion
+es/upv/no2v1/Utils/Momento.java
+ es.upv.no2v1.Utils.Momento
 es/upv/no2v1/MainActivity.java
  es.upv.no2v1.MainActivity
  es.upv.no2v1.MainActivity$1
  es.upv.no2v1.MainActivity$MyBrowser
-es/upv/no2v1/Firebase.java
- es.upv.no2v1.Firebase
- es.upv.no2v1.Firebase$1
- es.upv.no2v1.Firebase$2
+es/upv/no2v1/Foreground.java
+ es.upv.no2v1.Foreground
+es/upv/no2v1/App.java
+ es.upv.no2v1.App
+es/upv/no2v1/Adapter/Firebase.java
+ es.upv.no2v1.Adapter.Firebase
+ es.upv.no2v1.Adapter.Firebase$1
+ es.upv.no2v1.Adapter.Firebase$2

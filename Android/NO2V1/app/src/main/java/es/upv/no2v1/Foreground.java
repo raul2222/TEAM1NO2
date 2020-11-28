@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat;
 
 import static es.upv.no2v1.App.CHANNEL_ID;
 
-public class Foreground  extends Service {
+public class Foreground extends Service {
     @Override
     public void onCreate() {
         super.onCreate();

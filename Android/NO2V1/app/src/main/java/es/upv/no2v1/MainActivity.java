@@ -2,6 +2,7 @@ package es.upv.no2v1;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
-        new Avisador(5, 25, this).encenderAvisador();
+        new Avisador(1, 25, this).encenderAvisador();
     }
 
     public static void setWindowFlag(Activity activity, final int bits, boolean on) {
@@ -71,8 +72,62 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // pedir permisos
-    @RequiresApi(api = Build.VERSION_CODES.M)
     private void darPermisosApp(){
+
+        String[] permissions = {
+                Manifest.permission.INTERNET,
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.BLUETOOTH_ADMIN,
+                Manifest.permission.BLUETOOTH,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+
+        };
+
+        int PERMISSION_ALL = 1;
+
+        if (!hasPermissions(this, permissions)) {
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_ALL);
+        }
+
+
+
+/*
+
+        int permissionCheck = PackageManager.PERMISSION_GRANTED;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[].{Manifest.permission.READ_PHONE_STATE}, 0);
+            requestPermissions(new String[].{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+        }
+
+        for (int i = 0; i < permissions.length; i++) {
+            permissionCheck = ContextCompat.checkSelfPermission(this,
+                    permissions[i]);
+
+            if (permissionCheck == PackageManager.PERMISSION_DENIED) {
+                Log.e("main", "denied" + permissions[i]);
+                ActivityCompat.requestPermissions(this, permissions, i);
+                if
+                (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        permissions[i])) {
+                    Log.e("main", "shouldshow" + permissions[i]);
+
+                } else {
+                    Log.e("main", "requesting" + permissions[i]);
+                    ActivityCompat.requestPermissions(this, permissions, i);
+
+                }
+                break;
+            } else {
+                Log.e("main", "granted" + permissions[i]);
+
+            }
+
+        }
+
+
+
 
         int permissionCheck = ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED){
@@ -86,7 +141,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+
+         */
     }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 
     private void iniciarWebView(){
         webView = findViewById(R.id.webView);

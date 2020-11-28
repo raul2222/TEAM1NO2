@@ -62,8 +62,8 @@ namespace Globales {
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
-  // Esperar 90 minutos para el heater del sensor
-  delay(90*60*1000);
+  // Esperar 60 minutos para el heater del sensor
+  // delay(60*60*1000);
 
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 

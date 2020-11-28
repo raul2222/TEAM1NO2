@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,8 +20,6 @@ public class Avisador {
     private Medicion medicion;
     private DetectarBeacon deciBeacon;
     private Firebase fb;
-    private int contadorInactividad = 0;
-    private Long ultimaMedicion;
 
     // Contructor de la clase
     public Avisador(int minutos, int distancia, Activity mainActivity){
@@ -46,12 +41,10 @@ public class Avisador {
              @Override
              public void nuevaLocacion() {
                  Log.d(ETIQUETA_LOG,"llamada a enviarFirebase desde cambio de localizacion");
-                 ultimaMedicion = Long.parseLong(medicion.getUltimaMedicion());
                  enviarFirebase();
              }
         });
         Log.d(ETIQUETA_LOG,"antes del setalarma");
-        comprobarInactividad();
         setAlarma(_minutosAlarma);
     }
 
@@ -127,41 +120,6 @@ public class Avisador {
 
     public void apagarAvisador(){
 
-    }
-
-    private void comprobarInactividad(){
-        ultimaMedicion = new Momento().getMomento();
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                Log.d("INACTIVIDAD: ", "entro al run");
-                if(new Momento().getMomento() - ultimaMedicion >= 60){
-                    Log.d("INACTIVIDAD: ", "hay inactividad de 60s");
-                    contadorInactividad++;
-                }
-                if(contadorInactividad == 1){
-                    Log.d("INACTIVIDAD: ", "envio notificacion");
-                    enviarNotificacion();
-                    contadorInactividad = 0;
-                }
-                else{
-                    contadorInactividad = 0;
-                }
-            }
-        };
-        timer.scheduleAtFixedRate(task, new Date(), 60*1000);
-    }
-
-    private void enviarNotificacion(){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(main.getApplicationContext(), "Inactividad")
-                .setContentTitle("Sensor inactivo")
-                .setContentText("Ha pasado mucho tiempo desde la última lectura recibida por el teléfono")
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setAutoCancel(true);
-
-        NotificationManagerCompat notificacionManager = NotificationManagerCompat.from(main.getApplicationContext());
-        notificacionManager.notify(1, builder.build());
     }
 
 

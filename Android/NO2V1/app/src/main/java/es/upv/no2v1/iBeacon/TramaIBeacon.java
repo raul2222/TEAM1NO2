@@ -1,5 +1,5 @@
 
-package es.upv.no2v1;
+package es.upv.no2v1.iBeacon;
 
 import java.util.Arrays;
 

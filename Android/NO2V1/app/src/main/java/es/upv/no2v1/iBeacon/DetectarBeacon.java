@@ -1,4 +1,4 @@
-package es.upv.no2v1;
+package es.upv.no2v1.iBeacon;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -9,6 +9,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import es.upv.no2v1.Models.Medicion;
+import es.upv.no2v1.Utils.Momento;
+import es.upv.no2v1.Utils.Utilidades;
 import es.upv.no2v1.iBeacon.TramaIBeacon;
 
 

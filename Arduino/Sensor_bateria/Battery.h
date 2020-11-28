@@ -87,17 +87,14 @@ public:
   // obtenerProcerntaje -> uint8_T
   uint8_t obtenerPorcentaje(){
     float vbat_mv = 0;
-    float vbat_temp = 0;
-    for(int i=0;i<=20;i++){
-      vbat_temp = readVBAT();
-      if(vbat_temp > vbat_mv){
-        vbat_mv = vbat_temp;
-      }
-     delay(2);
+    int i;
+    for(int i=1;i<=8;i++){
+      vbat_mv = vbat_mv + readVBAT();
+      delay(1);
     }
 
     // Convert from raw mv to percentage (based on LIPO chemistry)
-    return mvToPercent(vbat_mv);
+    return mvToPercent(vbat_mv/i);
   }
 
   // .........................................................

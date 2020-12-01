@@ -13,7 +13,7 @@
 #define PIN_VBAT   A3   
 #define PIN_MOSFET   19
 #define VBAT_MV_PER_LSB   (0.73242188F)   // 3.0V ADC range and 12-bit ADC resolution = 3000mV/4096
-#define VBAT_DIVIDER      (0.5F)          // 150K + 150K voltage divider on VBAT
+#define VBAT_DIVIDER      (0.5F)          // 10K + 10K voltage divider on VBAT
 #define VBAT_DIVIDER_COMP (2.0F)          // Compensation factor for the VBAT divider
 #define REAL_VBAT_MV_PER_LSB (VBAT_DIVIDER_COMP * VBAT_MV_PER_LSB)
 
@@ -24,7 +24,7 @@ private:
 
   Arduino_nRF5x_lowPower low;
   uint32_t vbat_pin = PIN_VBAT; 
-
+  
   // readVBAT -> float
   float readVBAT(void) {
       low.enableDCDC();
@@ -70,34 +70,40 @@ private:
       return res;  // thats mvolts /6.66666666
   }
 
+  void stopMosfet(void){
+    digitalWrite(PIN_MOSFET, HIGH);
+    //nrf_gpio_cfg(vbat_pin, NRF_GPIO_PIN_INPUT_DISCONNECT);
+  }
+
+     /* nrf_gpio_cfg(PIN_VBAT,
+    NRF_GPIO_PIN_DIR_OUTPUT,
+    NRF_GPIO_PIN_INPUT_DISCONNECT,
+    NRF_GPIO_PIN_NOPULL,
+    NRF_GPIO_PIN_S0D1,*/
+
 public:
+
+
 
   // .........................................................
   // .........................................................
   BATTERY () {
+    //nrf_gpio_cfg(PIN_VBAT, NRF_GPIO_PIN_NOPULL);
     pinMode(PIN_MOSFET, OUTPUT);
     digitalWrite(PIN_MOSFET, LOW);
-  }
-
-  void stopMosfet(void){
-    digitalWrite(PIN_MOSFET, HIGH);
   }
 
   // .........................................................
   // obtenerProcerntaje -> uint8_T
   uint8_t obtenerPorcentaje(){
     float vbat_mv = 0;
-    float vbat_temp = 0;
-    for(int i=0;i<=20;i++){
-      vbat_temp = readVBAT();
-      if(vbat_temp > vbat_mv){
-        vbat_mv = vbat_temp;
-      }
-     delay(2);
+    int i;
+    for(int i=1;i<=10;i++){
+      vbat_mv = vbat_mv + readVBAT();
+     delay(1);
     }
-
     // Convert from raw mv to percentage (based on LIPO chemistry)
-    return mvToPercent(vbat_mv);
+    return mvToPercent(vbat_mv/i);
   }
 
   // .........................................................

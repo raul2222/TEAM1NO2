@@ -81,7 +81,8 @@ void inicializarPlaquita () {
 // setup()
 // --------------------------------------------------------------
 void setup() {
-
+  //Serial.begin(9600);
+  //delay(200);
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
@@ -143,8 +144,8 @@ void loop () {
   // mido y publico
   // 
   battery = bat.obtenerPorcentaje();
+  //Serial.println(battery);
   int valorNO2 = elMedidor.medirNO2();
-
   elPublicador.publicarNO2( valorNO2,
 							cont,
 							1000, // intervalo de emisión

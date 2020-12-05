@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import es.upv.inodos.common.Constants;
+import es.upv.inodos.services.BleScanService;
 import es.upv.inodos.services.MonitorService;
 import es.upv.inodos.workers.SystemCheckWorker;
 
@@ -54,5 +55,36 @@ public class SystemUtils {
             monitorServiceIntent.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
             ContextCompat.startForegroundService(context, monitorServiceIntent);
         }
+
+
+
+
     }
+
+    public double calculateDistance(int txPower, double rssi) {
+        if (rssi == 0) {
+            return -1.0; // if we cannot determine accuracy, return -1.
+        }
+        double ratio = rssi*1.0/txPower;
+        if (ratio < 1.0) {
+            return Math.pow(ratio,10);
+        }
+        else {
+            double accuracy =  (0.89976)*Math.pow(ratio,7.7095) + 0.111;
+            return accuracy;
+        }
+    }
+
+    private String getDistance(double accuracy) {
+        if (accuracy == -1.0) {
+            return "Unknown";
+        } else if (accuracy < 1) {
+            return "Immediate";
+        } else if (accuracy < 3) {
+            return "Near";
+        } else {
+            return "Far";
+        }
+    }
+
 }

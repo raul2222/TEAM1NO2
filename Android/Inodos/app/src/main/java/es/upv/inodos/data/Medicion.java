@@ -1,17 +1,12 @@
-package es.upv.no2v1.Models;
+package es.upv.inodos.data;
 
 public class Medicion {
     private String idsen;
     private String lat;
     private String longi;
     private String valor;
-    private String temperature;
     private String momento;
     private String bat;
-
-    public String getTemperature() {        return temperature;    }
-
-    public void setTemperature(String temperature) {        this.temperature = temperature;    }
 
     public String getIdsen() {
         return idsen;
@@ -68,17 +63,15 @@ public class Medicion {
         this.valor = "";
         this.momento = "";
         this.bat = "";
-        this.temperature="";
     }
 
-    public Medicion(String  idsen, String lat, String longi, String valor, String moment, String bat, String temperature) {
+    public Medicion(String  idsen, String lat, String longi, String valor, String moment, String bat) {
         this.idsen = idsen;
         this.lat = lat;
         this.longi = longi;
         this.valor = valor;
         this.momento = moment;
         this.bat = bat;
-        this.temperature = temperature;
     }
 
     public void borrarMedicion(){
@@ -88,7 +81,6 @@ public class Medicion {
         this.valor = "";
         this.momento = "";
         this.bat = "";
-        this.temperature = "";
     }
 
 }

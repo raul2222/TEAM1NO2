@@ -29,40 +29,41 @@
        -->
 
 
-               <activity android:name=".activities.MainActivity">
-                   <intent-filter>
-                       <action android:name="android.intent.action.MAIN" />
-                       <category android:name="android.intent.category.LAUNCHER" />
-                   </intent-filter>
-               </activity>
+        <activity android:name=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-               <service
-                   android:name=".services.MonitorService"
-                   android:icon="@mipmap/ic_launcher"
-                   android:label="MonitorService"
-                   android:enabled="true"
-                   android:exported="true">
-               </service>
+        <service
+            android:name=".services.MonitorService"
+            android:icon="@mipmap/ic_launcher"
+            android:label="MonitorService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
 
-               <receiver android:name="es.upv.inodos.receivers.BootCompletedReceiver"
-                   android:enabled="true"
-                   android:exported="true"
-                   android:label="BootCompletedReceiver">
-                   <intent-filter>
-                       <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-                       <action android:name="android.intent.action.ACTION_BOOT_COMPLETED"></action>
-                   </intent-filter>
-               </receiver>
+        <receiver android:name="es.upv.inodos.receivers.BootCompletedReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <action android:name="android.intent.action.ACTION_BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
 
-               <receiver android:name="es.upv.inodos.receivers.BluetoothBroadcastReceiver"
-                   android:label="BluetoothBroadcastReceiver">
-                   <intent-filter>
-                       <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-                       <action android:name="es.upv.ACTION_FOUND" />
-                   </intent-filter>
-               </receiver>
+        <receiver android:name="es.upv.inodos.receivers.BluetoothBroadcastReceiver"
+            android:label="BluetoothBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
 
-           </application>
 
-       </manifest>
+
+    </application>
+
+</manifest>

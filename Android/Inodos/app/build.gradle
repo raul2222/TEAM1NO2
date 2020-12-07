@@ -47,4 +47,3 @@ dependencies {
 }
 
 apply plugin: 'realm-android'
-//apply plugin: 'com.android.application'

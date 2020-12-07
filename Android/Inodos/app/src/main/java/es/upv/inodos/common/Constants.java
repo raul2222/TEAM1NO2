@@ -3,8 +3,8 @@ package es.upv.inodos.common;
 public class Constants {
     public static final String TAG = "Inodos";
     public static final String MONITOR_SERVICE_DESCRIPTION = "Monitor service is ON";
-    public static final int TIMER_DELAY = 5000;
-    public static final int TIMER_INTERVAL = 20000;
+    public static final int TIMER_DELAY = 8000;
+    public static final int TIMER_INTERVAL = 1000*60*1;
     public static final String CHANNEL_ID = "MonitorServiceChannel";
     public static final String name_notification = "Inodos Service";
 

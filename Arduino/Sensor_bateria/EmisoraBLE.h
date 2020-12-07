@@ -144,7 +144,7 @@ public:
   
   	Bluefruit.setTxPower( (*this).txPower );
   	//Bluefruit.setName( (*this).nombreEmisora );
-    char nombre[20]; 
+    char nombre[25]; 
     nom.toCharArray(nombre, nom.length()+1); 
     Serial.println(nombre);
     Bluefruit.setName(nombre);

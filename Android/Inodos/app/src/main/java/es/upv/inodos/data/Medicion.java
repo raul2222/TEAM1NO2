@@ -6,6 +6,8 @@ public class Medicion {
     private String longi;
     private String valor;
     private String momento;
+    private String temperatura;
+    private String distancia;
     private String bat;
 
     public String getIdsen() {

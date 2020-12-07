@@ -169,11 +169,11 @@ void loop () {
   data = data + valorNO2[2];
   data = data + " ";
   data = data + battery;
-  //data = data + " ";
+  data = data + " ";
 
   //char datos[20];
   //data.toCharArray(datos, data.length()+1);
-  for (int i = data.length()+1; i<=20; i++){
+  for (int i = data.length()+1; i<=25; i++){
     data = data + "*";
   }
 

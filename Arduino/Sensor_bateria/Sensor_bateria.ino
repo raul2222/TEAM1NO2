@@ -34,7 +34,7 @@ namespace Globales {
 
   Arduino_nRF5x_lowPower lowPower52840;
 
-  PuertoSerie elPuerto ( /* velocidad = */ 9600 ); // 115200 o 9600 o ... //Ya no es necesario el monitor
+  //PuertoSerie elPuerto ( /* velocidad = */ 9600 ); // 115200 o 9600 o ... //Ya no es necesario el monitor
 
   // Serial1 en el ejemplo de Curro creo que es la conexión placa-sensor 
 };
@@ -81,12 +81,12 @@ void inicializarPlaquita () {
 // setup()
 // --------------------------------------------------------------
 void setup() {
-  
+  /*
   delay(2000);
   Serial.begin(9600);
   delay(2000);
   Serial.println("empieza");
-
+*/
   
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
@@ -219,7 +219,7 @@ void loop () {
   tiempo = 0;
   while (tiempo <= 2) {
       setLowPower();
-      delay(2600);
+      delay(2100);
       tiempo++;
   }
   

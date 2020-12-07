@@ -1,5 +1,6 @@
 package es.upv.inodos.services;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,13 +20,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 
 import java.util.ArrayList;
@@ -38,23 +45,30 @@ import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.Medicion;
 import es.upv.inodos.receivers.BluetoothBroadcastReceiver;
 import es.upv.inodos.receivers.ScanBleReceiver;
+import es.upv.inodos.utils.Momento;
+import es.upv.inodos.utils.Utilidades;
 
 
 import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
+import static es.upv.inodos.common.Constants.distancia;
 import static es.upv.inodos.common.Constants.name_notification;
+import static es.upv.inodos.common.Constants.tiempo;
 
 
-public class MonitorService extends Service {
-
+public class MonitorService extends Service implements LocationListener{
+    private static final String ETIQUETA_LOG = "";
+    private double latitud;
+    private double longitud;
+    private long momentoultimaLocazion;
     public int counter = 0;
     private Timer timer;
     private TimerTask timerTask;
-
+    protected LocationManager locationManager;
     private static int contador = 300;
     private Medicion medicion;
-
     BluetoothAdapter blueToothAdapter;
+
 
     public MonitorService() {
 
@@ -65,16 +79,8 @@ public class MonitorService extends Service {
     }
 
 
-    private ScanCallback leScanCallback = new ScanCallback() {
-        @Override
-        public void onScanResult(int callbackType, ScanResult result) {
-            Log.e("Adress: ",result.getDevice().getAddress());
-            Log.e("RSSI: ", " rssi: " + result.getRssi());
-        }
-    };
 
-
-    public void startScanning(){
+    public void startScanning() {
         blueToothAdapter = BluetoothAdapter.getDefaultAdapter();
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(BluetoothAdapter.ACTION_CONNECTION_STATE_CHANGED);
@@ -83,6 +89,24 @@ public class MonitorService extends Service {
         intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_STARTED);
         intentFilter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         registerReceiver(mReceiver, intentFilter);
+
+
+        // configurar localizacion
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, tiempo * 1000 * 60, distancia, (LocationListener) this);
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        latitud = location.getLatitude();
+        longitud = location.getLongitude();
+        momentoultimaLocazion = new Momento().getMomento();
+        Log.d(ETIQUETA_LOG,"Momento:" + new Momento().getMomento());
+        Log.d(ETIQUETA_LOG,"Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+
     }
 
 
@@ -111,9 +135,6 @@ public class MonitorService extends Service {
 
         return START_STICKY;
     }
-
-
-
 
     @Override
     public void onDestroy() {
@@ -173,7 +194,6 @@ public class MonitorService extends Service {
                 //mDeviceList = new ArrayList<BluetoothDevice>();
                 //mProgressDlg.show();
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                Log.i("StopScan","cancel");
                 //mProgressDlg.dismiss();
                 //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
                 //newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
@@ -183,10 +203,12 @@ public class MonitorService extends Service {
                 if(device.getAddress().equals(Constants.SerialNumber)) {
                     blueToothAdapter.cancelDiscovery();
                     String name = device.getName();
-                    parseRead(name);
                     String address = device.getAddress();
                     String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
-                    Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi);
+                    double distant = Utilidades.calculateDistance(-53,Double.parseDouble(rssi));
+
+                    parseRead(name, String.format("%.2f", distant));
+                    Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
                 }
                 //mDeviceList.add(device);
             }
@@ -194,12 +216,17 @@ public class MonitorService extends Service {
     };
 
 
-    private void parseRead(String name){
+    private void parseRead(String name, String distan){
         String[] parts = name.split(" ");
         String cont = parts[0];
         String valor = parts[1];
         String temperatura = parts[2];
         String bateria = parts[3];
+        medicion.setValor(valor);
+        medicion.setBat(bateria);
+        medicion.setContador(Integer.valueOf(cont));
+        medicion.setTemperatura(temperatura);
+        medicion.setDistancia(distan);
     }
 
 

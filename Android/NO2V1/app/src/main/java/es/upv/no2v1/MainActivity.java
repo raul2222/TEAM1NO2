@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static String ETIQUETA_LOG = "no2";
     private WebView webView;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

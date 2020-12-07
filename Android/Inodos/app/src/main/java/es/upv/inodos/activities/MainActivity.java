@@ -2,6 +2,7 @@ package es.upv.inodos.activities;
 
 import android.Manifest;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +12,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -30,7 +34,7 @@ import io.realm.Sort;
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_COARSE_LOCATION = 200;
-
+    private WebView webView;
     private static final String TAG = "BeaconsActivity";
     private static final int RESOLVE_USER_CONSENT = 111222;
     //private GoogleApiClient googleApiClient;
@@ -46,57 +50,56 @@ public class MainActivity extends AppCompatActivity {
         //listView = (ListView)findViewById(R.id.listView);
         checkLocationPermission();
 
-
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
-         //   setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true);
         }
         if (Build.VERSION.SDK_INT >= 19) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
         if (Build.VERSION.SDK_INT >= 21) {
-         //   setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
+            setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         getWindow().getDecorView().setSystemUiVisibility(R.color.black);
-        //mantener la pantalla encendida del movil encendida
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         //dar los permisos necesarios para el funcionamiento de la aplicación
         darPermisosApp();
         //iniciar Webview
-        //iniciarWebView();
-        //encender el avisador
-
-        //enableGoogleApiNearby();
-        //backgroundSubscribe();
+        iniciarWebView();
     }
 
-    // Subscribe to messages in the background.
 
-    /*
-    private void backgroundSubscribe() {
-        //Log.i(TAG, "Subscribing for background updates.");
-       // SubscribeOptions options = new SubscribeOptions.Builder()
-        //        .setStrategy(Strategy.BLE_ONLY)
-       //         .build();
-       // Nearby.getMessagesClient(this).subscribe(getPendingIntent(), options);
+    private void iniciarWebView(){
+        webView = findViewById(R.id.webView);
+        webView.setWebViewClient(new MyBrowser());
+
+        webView.getSettings().setJavaScriptEnabled(true);
+        //webView.getSettings().setLoadWithOverviewMode(true);
+        //webView.getSettings().setUseWideViewPort(true);
+
+        webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
     }
 
-    private PendingIntent getPendingIntent() {
-        //return PendingIntent.getBroadcast(this, 0, new Intent(this, BeaconMessageReceiver.class),
-        //        PendingIntent.FLAG_UPDATE_CURRENT);
+    private class MyBrowser extends WebViewClient {
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
     }
 
-    private void enableGoogleApiNearby(){
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Nearby.MESSAGES_API)
-                .addApi(Nearby.CONNECTIONS_API)
-                .enableAutoManage(this, this)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
+    public static void setWindowFlag(Activity activity, final int bits, boolean on) {
+        Window win = activity.getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
-*/
+
 
     // pedir permisos
     private void darPermisosApp(){
@@ -134,18 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
     @Override
     public void onResume(){
         super.onResume();
         realm = Realm.getDefaultInstance();
-        loadData();
-        loadAdapter();
+        //loadData();
+        //loadAdapter();
     }
 
     @Override

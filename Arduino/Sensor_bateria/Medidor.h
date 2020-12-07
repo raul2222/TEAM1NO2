@@ -24,6 +24,38 @@ public:
   void iniciarMedidor() {
 	  Serial1.begin(9600);
   } // ()
+  
+  void resetSensor(){
+     Serial.print("entrando en calibracion");
+     String a;
+     Serial1.println("R");delay(1);
+      while(Serial1.available()) {
+         a= Serial1.readString();// read the incoming data as string
+         Serial.println(a);
+       }
+      for (int i = 0; i<12000; i++) {
+          while(!Serial1.available()) { }
+          Serial.print(Serial1.read());
+          delay(1);
+      }
+      Serial.println("FIN");
+  }
+  
+  void calibradoZero(){
+     Serial.print("entrando en calibracion");
+     String a;
+     Serial1.println("Z");delay(1);
+      while(Serial1.available()) {
+         a= Serial1.readString();// read the incoming data as string
+         Serial.println(a);
+       }
+      for (int i = 0; i<12000; i++) {
+          while(!Serial1.available()) { }
+          Serial.print(Serial1.read());
+          delay(1);
+      }
+      Serial.println("FIN");
+  }
 
   // .....................................................
   // .....................................................
@@ -37,10 +69,6 @@ public:
       //return sensorData;
   } // ()
 
-  void calibradoZero(){
-    Serial1.println('Z');
-
-  }
 
   // .....................................................
   // .....................................................

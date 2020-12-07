@@ -66,9 +66,8 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
                         .build());
 
 
-        // This is just to complete the example
-        WorkManager.getInstance().enqueueUniqueWork("Notification",
-                ExistingWorkPolicy.REPLACE,
+
+        WorkManager.getInstance().enqueueUniqueWork("Notification",  ExistingWorkPolicy.REPLACE,
                 workBuilder.build());
 
         Realm realm = Realm.getDefaultInstance();

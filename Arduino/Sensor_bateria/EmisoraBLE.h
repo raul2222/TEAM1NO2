@@ -155,7 +155,7 @@ public:
   	// ? qué valorers poner aquí
   	//
   	Bluefruit.Advertising.restartOnDisconnect(true); // no hace falta, pero lo pongo
-  	Bluefruit.Advertising.setInterval(100, 100);    // in unit of 0.625 ms
+  	Bluefruit.Advertising.setInterval(120, 120);    // in unit of 0.625 ms
   
   	//
   	// empieza el anuncio, 0 = tiempo indefinido (ya lo pararán)

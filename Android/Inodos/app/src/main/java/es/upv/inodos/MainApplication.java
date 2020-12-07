@@ -21,11 +21,8 @@ public class MainApplication  extends Application {
         RealmConfiguration config = new RealmConfiguration.Builder().name("inodos.realm").build();
         Realm.setDefaultConfiguration(config);
 
-
-
         SystemUtils.launchMonitorService(getApplicationContext());
         SystemUtils.enqueueSystemWorkers();
-
         /*
         Context con = getApplicationContext();
 
@@ -43,12 +40,7 @@ public class MainApplication  extends Application {
         //filters.add(new ScanFilter.Builder().setServiceUuid(mUuid).build());
         scanner.startScan(filters, settings, con, pendingIntent);
 */
-
     }
-
-
-
-
 
 
 }

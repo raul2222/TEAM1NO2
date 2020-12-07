@@ -62,13 +62,13 @@ namespace Globales {
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
-  
+  setLowPower();
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 
 
-
-  // Esperar 60 minutos para el heater del sensor
-  delay(1000*60*60);
+  
+  // Esperar 120 minutos para el heater del sensor, debe de estabilizarse
+  delay(1000*60*120);
 
   
   //Configure WDT for 120 seconds
@@ -84,18 +84,17 @@ void inicializarPlaquita () {
 // setup()
 // --------------------------------------------------------------
 void setup() {
-  /*
+
   delay(2000);
   Serial.begin(9600);
-  delay(2000);
-  Serial.println("empieza");
-*/
+  delay(4000);
   
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
   // 
   // 
+  
   inicializarPlaquita();
 
   // Suspend Loop() to save power
@@ -110,6 +109,14 @@ void setup() {
   // 
   Globales::elMedidor.iniciarMedidor();
 
+
+/*
+  Serial.println("empieza");delay(2000);
+  Serial.println("calibrando");
+  Globales::elMedidor.calibradoZero();
+  Serial.println("continuaaaa");
+  delay(600*600*600);
+  */
   // 
   // 
   //Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
@@ -154,33 +161,26 @@ void loop () {
 
   //Serial.println(cont % 5 == 0);
 
-  if(((cont % 70) == 0) || (cont==5)){
+  if(((cont % 150) == 0) || (cont==5)){
     battery = bat.obtenerPorcentaje();
   }
   
   int valorNO2 [11];
   elMedidor.medirNO2(valorNO2);
-    
-  /*
   
   // autocalibrado
-  elMedidor.calibradoZero();
-    if((millis() > 60 * 1000 * 60 * 6) && valorNO2[1] < 0) {
+
+  if( (millis() > (60 * 1000 * 60 * 24)) && (valorNO2[1] < 0) && ((cont % 220) == 0) ) {
       elMedidor.calibradoZero();
   }
-  */
 
   //String data;
   String data;
-  data = cont;
-  data = data + " ";
-  data = data + valorNO2[1];
-  data = data + " ";
-  data = data + valorNO2[2];
-  data = data + " ";
-  data = data + battery;
-  data = data + " ";
-
+  data = cont; data = data + " ";
+  data = data + valorNO2[1]; data = data + " ";
+  data = data + valorNO2[2]; data = data + " ";
+  data = data + battery; data = data + " ";
+  //relleno hasta 25 con asteriscos
   for (int i = data.length()+1; i<=25; i++){
     data = data + "*";
   }
@@ -189,7 +189,7 @@ void loop () {
   
   elPublicador.publicarNO2(1,
 							cont,
-							1100, // intervalo de emisión
+							1000, // intervalo de emisión
 							battery);
   /*
   // mido y publico
@@ -226,7 +226,7 @@ void loop () {
   tiempo = 0;
   while (tiempo <= 2) {
       setLowPower();
-      delay(2100);
+      delay(2000);
       tiempo++;
   }
   

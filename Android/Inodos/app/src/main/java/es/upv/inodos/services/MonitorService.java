@@ -1,5 +1,4 @@
 package es.upv.inodos.services;
-
 import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -7,33 +6,23 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
-
-
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.work.Data;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 import es.upv.inodos.R;
 import es.upv.inodos.activities.MainActivity;
 import es.upv.inodos.common.Constants;
@@ -41,9 +30,6 @@ import es.upv.inodos.data.Medicion;
 import es.upv.inodos.receivers.BluetoothBroadcastReceiver;
 import es.upv.inodos.utils.Momento;
 import es.upv.inodos.utils.Utilidades;
-import es.upv.inodos.workers.NotificationWorker;
-
-
 import static android.content.ContentValues.TAG;
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
 import static es.upv.inodos.common.Constants.Tiempo_Envios;
@@ -52,12 +38,11 @@ import static es.upv.inodos.common.Constants.name_notification;
 import static es.upv.inodos.common.Constants.tiempo;
 import static es.upv.inodos.utils.SystemUtils.enviarDatosServidor;
 
-//
+// *********************************************************
 //  RAUL SANTOS LOPEZ       07/12/2020
-//
+// *********************************************************
 
 public class MonitorService extends Service implements LocationListener {
-    //private long momentoultimaLocazion;
     public int counter = 0;
     private Timer timer;
     private TimerTask timerTask;
@@ -66,7 +51,6 @@ public class MonitorService extends Service implements LocationListener {
     private static int contador = 300;
     private Medicion medicion;
     BluetoothAdapter blueToothAdapter;
-    Bitmap bitmap;
 
     public MonitorService() {    }
 
@@ -210,7 +194,7 @@ public class MonitorService extends Service implements LocationListener {
                     String name = device.getName();
                     String address = device.getAddress();
                     String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
-                    double distant = Utilidades.calculateDistance(-52,Double.parseDouble(rssi));
+                    double distant = Utilidades.calculateDistance(-56,Double.parseDouble(rssi));
                     parseRead(name, String.format("%.2f", distant));
                     Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
                 }

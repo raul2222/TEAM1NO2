@@ -1,24 +1,19 @@
 package es.upv.inodos.workers;
-
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
 import es.upv.inodos.R;
 import es.upv.inodos.activities.MainActivity;
-
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
 import static es.upv.inodos.common.Constants.name_notification;
-//
+// *********************************************************
 //  RAUL SANTOS LOPEZ       07/12/2020
-//
+// *********************************************************
 public class NotificationWorker extends Worker {
     public NotificationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -29,7 +24,7 @@ public class NotificationWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        // Extración de la información (and specify default values):
+        // Extración de la información:
         String text = getInputData().getString("text");
         if(text != "") {
             sendNotification(text);

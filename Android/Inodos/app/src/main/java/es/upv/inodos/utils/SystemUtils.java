@@ -93,7 +93,7 @@ public class SystemUtils {
             Firebase.enviarMedicion(medicion.getIdsen(),medicion.getLat(),medicion.getLongi(),
                     medicion.getValor(),medicion.getMomento(),medicion.getBat(),medicion.getTemperatura(),
                     medicion.getDistancia(),medicion.getAccuracy());
-
+            medicion.borrarMedicion();
             return 2;
 
         }

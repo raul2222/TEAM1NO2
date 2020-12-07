@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
@@ -23,42 +22,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Inodos">
 
-
-        <activity android:name=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <service
-            android:name=".services.MonitorService"
-            android:icon="@mipmap/ic_launcher"
-            android:label="MonitorService"
-            android:enabled="true"
-            android:exported="true">
-        </service>
-
-        <receiver android:name=".receivers.DeviceWatcher" android:exported="false"/>
-
-        <receiver android:name="es.upv.inodos.receivers.BootCompletedReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:label="BootCompletedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
-                <action android:name="android.intent.action.ACTION_BOOT_COMPLETED"></action>
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name="es.upv.inodos.receivers.BluetoothBroadcastReceiver"
-            android:label="BluetoothBroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
-            </intent-filter>
-        </receiver>
+        <!--
+               <meta-data
+                   android:name="com.google.android.nearby.messages.API_KEY"
+                   android:value="AIzaSyBinhlarGMu1Yhfvi1KrVEiuSdmGujJuII" />
+       -->
 
 
-    </application>
+               <activity android:name=".activities.MainActivity">
+                   <intent-filter>
+                       <action android:name="android.intent.action.MAIN" />
+                       <category android:name="android.intent.category.LAUNCHER" />
+                   </intent-filter>
+               </activity>
 
-</manifest>
+               <service
+                   android:name=".services.MonitorService"
+                   android:icon="@mipmap/ic_launcher"
+                   android:label="MonitorService"
+                   android:enabled="true"
+                   android:exported="true">
+               </service>
+
+               <receiver android:name="es.upv.inodos.receivers.BootCompletedReceiver"
+                   android:enabled="true"
+                   android:exported="true"
+                   android:label="BootCompletedReceiver">
+                   <intent-filter>
+                       <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                       <action android:name="android.intent.action.ACTION_BOOT_COMPLETED"></action>
+                   </intent-filter>
+               </receiver>
+
+               <receiver android:name="es.upv.inodos.receivers.BluetoothBroadcastReceiver"
+                   android:label="BluetoothBroadcastReceiver">
+                   <intent-filter>
+                       <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+                       <action android:name="es.upv.ACTION_FOUND" />
+                   </intent-filter>
+               </receiver>
+
+
+           </application>
+
+       </manifest>

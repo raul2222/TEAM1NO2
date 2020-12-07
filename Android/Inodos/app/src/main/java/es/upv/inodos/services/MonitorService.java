@@ -6,44 +6,35 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
 
+
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.IBinder;
-import android.os.ParcelUuid;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.UUID;
 
 import es.upv.inodos.R;
 import es.upv.inodos.activities.MainActivity;
 import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.Medicion;
 import es.upv.inodos.receivers.BluetoothBroadcastReceiver;
-import es.upv.inodos.receivers.DeviceWatcher;
-import es.upv.inodos.utils.Momento;
-import es.upv.inodos.utils.SystemUtils;
-import es.upv.inodos.utils.TramaIBeacon;
-import es.upv.inodos.utils.Utilidades;
-import no.nordicsemi.android.support.v18.scanner.BluetoothLeScannerCompat;
-import no.nordicsemi.android.support.v18.scanner.ScanFilter;
-import no.nordicsemi.android.support.v18.scanner.ScanSettings;
 
-import static android.content.ContentValues.TAG;
-import static androidx.core.app.ActivityCompat.startActivityForResult;
+
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
 import static es.upv.inodos.common.Constants.name_notification;
 
@@ -63,7 +54,8 @@ public class MonitorService extends Service {
     private Medicion medicion;
 
 
-
+    BluetoothLeScanner btScanner;
+    BluetoothAdapter btAdapter;
 
     private boolean mScanning;
 
@@ -76,29 +68,88 @@ public class MonitorService extends Service {
     }
 
 
+    private ScanCallback leScanCallback = new ScanCallback() {
+        @Override
+        public void onScanResult(int callbackType, ScanResult result) {
+            Log.e("Adress: ",result.getDevice().getAddress());
+            Log.e("RSSI: ", " rssi: " + result.getRssi());
+        }
+    };
 
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void startScanning(){
 
-        Context con = getApplicationContext();
 
-        Intent intent = new Intent(con, DeviceWatcher.class); // explicite intent
-        intent.setAction("es.upv.ACTION_FOUND");
-        intent.putExtra("some.extra", "value"); // optional
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(con, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        ScanSettings settings = new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER).build();
 
-        BluetoothLeScannerCompat scanner = BluetoothLeScannerCompat.getScanner();
-        no.nordicsemi.android.support.v18.scanner.ScanSettings settings = new no.nordicsemi.android.support.v18.scanner.ScanSettings.Builder()
-                .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
-                .setReportDelay(10000)
-                .build();
-        List<ScanFilter> filters = new ArrayList<>();
-        //filters.add(new ScanFilter.Builder().setServiceUuid(mUuid).build());
-        scanner.startScan(filters, settings, con, pendingIntent);
+        BluetoothManager bluetoothManager =  (BluetoothManager) getApplicationContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+        Intent i = new Intent(this, BluetoothBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, i, FLAG_UPDATE_CURRENT);
+        BluetoothLeScanner scanner = bluetoothAdapter.getBluetoothLeScanner();
+        scanner.startScan(null, settings, pendingIntent);
+
+        /*
+
+        ScanSettings settings = (new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)).build();
+
+        List<ScanFilter> listOfFiters = new ArrayList<>();
+        ScanFilter.Builder builder = new ScanFilter.Builder();
+        ScanFilter filter = builder.build();
+        listOfFiters.add(filter);
+
+        BluetoothManager bluetoothManager =
+                (BluetoothManager) getApplicationContext().getSystemService(Context.BLUETOOTH_SERVICE);
+        BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
+        Intent intent2 = new Intent(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 42, intent2, 0);
+        //int scanRes =
+        //btAdapter = BluetoothAdapter.getDefaultAdapter();
+
+        btScanner = bluetoothAdapter.getBluetoothLeScanner();
+        btScanner.startScan(listOfFiters, settings, pendingIntent);
+
+
+        */
+
+        // (scanRes is always 0 during my tests)
+
+
+        /*
+
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
+        btScanner = btAdapter.getBluetoothLeScanner();
+
+        btScanner.startScan( null, new ScanSettings.Builder()
+                        .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
+                        .setReportDelay(0) //when I use different value than 0, stop scanning
+                        .build(),leScanCallback);
+
+*/
+    }
+
+    public void stopScanning() {
+
+        btScanner.stopScan(leScanCallback);
 
     }
 
+
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+
+
+
+
+
+
+
+
+
+
         BluetoothBroadcastReceiver bluetoothBroadcastReceiver = new BluetoothBroadcastReceiver();
         registerReceiver(bluetoothBroadcastReceiver, new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
         String input = intent.getStringExtra("inputExtra");
@@ -117,7 +168,7 @@ public class MonitorService extends Service {
         startForeground(1, notification);
 
         startTimer();
-        startScanning();
+        //startScanning();
 
         return START_STICKY;
     }
@@ -159,16 +210,26 @@ public class MonitorService extends Service {
         timerTask = new TimerTask() {
             public void run() {
                 Log.i(Constants.TAG, "Service timer " + (counter++));
+
+                // INTENTOS FALLIDOS
                 /*
                 Intent monitorServiceIntent2 = new Intent(getApplicationContext(), BleScanService.class);
                 monitorServiceIntent2.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
                 ContextCompat.startForegroundService(getApplicationContext(), monitorServiceIntent2);
                 */
+/*
+
+                OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(BleWorker.class)
+                        .setInputData(new Data.Builder()
+                                .build());
 
 
+                // This is just to complete the example
+                WorkManager.getInstance().enqueueUniqueWork("ble",
+                        ExistingWorkPolicy.REPLACE,
+                        workBuilder.build());
 
-
-
+*/
 
             }
         };
@@ -192,29 +253,5 @@ public class MonitorService extends Service {
         startForeground(1, notification);
     }
 
-    public double calculateDistance(int txPower, double rssi) {
-        if (rssi == 0) {
-            return -1.0; // if we cannot determine accuracy, return -1.
-        }
-        double ratio = rssi*1.0/txPower;
-        if (ratio < 1.0) {
-            return Math.pow(ratio,10);
-        }
-        else {
-            double accuracy =  (0.89976)*Math.pow(ratio,7.7095) + 0.111;
-            return accuracy;
-        }
-    }
 
-    private String getDistance(double accuracy) {
-        if (accuracy == -1.0) {
-            return "Unknown";
-        } else if (accuracy < 1) {
-            return "Immediate";
-        } else if (accuracy < 3) {
-            return "Near";
-        } else {
-            return "Far";
-        }
-    }
 }

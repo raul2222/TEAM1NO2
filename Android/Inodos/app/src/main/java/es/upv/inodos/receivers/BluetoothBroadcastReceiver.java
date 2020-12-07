@@ -1,6 +1,9 @@
 package es.upv.inodos.receivers;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanResult;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +16,7 @@ import androidx.work.WorkManager;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -20,6 +24,8 @@ import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.SystemItem;
 import es.upv.inodos.workers.NotificationWorker;
 import io.realm.Realm;
+
+import static android.content.ContentValues.TAG;
 
 
 public class BluetoothBroadcastReceiver extends BroadcastReceiver {
@@ -55,7 +61,7 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
         }
 
         OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
-                .setInitialDelay(6, TimeUnit.SECONDS)
+                .setInitialDelay(15, TimeUnit.SECONDS)
                 .setInputData(new Data.Builder().putString("text",value)
                         .build());
 
@@ -64,6 +70,9 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
         WorkManager.getInstance().enqueueUniqueWork("Notification",
                 ExistingWorkPolicy.REPLACE,
                 workBuilder.build());
+
+
+
 
 
         Realm realm = Realm.getDefaultInstance();

@@ -1,35 +1,14 @@
 package es.upv.inodos;
 
-import android.Manifest;
-import android.app.AlarmManager;
 import android.app.Application;
-import android.app.PendingIntent;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothManager;
-import android.bluetooth.le.ScanFilter;
-import android.bluetooth.le.ScanSettings;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.WindowManager;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import es.upv.inodos.receivers.DeviceWatcher;
-import es.upv.inodos.services.BleScanService;
 import es.upv.inodos.utils.SystemUtils;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+
 
 
 public class MainApplication  extends Application {
@@ -47,8 +26,23 @@ public class MainApplication  extends Application {
         SystemUtils.launchMonitorService(getApplicationContext());
         SystemUtils.enqueueSystemWorkers();
 
+        /*
+        Context con = getApplicationContext();
 
+        Intent intent = new Intent(con, DeviceWatcher.class); // explicite intent
+        intent.setAction("es.upv.ACTION_FOUND");
+        intent.putExtra("some.extra", "value"); // optional
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(con, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        BluetoothLeScannerCompat scanner = BluetoothLeScannerCompat.getScanner();
+        no.nordicsemi.android.support.v18.scanner.ScanSettings settings = new no.nordicsemi.android.support.v18.scanner.ScanSettings.Builder()
+                .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
+                .setReportDelay(10000)
+                .build();
+        List<ScanFilter> filters = new ArrayList<>();
+        //filters.add(new ScanFilter.Builder().setServiceUuid(mUuid).build());
+        scanner.startScan(filters, settings, con, pendingIntent);
+*/
 
     }
 

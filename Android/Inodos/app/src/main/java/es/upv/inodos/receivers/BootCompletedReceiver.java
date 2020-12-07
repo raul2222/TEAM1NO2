@@ -26,6 +26,8 @@ public class BootCompletedReceiver extends BroadcastReceiver {
         systemItem.setTimestamp(System.currentTimeMillis());
         realm.commitTransaction();
 
+
+
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             SystemUtils.launchMonitorService(context);
             SystemUtils.enqueueSystemWorkers();

@@ -27,18 +27,14 @@ public:
 
   // .....................................................
   // .....................................................
-  int medirNO2() {
-      int sensorData [11];
+  void medirNO2 (int sensorData[11]) {
+      //int sensorData [11];
       Serial1.print('\r'); // Inicia una lectura del sensor. Ahora hay que espera a que nos envíe algo de vuelta!	        
       for (int i = 0; i<11; i++) {
         while(!Serial1.available()) { }
         sensorData[i] = Serial1.parseInt();
       }
-
-      
-
-      
-      return sensorData[1];
+      //return sensorData;
   } // ()
 
   // .....................................................

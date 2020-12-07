@@ -51,7 +51,7 @@ public class BleScanService extends Service {
             @Override
             public void run() {
                 btScanner.startScan( null, new ScanSettings.Builder()
-                        .setScanMode(ScanSettings.SCAN_MODE_LOW_POWER)
+                        .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
                         .setReportDelay(0) //when I use different value than 0, stop scanning
                         .build(),leScanCallback);
             }

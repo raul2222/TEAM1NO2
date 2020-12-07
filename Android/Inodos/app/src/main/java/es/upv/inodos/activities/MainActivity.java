@@ -1,44 +1,43 @@
 package es.upv.inodos.activities;
 
 import android.Manifest;
-import android.app.PendingIntent;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import es.upv.inodos.MainApplication;
 import es.upv.inodos.R;
 import es.upv.inodos.adapters.SystemItemsAdapter;
 import es.upv.inodos.data.SystemItem;
-import es.upv.inodos.receivers.DeviceWatcher;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
-import no.nordicsemi.android.support.v18.scanner.BluetoothLeScannerCompat;
-import no.nordicsemi.android.support.v18.scanner.ScanFilter;
-import no.nordicsemi.android.support.v18.scanner.ScanSettings;
+
 
 
 public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_COARSE_LOCATION = 200;
 
+    private static final String TAG = "BeaconsActivity";
+    private static final int RESOLVE_USER_CONSENT = 111222;
+    //private GoogleApiClient googleApiClient;
+    private boolean resolvingError = false;
+
     Realm realm;
-    ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +67,36 @@ public class MainActivity extends AppCompatActivity {
         //iniciarWebView();
         //encender el avisador
 
-
-
+        //enableGoogleApiNearby();
+        //backgroundSubscribe();
     }
+
+    // Subscribe to messages in the background.
+
+    /*
+    private void backgroundSubscribe() {
+        //Log.i(TAG, "Subscribing for background updates.");
+       // SubscribeOptions options = new SubscribeOptions.Builder()
+        //        .setStrategy(Strategy.BLE_ONLY)
+       //         .build();
+       // Nearby.getMessagesClient(this).subscribe(getPendingIntent(), options);
+    }
+
+    private PendingIntent getPendingIntent() {
+        //return PendingIntent.getBroadcast(this, 0, new Intent(this, BeaconMessageReceiver.class),
+        //        PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    private void enableGoogleApiNearby(){
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Nearby.MESSAGES_API)
+                .addApi(Nearby.CONNECTIONS_API)
+                .enableAutoManage(this, this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .build();
+    }
+*/
 
     // pedir permisos
     private void darPermisosApp(){
@@ -104,6 +130,15 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+
+
+
+
+
+
+
 
     @Override
     public void onResume(){

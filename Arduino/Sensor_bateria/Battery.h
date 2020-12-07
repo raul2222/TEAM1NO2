@@ -70,10 +70,7 @@ private:
       return res;  // thats mvolts /6.66666666
   }
 
-  void stopMosfet(void){
-    digitalWrite(PIN_MOSFET, HIGH);
-    //nrf_gpio_cfg(vbat_pin, NRF_GPIO_PIN_INPUT_DISCONNECT);
-  }
+
 
      /* nrf_gpio_cfg(PIN_VBAT,
     NRF_GPIO_PIN_DIR_OUTPUT,
@@ -83,7 +80,10 @@ private:
 
 public:
 
-
+  void stopMosfet(void){
+    digitalWrite(PIN_MOSFET, HIGH);
+    //nrf_gpio_cfg(vbat_pin, NRF_GPIO_PIN_INPUT_DISCONNECT);
+  }
 
   // .........................................................
   // .........................................................

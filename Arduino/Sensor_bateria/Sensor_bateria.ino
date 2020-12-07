@@ -71,7 +71,7 @@ void inicializarPlaquita () {
   //Configure WDT for 120 seconds
   
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = (3932159 / 3);    // now(120s/3) CRV = timeout * 32768 + 1
+  NRF_WDT->CRV            = (3932159 / 4);    // now(120s/4) CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
   NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
@@ -81,8 +81,13 @@ void inicializarPlaquita () {
 // setup()
 // --------------------------------------------------------------
 void setup() {
-  //Serial.begin(9600);
-  //delay(200);
+  /*
+  delay(2000);
+  Serial.begin(9600);
+  delay(2000);
+  Serial.println("empieza");
+*/
+  
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
@@ -112,7 +117,7 @@ void setup() {
 // --------------------------------------------------------------
 inline void lucecitas() {
   using namespace Globales;
-  elLED.brillar( 40 ); // 40 encendido
+  elLED.brillar( 30 ); // 40 encendido
   esperar ( 10 ); //  10 apagado
 } // ()
 
@@ -131,7 +136,7 @@ void loop () {
 
   using namespace Loop;
   using namespace Globales;
-
+  
   cont++;
 
   //elPuerto.escribir( "\n---- loop(): empieza " );
@@ -142,13 +147,42 @@ void loop () {
 
   // 
   // mido y publico
-  // 
-  battery = bat.obtenerPorcentaje();
+  //
+
+  //Serial.println(cont % 5 == 0);
+
+  if(((cont % 50) == 0) || (cont==1)){
+    battery = bat.obtenerPorcentaje();
+  }
+  
   //Serial.println(battery);
-  int valorNO2 = elMedidor.medirNO2();
-  elPublicador.publicarNO2( valorNO2,
+  
+  int valorNO2 [11];
+  elMedidor.medirNO2(valorNO2);
+
+  //String data;
+  String data;
+  data = cont;
+  data = data + " ";
+  data = data + valorNO2[1];
+  data = data + " ";
+  data = data + valorNO2[2];
+  data = data + " ";
+  data = data + battery;
+  data = data + " ";
+
+  //char datos[20];
+  //data.toCharArray(datos, data.length()+1);
+  for (int i = data.length()+1; i<=25; i++){
+    data = data + "*";
+  }
+
+  //datos = data;
+  elPublicador.setName(data);
+  
+  elPublicador.publicarNO2(1,
 							cont,
-							1000, // intervalo de emisión
+							800, // intervalo de emisión
 							battery);
   /*
   // mido y publico
@@ -185,7 +219,7 @@ void loop () {
   tiempo = 0;
   while (tiempo <= 2) {
       setLowPower();
-      delay(5900);
+      delay(2100);
       tiempo++;
   }
   

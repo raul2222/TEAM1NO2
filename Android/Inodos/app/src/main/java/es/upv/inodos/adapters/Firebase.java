@@ -4,19 +4,18 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.FirebaseFirestore;
-
 import java.util.HashMap;
 import java.util.Map;
 
 import es.upv.inodos.activities.MainActivity;
 
 public class Firebase {
-    private static final String CHANNEL_ID = "112";
     private static String ETIQUETA_LOG = "no2";
-    FirebaseFirestore db = FirebaseFirestore.getInstance(); //inicializamos aqui firebase para almacenar
+
     private int LimiteConcentracion = 100;
     private MainActivity main;
 
@@ -24,15 +23,22 @@ public class Firebase {
 
     }
 
-    public void enviarMedicion(String idsen, String lat, String longi, String valor, String momento, String bateria) {
+    public static void enviarMedicion(String idsen, String lat, String longi, String valor, String momento,
+                               String bateria, String temperatura, String distancia, String accu) {
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance(); //inicializamos aqui firebase para almacenar
         Log.d(ETIQUETA_LOG, "empiezo a enviar a Firebase");
         Map<String, Object> dato = new HashMap<>();
         dato.put("IDSensor", idsen);
         dato.put("Latitud", lat);
         dato.put("Longitud", longi);
+        dato.put("Precision_GPS", accu);
         dato.put("Valor", valor);
+        dato.put("Temperatura", temperatura);
         dato.put("Momento", momento);
         dato.put("Bateria", bateria);
+        dato.put("Distancia", distancia);
+
 
 
         db.collection("Mediciones").document().set(dato)//aqui accedemos a la coleccion creada en firebase donde se almacenaran los valores anterrioires
@@ -55,7 +61,6 @@ public class Firebase {
         if (Integer.parseInt( valor) > LimiteConcentracion){
             notificacionLimite();
         }*/
-
 
     }
 /*

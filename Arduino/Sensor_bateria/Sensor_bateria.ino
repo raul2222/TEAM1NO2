@@ -62,11 +62,14 @@ namespace Globales {
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
-  // Esperar 60 minutos para el heater del sensor
-  // delay(60*60*1000);
-
+  
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 
+
+
+  // Esperar 60 minutos para el heater del sensor
+  delay(1000*60*60);
+
   
   //Configure WDT for 120 seconds
   
@@ -151,14 +154,21 @@ void loop () {
 
   //Serial.println(cont % 5 == 0);
 
-  if(((cont % 50) == 0) || (cont==1)){
+  if(((cont % 70) == 0) || (cont==5)){
     battery = bat.obtenerPorcentaje();
   }
   
-  //Serial.println(battery);
-  
   int valorNO2 [11];
   elMedidor.medirNO2(valorNO2);
+    
+  /*
+  
+  // autocalibrado
+  elMedidor.calibradoZero();
+    if((millis() > 60 * 1000 * 60 * 6) && valorNO2[1] < 0) {
+      elMedidor.calibradoZero();
+  }
+  */
 
   //String data;
   String data;
@@ -171,18 +181,15 @@ void loop () {
   data = data + battery;
   data = data + " ";
 
-  //char datos[20];
-  //data.toCharArray(datos, data.length()+1);
   for (int i = data.length()+1; i<=25; i++){
     data = data + "*";
   }
 
-  //datos = data;
   elPublicador.setName(data);
   
   elPublicador.publicarNO2(1,
 							cont,
-							800, // intervalo de emisión
+							1100, // intervalo de emisión
 							battery);
   /*
   // mido y publico

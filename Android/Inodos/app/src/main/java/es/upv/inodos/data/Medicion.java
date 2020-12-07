@@ -2,16 +2,25 @@ package es.upv.inodos.data;
 
 public class Medicion {
 
-
     private int contador;
     private String idsen;
     private String lat;
     private String longi;
+    private String accuracy;
     private String valor;
     private String momento;
     private String temperatura;
     private String distancia;
     private String bat;
+
+
+    public String getAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(String accuracy) {
+        this.accuracy = accuracy;
+    }
 
     public int getContador() { return contador;
     }
@@ -92,7 +101,9 @@ public class Medicion {
         this.valor = "";
         this.momento = "";
         this.bat = "";
+        this.temperatura = "";
         this.distancia ="";
+        this.accuracy = "";
     }
 
     public Medicion(String  idsen, String lat, String longi, String valor, String moment, String bat) {
@@ -114,6 +125,7 @@ public class Medicion {
         this.temperatura = "";
         this.bat = "";
         this.distancia = "";
+        //this.accuracy = "";
     }
 
 }

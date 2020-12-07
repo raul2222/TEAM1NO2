@@ -37,6 +37,11 @@ public:
       //return sensorData;
   } // ()
 
+  void calibradoZero(){
+    Serial1.println('Z');
+
+  }
+
   // .....................................................
   // .....................................................
   int medirTemperatura() {

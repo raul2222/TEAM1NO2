@@ -45,6 +45,7 @@ private:
       analogReference(AR_DEFAULT);
       analogReadResolution(10);
       //Disable Mosfet because the current flow to ground
+      //Serial.println(raw * REAL_VBAT_MV_PER_LSB);
       stopMosfet();
       low.disableDCDC();
       // Convert the raw value to compensated mv, taking the resistor-
@@ -54,7 +55,8 @@ private:
   }//()
 
   // float -> mvToPercent-> uint8_T
-  uint8_t mvToPercent(float mvolts) {
+  float mvToPercent(float mvolts) {
+      //Serial.println(mvolts);
       if(mvolts<3300)
         return 0;
     
@@ -63,7 +65,7 @@ private:
         return mvolts/30;
       }
       mvolts -= 3600;
-      uint8_t res = 14.7 + (mvolts * 0.15F );
+      float res = 14.7 + (mvolts * 0.15F );
       if (res > 100){
         return 100;
       }
@@ -94,14 +96,16 @@ public:
   }
 
   // .........................................................
-  // obtenerProcerntaje -> uint8_T
+  // obtenerProcerntaje -> uint8_t
   uint8_t obtenerPorcentaje(){
     float vbat_mv = 0;
     int i;
-    for(int i=1;i<=10;i++){
+    for(i=0;i<=10;i++){
       vbat_mv = vbat_mv + readVBAT();
      delay(1);
     }
+    //float res = vbat_mv/i;
+    //Serial.println(res);
     // Convert from raw mv to percentage (based on LIPO chemistry)
     return mvToPercent(vbat_mv/i);
   }

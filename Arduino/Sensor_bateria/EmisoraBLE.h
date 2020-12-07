@@ -103,11 +103,7 @@ public:
   void detenerAnuncio() {
 
 	if ( (*this).estaAnunciando() ) {
-	  // Serial.println ( "Bluefruit.Advertising.stop() " );
 
-    //Bluefruit.Advertising.stop();
-    //Bluefruit.Advertising.clearData();
-    //Bluefruit.ScanResponse.clearData(); // add this
     
 	  Bluefruit.Advertising.stop(); 
 	}
@@ -146,7 +142,7 @@ public:
   	//Bluefruit.setName( (*this).nombreEmisora );
     char nombre[25]; 
     nom.toCharArray(nombre, nom.length()+1); 
-    Serial.println(nombre);
+    //Serial.println(nombre);
     Bluefruit.setName(nombre);
   	Bluefruit.ScanResponse.addName(); // para que envíe el nombre de emisora (?!)
   

@@ -71,10 +71,6 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 ExistingWorkPolicy.REPLACE,
                 workBuilder.build());
 
-
-
-
-
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         SystemItem systemItem = realm.createObject(SystemItem.class, UUID.randomUUID().toString());

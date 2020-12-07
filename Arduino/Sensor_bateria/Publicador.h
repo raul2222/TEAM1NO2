@@ -39,10 +39,7 @@ public:
 
     void setName(String nombre ){
       buffer1 = nombre;
-      Serial.println(buffer1);
-      //strcpy(nombre, buffer1);
-      //nombre.toCharArray(buffer1, nombre.length());
-      //(*this).laEmisora.setNameBle(buffer1);
+      //Serial.println(buffer1);
     }
 
   // ............................................................

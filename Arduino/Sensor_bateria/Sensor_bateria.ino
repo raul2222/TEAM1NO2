@@ -67,8 +67,11 @@ void inicializarPlaquita () {
   Globales::lowPower52840.disableDCDC(); 
 
   
-  // Esperar 120 minutos para el heater del sensor, debe de estabilizarse
-  delay(1000*60*120);
+  // Esperar 200 minutos para el heater del sensor, debe de estabilizarse
+  for(int i = 0 ; i< 400 ; i++){
+    lucecitas();
+    delay(1000*30);
+  }
 
   
   //Configure WDT for 120 seconds
@@ -170,7 +173,7 @@ void loop () {
   
   // autocalibrado
 
-  if( (millis() > (60 * 1000 * 60 * 24)) && (valorNO2[1] < 0) && ((cont % 220) == 0) ) {
+  if( (millis() > (60 * 1000 * 60 * 8)) && (valorNO2[1] < 0) && ((cont % 220) == 0) ) {
       elMedidor.calibradoZero();
   }
 

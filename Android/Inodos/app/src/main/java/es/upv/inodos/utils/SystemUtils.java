@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.util.Log;
 
 import androidx.core.content.ContextCompat;
+import androidx.work.Data;
 import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
@@ -18,6 +21,7 @@ import es.upv.inodos.adapters.Firebase;
 import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.Medicion;
 import es.upv.inodos.services.MonitorService;
+import es.upv.inodos.workers.NotificationWorker;
 import es.upv.inodos.workers.SystemCheckWorker;
 
 import static es.upv.inodos.common.Constants.TAG;
@@ -100,6 +104,15 @@ public class SystemUtils {
             return 2;
 
         }
+    }
+
+    public static void sendLocalNotification(String message){
+        OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
+                .setInputData(new Data.Builder().putString("text", message)
+                        .build());
+        WorkManager.getInstance().enqueueUniqueWork("Notification",
+                ExistingWorkPolicy.REPLACE,
+                workBuilder.build());
     }
 
 

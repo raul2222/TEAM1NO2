@@ -44,6 +44,7 @@ import static es.upv.inodos.common.Constants.distancia;
 import static es.upv.inodos.common.Constants.name_notification;
 import static es.upv.inodos.common.Constants.tiempo;
 import static es.upv.inodos.utils.SystemUtils.enviarDatosServidor;
+import static es.upv.inodos.utils.SystemUtils.sendLocalNotification;
 
 // *********************************************************
 //  RAUL SANTOS LOPEZ       07/12/2020
@@ -125,18 +126,11 @@ public class MonitorService extends Service implements LocationListener {
             medicion.setLat(String.valueOf(location.getLatitude()));
             medicion.setLongi(String.valueOf(location.getLongitude()));
             medicion.setAccuracy(String.valueOf(location.getAccuracy()));
-
             //Log.d(ETIQUETA_LOG, "Momento:" + new Momento().getMomento());
             Log.d(TAG, "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
             int res = enviarDatosServidor(medicion);
-
             // esto es una notificacion con la lanzadera de notificaciones
-            OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
-                    .setInputData(new Data.Builder().putString("text", String.valueOf(location.getAccuracy()))
-                            .build());
-            WorkManager.getInstance().enqueueUniqueWork("Notification",
-                    ExistingWorkPolicy.REPLACE,
-                    workBuilder.build());
+            sendLocalNotification(String.valueOf(location.getAccuracy()));
         }
     }
 

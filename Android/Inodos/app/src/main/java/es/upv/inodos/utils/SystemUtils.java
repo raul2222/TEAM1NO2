@@ -75,7 +75,10 @@ public class SystemUtils {
          */
         if(medicion.getLongi() == "" || medicion.getValor() == "" || medicion.getMomento() == "")
         {
-            Log.i(TAG,"Faltan datos");
+            //Log.i(TAG,"Faltan datos");
+            if (medicion.getLongi() == "") {Log.i(TAG, "Falta localizacion");}
+            if (medicion.getValor() == "") {Log.i(TAG, "Falta medida");}
+            if (medicion.getValor() == "") {Log.i(TAG, "Falta medida caso 2");}
             return 1;
         } else {
             // mandamos medicion

@@ -21,6 +21,11 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
+import androidx.work.ExistingWorkPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+
 import java.util.Timer;
 import java.util.TimerTask;
 import es.upv.inodos.R;
@@ -30,6 +35,8 @@ import es.upv.inodos.data.Medicion;
 import es.upv.inodos.receivers.BluetoothBroadcastReceiver;
 import es.upv.inodos.utils.Momento;
 import es.upv.inodos.utils.Utilidades;
+import es.upv.inodos.workers.NotificationWorker;
+
 import static android.content.ContentValues.TAG;
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
 import static es.upv.inodos.common.Constants.Tiempo_Envios;
@@ -111,6 +118,7 @@ public class MonitorService extends Service implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
+        Log.d(TAG, "exactitud: " + String.valueOf(location.getAccuracy()) + "    Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
         // ojo solo si el radio es menor a 30 metros
         if (location.getAccuracy() < 30) {
             //latitud = location.getLatitude();longitud = location.getLongitude();
@@ -121,14 +129,14 @@ public class MonitorService extends Service implements LocationListener {
             //Log.d(ETIQUETA_LOG, "Momento:" + new Momento().getMomento());
             Log.d(TAG, "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
             int res = enviarDatosServidor(medicion);
-            /*
+
             // esto es una notificacion con la lanzadera de notificaciones
             OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
                     .setInputData(new Data.Builder().putString("text", String.valueOf(location.getAccuracy()))
                             .build());
             WorkManager.getInstance().enqueueUniqueWork("Notification",
                     ExistingWorkPolicy.REPLACE,
-                    workBuilder.build());*/
+                    workBuilder.build());
         }
     }
 

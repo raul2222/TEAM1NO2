@@ -194,7 +194,7 @@ public class MonitorService extends Service implements LocationListener {
                     String name = device.getName();
                     String address = device.getAddress();
                     String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
-                    double distant = Utilidades.calculateDistance(-56,Double.parseDouble(rssi));
+                    double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
                     parseRead(name, String.format("%.2f", distant));
                     Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
                 }

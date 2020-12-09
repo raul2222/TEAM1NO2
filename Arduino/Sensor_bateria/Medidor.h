@@ -27,13 +27,8 @@ public:
   
   void resetSensor(){
      Serial.print("entrando en calibracion");
-     String a;
-     Serial1.println("R");delay(1);
-      while(Serial1.available()) {
-         a= Serial1.readString();// read the incoming data as string
-         Serial.println(a);
-       }
-      for (int i = 0; i<12000; i++) {
+     Serial1.println("R");delay(15);
+      for (int i = 0; i<256; i++) {
           while(!Serial1.available()) { }
           Serial.print(Serial1.read());
           delay(1);
@@ -43,18 +38,14 @@ public:
   
   void calibradoZero(){
      Serial.print("entrando en calibracion");
-     String a;
-     Serial1.println("Z");delay(1);
-      while(Serial1.available()) {
-         a= Serial1.readString();// read the incoming data as string
-         Serial.println(a);
-       }
-      for (int i = 0; i<12000; i++) {
+     Serial1.println("Z");delay(15);
+
+      for (int i = 0; i<256; i++) {
           while(!Serial1.available()) { }
           Serial.print(Serial1.read());
           delay(1);
       }
-      Serial.println("FIN");
+      Serial.println("FIN ZERO");
   }
 
   // .....................................................

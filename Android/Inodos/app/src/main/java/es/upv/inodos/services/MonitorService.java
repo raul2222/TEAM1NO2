@@ -52,6 +52,7 @@ import static es.upv.inodos.utils.SystemUtils.sendLocalNotification;
 
 public class MonitorService extends Service implements LocationListener {
     public int counter = 0;
+    private int contadorUltimaLecturaDelSensor = 0;
     private Timer timer;
     private TimerTask timerTask;
 
@@ -211,22 +212,16 @@ public class MonitorService extends Service implements LocationListener {
         String valor = parts[1];
         String temperatura = parts[2];
         String bateria = parts[3];
-        medicion.setValor(valor);
-        medicion.setBat(bateria);
-        medicion.setContador(Integer.valueOf(cont));
-        medicion.setTemperatura(temperatura);
-        medicion.setDistancia(distan);
-        medicion.setIdsen("1");
-        medicion.setMomento(String.valueOf( new Momento().getMomento()));
-    }
-
-    public void sendNotification(String text){
-        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                .setContentTitle(name_notification)
-                .setContentText(String.valueOf(text))
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .build();
-        startForeground(1, notification);
+        if(Integer.valueOf(cont) != Integer.valueOf(parts[0])) { // si no se repite el cont
+            contadorUltimaLecturaDelSensor = Integer.valueOf(parts[0]);
+            medicion.setValor(valor);
+            medicion.setBat(bateria);
+            medicion.setContador(Integer.valueOf(cont));
+            medicion.setTemperatura(temperatura);
+            medicion.setDistancia(distan);
+            medicion.setIdsen("1");
+            medicion.setMomento(String.valueOf(new Momento().getMomento()));
+        }
     }
 
 }

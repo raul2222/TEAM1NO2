@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import es.upv.inodos.activities.MainActivity;
+import es.upv.inodos.utils.SystemUtils;
 
 public class Firebase {
     private static String ETIQUETA_LOG = "no2";
@@ -39,19 +40,20 @@ public class Firebase {
         dato.put("Bateria", bateria);
         dato.put("Distancia", distancia);
 
-
-
         db.collection("Mediciones").document().set(dato)//aqui accedemos a la coleccion creada en firebase donde se almacenaran los valores anterrioires
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(ETIQUETA_LOG, "**********  DocumentSnapshot successfully written!  *********");
+                        SystemUtils.sendLocalNotification("NO2: " + valor + " GPS-ERR: " + accu
+                        + " Bat-level: " + bateria);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Log.w(ETIQUETA_LOG, "Error writing document", e);
+                        SystemUtils.sendLocalNotification("Error write Firebase");
                     }
                 });
 

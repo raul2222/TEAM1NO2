@@ -29,6 +29,7 @@ import static es.upv.inodos.common.Constants.TAG;
 
 public class SystemUtils {
 
+
     public static boolean isServiceRunning(Context context, String serviceName){
         boolean serviceRunning = false;
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -66,16 +67,8 @@ public class SystemUtils {
 
     public static int enviarDatosServidor(Medicion medicion){
         /*
-        this.contador = 0;
-        this.idsen = "";
-        this.lat = "";
-        this.longi = "";
-        this.valor = "";
-        this.momento = "";
-        this.bat = "";
-        this.temperatura = "";
-        this.distancia ="";
-        this.accuracy = "";
+        this.contador = 0; this.idsen = ""; this.lat = ""; this.longi = ""; this.valor = "";
+        this.momento = ""; this.bat = ""; this.temperatura = ""; this.distancia =""; this.accuracy = "";
          */
         if(medicion.getLongi() == "" || medicion.getValor() == "" || medicion.getMomento() == "")
         {

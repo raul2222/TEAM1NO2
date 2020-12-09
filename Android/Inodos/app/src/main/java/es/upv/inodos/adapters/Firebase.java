@@ -45,8 +45,7 @@ public class Firebase {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(ETIQUETA_LOG, "**********  DocumentSnapshot successfully written!  *********");
-                        SystemUtils.sendLocalNotification("NO2: " + valor + " GPS-ERR: " + accu
-                        + " Bat-level: " + bateria);
+                        //SystemUtils.sendLocalNotification("NO2: " + valor + " GPS-ERR: " + accu + " Bat-level: " + bateria);
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

@@ -66,16 +66,13 @@ public class SystemUtils {
     }
 
     public static int enviarDatosServidor(Medicion medicion){
-        /*
-        this.contador = 0; this.idsen = ""; this.lat = ""; this.longi = ""; this.valor = "";
-        this.momento = ""; this.bat = ""; this.temperatura = ""; this.distancia =""; this.accuracy = "";
-         */
+
         if(medicion.getLongi() == "" || medicion.getValor() == "" || medicion.getMomento() == "")
         {
             //Log.i(TAG,"Faltan datos");
             if (medicion.getLongi() == "") {Log.i(TAG, "Falta localizacion");}
             if (medicion.getValor() == "") {Log.i(TAG, "Falta medida");}
-            if (medicion.getValor() == "") {Log.i(TAG, "Falta medida caso 2");}
+            if (medicion.getMomento() == "") {Log.i(TAG, "Falta medida caso 2");}
             return 1;
         } else {
             // mandamos medicion
@@ -88,8 +85,7 @@ public class SystemUtils {
             Log.i(TAG, medicion.getMomento());
             Log.i(TAG, medicion.getDistancia());
             Log.i(TAG, medicion.getBat());
-            /*(String idsen, String lat, String longi, String valor, String momento,
-                    String bateria, String temperatura, String distancia, String accu)*/
+
             Firebase.enviarMedicion(medicion.getIdsen(),medicion.getLat(),medicion.getLongi(),
                     medicion.getValor(),medicion.getMomento(),medicion.getBat(),medicion.getTemperatura(),
                     medicion.getDistancia(),medicion.getAccuracy());

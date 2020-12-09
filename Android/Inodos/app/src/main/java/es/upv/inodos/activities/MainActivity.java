@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_COARSE_LOCATION = 200;
     private WebView webView;
-    private boolean resolvingError = false;
-    Realm realm;
+    //private boolean resolvingError = false;
+    //Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
-        webView.loadUrl("file:///android_asset/inodos/index.html");
+        webView.loadUrl("file:///android_asset/inodos2/index.html");
     }
 
     private class MyBrowser extends WebViewClient {
@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* TODO: DE MOMENTO NO
     private void loadAdapter() {
         SystemItemsAdapter systemItemsAdapter = new SystemItemsAdapter(loadData());
         //listView.setAdapter(systemItemsAdapter);
@@ -157,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
     private RealmResults<SystemItem> loadData() {
         return realm.where(SystemItem.class).findAll().sort("timestamp", Sort.DESCENDING);
     }
+     */
 
     protected void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)

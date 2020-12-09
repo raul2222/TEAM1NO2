@@ -74,10 +74,10 @@ void inicializarPlaquita () {
   }
 
   
-  //Configure WDT for 120 seconds
+  //Configure WDT for 60 seconds
   
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = (3932159 / 4);    // now(120s/4) CRV = timeout * 32768 + 1
+  NRF_WDT->CRV            = (3932159 / 2);    // now(120s/2) CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
   NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
@@ -95,21 +95,17 @@ void setup() {
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
-  // 
-  // 
-  
+
   inicializarPlaquita();
 
   // Suspend Loop() to save power
   // suspendLoop();
 
-  // 
-  // 
+
   Globales::elPublicador.encenderEmisora();
 
   // Globales::elPublicador.laEmisora.pruebaEmision();
-  // 
-  // 
+
   Globales::elMedidor.iniciarMedidor();
 
 

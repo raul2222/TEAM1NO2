@@ -4,6 +4,7 @@ import android.Manifest;
 
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -35,13 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     static final int REQUEST_COARSE_LOCATION = 200;
     private WebView webView;
-    private static final String TAG = "BeaconsActivity";
-    private static final int RESOLVE_USER_CONSENT = 111222;
-    //private GoogleApiClient googleApiClient;
-    private boolean resolvingError = false;
-
-    Realm realm;
-
+    //private boolean resolvingError = false;
+    //Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 19) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-
         if (Build.VERSION.SDK_INT >= 21) {
             setWindowFlag(this, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
@@ -73,12 +68,10 @@ public class MainActivity extends AppCompatActivity {
     private void iniciarWebView(){
         webView = findViewById(R.id.webView);
         webView.setWebViewClient(new MyBrowser());
-
         webView.getSettings().setJavaScriptEnabled(true);
-        //webView.getSettings().setLoadWithOverviewMode(true);
-        //webView.getSettings().setUseWideViewPort(true);
-
-        webView.loadUrl("http://www.beecop.ovh/no2/inodos/index.html");
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.loadUrl("file:///android_asset/inodos2/index.html");
     }
 
     private class MyBrowser extends WebViewClient {
@@ -103,7 +96,6 @@ public class MainActivity extends AppCompatActivity {
 
     // pedir permisos
     private void darPermisosApp(){
-
         String[] permissions = {
                 Manifest.permission.INTERNET,
                 Manifest.permission.ACCESS_NETWORK_STATE,
@@ -111,16 +103,12 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
-
         };
-
         int PERMISSION_ALL = 1;
-
         if (!hasPermissions(this, permissions)) {
             ActivityCompat.requestPermissions(this, permissions, PERMISSION_ALL);
         }
-
-
+        isBluetoothEnabled();
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -134,13 +122,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-
-
     @Override
     public void onResume(){
         super.onResume();
-        realm = Realm.getDefaultInstance();
+        //realm = Realm.getDefaultInstance(); //TODO: DE MOMENTO NO
         //loadData();
         //loadAdapter();
     }
@@ -148,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onPause(){
         super.onPause();
-        realm.close();
+        //realm.close(); //TODO: DE MOMENTO NO
     }
 
     @Override
@@ -164,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /* TODO: DE MOMENTO NO
     private void loadAdapter() {
         SystemItemsAdapter systemItemsAdapter = new SystemItemsAdapter(loadData());
         //listView.setAdapter(systemItemsAdapter);
@@ -172,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
     private RealmResults<SystemItem> loadData() {
         return realm.where(SystemItem.class).findAll().sort("timestamp", Sort.DESCENDING);
     }
+     */
 
     protected void checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -181,6 +168,23 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                     REQUEST_COARSE_LOCATION);
         }
+    }
+
+    public static boolean isBluetoothEnabled()
+    {
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if (!mBluetoothAdapter.isEnabled()) {
+            // Bluetooth is not enable :)
+            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (!mBluetoothAdapter.isEnabled()) {
+                mBluetoothAdapter.enable();
+            }
+            return false;
+        }
+        else{
+            return true;
+        }
+
     }
 
 

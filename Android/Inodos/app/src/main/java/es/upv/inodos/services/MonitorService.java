@@ -52,6 +52,7 @@ import static es.upv.inodos.utils.SystemUtils.sendLocalNotification;
 
 public class MonitorService extends Service implements LocationListener {
     public int counter = 0;
+    private int contadorUltimaLecturaDelSensor = 0;
     private Timer timer;
     private TimerTask timerTask;
 
@@ -59,6 +60,9 @@ public class MonitorService extends Service implements LocationListener {
     private static int contador = 300;
     private Medicion medicion;
     BluetoothAdapter blueToothAdapter;
+    private long startScanAnterior = 0;
+    private long startScanTotalTime = 0;
+    private int numCallGps = 0;
 
     public MonitorService() {    }
 
@@ -114,11 +118,12 @@ public class MonitorService extends Service implements LocationListener {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, tiempo * 1000 * 20, distancia, (LocationListener) this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, tiempo * 1000 * 60, distancia, (LocationListener) this);
     }
 
     @Override
     public void onLocationChanged(Location location) {
+        numCallGps++;
         Log.d(TAG, "exactitud: " + String.valueOf(location.getAccuracy()) + "    Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
         // ojo solo si el radio es menor a 30 metros
         if (location.getAccuracy() < 30) {
@@ -130,7 +135,7 @@ public class MonitorService extends Service implements LocationListener {
             Log.d(TAG, "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
             int res = enviarDatosServidor(medicion);
             // esto es una notificacion con la lanzadera de notificaciones
-            sendLocalNotification(String.valueOf(location.getAccuracy()));
+            //sendLocalNotification(String.valueOf(location.getAccuracy()));
         }
     }
 
@@ -167,6 +172,10 @@ public class MonitorService extends Service implements LocationListener {
                 }
                 Log.i(Constants.TAG, "Service timer " + (counter++));
                 blueToothAdapter.startDiscovery();
+                if((counter%60 == 0)){
+                    sendLocalNotification("Tiempo BLE: " + String.valueOf(startScanTotalTime/1000) +
+                            "Total Gps: " + String.valueOf(numCallGps));
+                }
             }
         };
     }
@@ -184,23 +193,23 @@ public class MonitorService extends Service implements LocationListener {
             if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
                 if (state == BluetoothAdapter.STATE_ON) { }
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
-            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class);
-                //newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
-                //startActivity(newIntent);
-            } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if(device.getAddress().equals(Constants.SerialNumber)) {
-                    blueToothAdapter.cancelDiscovery();
-                    String name = device.getName();
-                    String address = device.getAddress();
-                    String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
-                    double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
-                    parseRead(name, String.format("%.2f", distant));
-                    Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
-                }
-                //mDeviceList.add(device);
+                } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
+                    startScanAnterior = System.currentTimeMillis();
+                } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                    startScanTotalTime = startScanTotalTime + (System.currentTimeMillis() - startScanAnterior);
+                    //Log.i(TAG, String.valueOf(startScanTotalTime/1000));
+                    //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class); //newIntent.putParcelableArrayListExtra("device.list", mDeviceList); //startActivity(newIntent);
+                } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                    BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                    if(device.getAddress().equals(Constants.SerialNumber)) {
+                        blueToothAdapter.cancelDiscovery();
+                        String name = device.getName();
+                        String address = device.getAddress();
+                        String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
+                        double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
+                        parseRead(name, String.format("%.2f", distant));
+                        Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
+                    }
             }
         }
     };
@@ -211,22 +220,16 @@ public class MonitorService extends Service implements LocationListener {
         String valor = parts[1];
         String temperatura = parts[2];
         String bateria = parts[3];
-        medicion.setValor(valor);
-        medicion.setBat(bateria);
-        medicion.setContador(Integer.valueOf(cont));
-        medicion.setTemperatura(temperatura);
-        medicion.setDistancia(distan);
-        medicion.setIdsen("1");
-        medicion.setMomento(String.valueOf( new Momento().getMomento()));
-    }
-
-    public void sendNotification(String text){
-        Notification notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                .setContentTitle(name_notification)
-                .setContentText(String.valueOf(text))
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .build();
-        startForeground(1, notification);
+        if(Integer.valueOf(cont) != Integer.valueOf(parts[0])) { // si no se repite el cont
+            contadorUltimaLecturaDelSensor = Integer.valueOf(parts[0]);
+            medicion.setValor(valor);
+            medicion.setBat(bateria);
+            medicion.setContador(Integer.valueOf(cont));
+            medicion.setTemperatura(temperatura);
+            medicion.setDistancia(distan);
+            medicion.setIdsen("1");
+            medicion.setMomento(String.valueOf(new Momento().getMomento()));
+        }
     }
 
 }

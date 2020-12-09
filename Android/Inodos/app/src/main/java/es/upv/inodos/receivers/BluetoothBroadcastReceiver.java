@@ -65,16 +65,17 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
                 .setInputData(new Data.Builder().putString("text",value)
                         .build());
 
-
-
         WorkManager.getInstance().enqueueUniqueWork("Notification",  ExistingWorkPolicy.REPLACE,
                 workBuilder.build());
 
+        //TODO: DE MOMENTO NO SE GRABAN ESTOS EVENTOS
+        /*
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         SystemItem systemItem = realm.createObject(SystemItem.class, UUID.randomUUID().toString());
         systemItem.setEvent(event);
         systemItem.setTimestamp(System.currentTimeMillis());
         realm.commitTransaction();
+         */
     }
 }

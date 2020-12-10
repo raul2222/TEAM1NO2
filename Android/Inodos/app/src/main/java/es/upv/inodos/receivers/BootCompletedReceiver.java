@@ -18,14 +18,14 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.d(Constants.TAG, "--> BootCompletedReceiver received " + intent.getAction() + " action");
-
+        /*
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();
         SystemItem systemItem = realm.createObject(SystemItem.class, UUID.randomUUID().toString());
         systemItem.setEvent(intent.getAction());
         systemItem.setTimestamp(System.currentTimeMillis());
         realm.commitTransaction();
-
+        */
 
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {

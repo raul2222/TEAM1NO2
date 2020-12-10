@@ -1,21 +1,25 @@
 package es.upv.inodos.workers;
+
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+
 import es.upv.inodos.R;
 import es.upv.inodos.activities.MainActivity;
+
 import static es.upv.inodos.common.Constants.CHANNEL_ID;
 import static es.upv.inodos.common.Constants.name_notification;
 // *********************************************************
-//  RAUL SANTOS LOPEZ       07/12/2020
+//  RAUL SANTOS LOPEZ       10/12/2020
 // *********************************************************
-public class NotificationWorker extends Worker {
-    public NotificationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+public class NotificationWorkerTitle extends Worker {
+    public NotificationWorkerTitle(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
     // Se define el parámetro de entrada
@@ -27,12 +31,14 @@ public class NotificationWorker extends Worker {
         // Extración de la información:
         String text = getInputData().getString("text");
         String textOfContent = getInputData().getString("textOfContent");
-        if(text != "") {
-            sendNotification(text, textOfContent);
+        if(textOfContent != "") {
+            sendNotificationTitle(text,textOfContent);
         }
         return Result.success();
     }
-    public void sendNotification(String text, String textOfContent){
+
+
+    public void sendNotificationTitle(String text, String textOfContent){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,0);

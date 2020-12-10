@@ -45,6 +45,7 @@ import static es.upv.inodos.common.Constants.name_notification;
 import static es.upv.inodos.common.Constants.tiempo;
 import static es.upv.inodos.utils.SystemUtils.enviarDatosServidor;
 import static es.upv.inodos.utils.SystemUtils.sendLocalNotification;
+import static es.upv.inodos.utils.SystemUtils.sendLocalNotificationTitle;
 
 // *********************************************************
 //  RAUL SANTOS LOPEZ       07/12/2020
@@ -52,14 +53,14 @@ import static es.upv.inodos.utils.SystemUtils.sendLocalNotification;
 
 public class MonitorService extends Service implements LocationListener {
     public int counter = 0;
-    private int contadorUltimaLecturaDelSensor = 0;
+    private String textOfContent = "";
     private Timer timer;
     private TimerTask timerTask;
 
     protected LocationManager locationManager;
     private static int contador = 300;
     private Medicion medicion;
-    BluetoothAdapter blueToothAdapter;
+    private BluetoothAdapter blueToothAdapter;
     private long startScanAnterior = 0;
     private long startScanTotalTime = 0;
     private int numCallGps = 0;
@@ -89,6 +90,7 @@ public class MonitorService extends Service implements LocationListener {
                 .build();
 
         startForeground(1, notification);
+        textOfContent = input;//TODO
 
         startTimer();
         startScanning();
@@ -124,6 +126,7 @@ public class MonitorService extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         numCallGps++;
+
         Log.d(TAG, "exactitud: " + String.valueOf(location.getAccuracy()) + "    Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
         // ojo solo si el radio es menor a 30 metros
         if (location.getAccuracy() < 30) {
@@ -134,8 +137,8 @@ public class MonitorService extends Service implements LocationListener {
             //Log.d(ETIQUETA_LOG, "Momento:" + new Momento().getMomento());
             Log.d(TAG, "Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
             int res = enviarDatosServidor(medicion);
-            // esto es una notificacion con la lanzadera de notificaciones
-            //sendLocalNotification(String.valueOf(location.getAccuracy()));
+            String text = "Precisión GPS: "  + String.valueOf( location.getAccuracy());
+            sendLocalNotificationTitle(text);
         }
     }
 
@@ -166,15 +169,18 @@ public class MonitorService extends Service implements LocationListener {
     public void initializeTimerTask() {
         timerTask = new TimerTask() {
             public void run() {
+                counter++;
                 if((counter%Tiempo_Envios) == 0) {
                     // enviar Datos al servidor
                     enviarDatosServidor(medicion);
                 }
-                Log.i(Constants.TAG, "Service timer " + (counter++));
+                Log.i(Constants.TAG, "Service timer " + (counter));
+                //sendLocalNotificationTitle("Service timer "  + String.valueOf(counter),textOfContent);
                 blueToothAdapter.startDiscovery();
-                if((counter%60 == 0)){
-                    sendLocalNotification("Tiempo BLE: " + String.valueOf(startScanTotalTime/1000) +
-                            "Total Gps: " + String.valueOf(numCallGps));
+                if((counter%15 == 0)){
+                    sendLocalNotification("Tiempo BLE: " + (startScanTotalTime/1000) +
+                            " Total Gps: " + numCallGps);
+                    startScanAnterior = 0; startScanTotalTime = 0; numCallGps = 0;
                 }
             }
         };
@@ -221,7 +227,7 @@ public class MonitorService extends Service implements LocationListener {
         String temperatura = parts[2];
         String bateria = parts[3];
         if(Integer.valueOf(cont) != Integer.valueOf(parts[0])) { // si no se repite el cont
-            contadorUltimaLecturaDelSensor = Integer.valueOf(parts[0]);
+            int contadorUltimaLecturaDelSensor = Integer.valueOf(parts[0]);
             medicion.setValor(valor);
             medicion.setBat(bateria);
             medicion.setContador(Integer.valueOf(cont));

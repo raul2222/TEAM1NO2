@@ -14,45 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/ic_launcher-playstore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/adapters/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/adapters/Firebase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/common/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/data/Medicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/data/Medicion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/receivers/BluetoothBroadcastReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/receivers/BluetoothBroadcastReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/receivers/ScanBleReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/BleScanService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/SystemUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/SystemUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/TramaIBeacon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Inodos/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Battery.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Battery.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/EmisoraBLE.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/EmisoraBLE.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Medidor.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Medidor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Publicador.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Publicador.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Sensor_bateria.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Sensor_bateria.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -19,9 +19,11 @@ import java.util.concurrent.TimeUnit;
 
 import es.upv.inodos.adapters.Firebase;
 import es.upv.inodos.common.Constants;
+import es.upv.inodos.common.MySingletonClass;
 import es.upv.inodos.data.Medicion;
 import es.upv.inodos.services.MonitorService;
 import es.upv.inodos.workers.NotificationWorker;
+import es.upv.inodos.workers.NotificationWorkerTitle;
 import es.upv.inodos.workers.SystemCheckWorker;
 
 import static es.upv.inodos.common.Constants.TAG;
@@ -91,17 +93,44 @@ public class SystemUtils {
                     medicion.getDistancia(),medicion.getAccuracy());
             medicion.borrarMedicion();
             return 2;
-
         }
     }
 
-    public static void sendLocalNotification(String message){
-        OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
-                .setInputData(new Data.Builder().putString("text", message)
-                        .build());
-        WorkManager.getInstance().enqueueUniqueWork("Notification",
-                ExistingWorkPolicy.REPLACE,
-                workBuilder.build());
+    public static void sendLocalNotification(String message){ //TODO
+        if (message != "") {
+            String textOfContent = "";
+            if (MySingletonClass.getInstance().getMensajeNotificacionTitle() == null) {
+                textOfContent = Constants.name_notification;
+            } else {
+                textOfContent = MySingletonClass.getInstance().getMensajeNotificacionTitle();
+            }
+
+            OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
+                    .setInputData(new Data.Builder().putString("text", message).putString("textOfContent", textOfContent)
+                            .build());
+            WorkManager.getInstance().enqueueUniqueWork("Notification",
+                    ExistingWorkPolicy.REPLACE,
+                    workBuilder.build());
+            MySingletonClass.getInstance().setmensajeNotificacion(message);
+        }
+    }
+
+    public static void sendLocalNotificationTitle(String textOfContent){
+        if(textOfContent != "") {
+            String message = "";
+            if (MySingletonClass.getInstance().getmensajeNotificacion() == null) {
+                message = Constants.MONITOR_SERVICE_DESCRIPTION;
+            } else {
+                 message = MySingletonClass.getInstance().getmensajeNotificacion();
+            }
+            OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorkerTitle.class)
+                    .setInputData(new Data.Builder().putString("text", message).putString("textOfContent", textOfContent)
+                            .build());
+            WorkManager.getInstance().enqueueUniqueWork("NotificationTitle",
+                    ExistingWorkPolicy.REPLACE,
+                    workBuilder.build());
+            MySingletonClass.getInstance().setMensajeNotificacionTitle(textOfContent);
+        }
     }
 
 

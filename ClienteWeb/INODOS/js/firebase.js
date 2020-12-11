@@ -1,6 +1,7 @@
 var db = firebase.firestore();
 
 var res = [];
+var cont = 0;
 
 function getMediciones(){
     console.log("hola");
@@ -36,18 +37,20 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
             
-            db.collection("Mediciones").doc("0hgU3CpvoKlk9Ukj8lXC").get().then(function(doc2) { //Comprobamos que ese Usuario tiene una Medicion
-                if(doc2.exists){
+            db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc2) => { //Comprobamos que ese Usuario tiene una Medicion
+                    console.log("Ahora?");
                     var IDSensor3 = doc2.data().IDSensor;
-                    if(IDSensor3 == IDSensor2){
+                    if(IDSensor3 == IDSensor2 && cont == 0){
                         IDSensor.innerHTML += "<p> " + doc2.data().IDSensor + " </p>";
                         Latitud.innerHTML += "<p> " + doc2.data().Latitud + " </p>";
                         Longitud.innerHTML += "<p> " + doc2.data().Longitud + " </p>";
                         MomentoUnix.innerHTML += "<p> " + doc2.data().Momento + " </p>";
                         Valor.innerHTML += "<p> " + doc2.data().Valor + " </p>";
-                        NumSerie.innerHTML += "<p> " + "06VpBL7d66GeT9zCmaIG" + " </p>";
+                        NumSerie.innerHTML += "<p> " + "03Kl7siezTOx8iCP9itf" + " </p>";
+                        cont++;
                     }
-                }
+                });
             });
             //Aqui dentro pondremos la info del sensor a la pagina web
 

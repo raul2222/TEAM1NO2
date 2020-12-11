@@ -39,9 +39,8 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
             
             db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc2) => { //Comprobamos que ese Usuario tiene una Medicion
-                    console.log("Ahora?");
                     var IDSensor3 = doc2.data().IDSensor;
-                    if(IDSensor3 == IDSensor2 && cont == 0){
+                    if(IDSensor3 == IDSensor2 && cont == 0){ //Aqui dentro pondremos la info del sensor a la pagina web
                         IDSensor.innerHTML += "<p> " + doc2.data().IDSensor + " </p>";
                         Latitud.innerHTML += "<p> " + doc2.data().Latitud + " </p>";
                         Longitud.innerHTML += "<p> " + doc2.data().Longitud + " </p>";
@@ -52,7 +51,6 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
                     }
                 });
             });
-            //Aqui dentro pondremos la info del sensor a la pagina web
 
             
         } else {

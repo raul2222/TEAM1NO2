@@ -1,5 +1,6 @@
 package es.upv.inodos.services;
 import android.Manifest;
+import android.app.AsyncNotedAppOp;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -48,6 +49,7 @@ public class MonitorService extends Service implements LocationListener {
     private long startScanAnterior = 0;
     private long startScanTotalTime = 0;
     private int numCallGps = 0;
+    private String estadoGps = "";
 
 
     public MonitorService() {    }
@@ -122,7 +124,7 @@ public class MonitorService extends Service implements LocationListener {
 
         // configurar localizacion
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        configureLocationUpdates(Constants.Interval_Lectura_GPS, Constants.distancia_GPS);
+        //configureLocationUpdates(Constants.Interval_Lectura_GPS, Constants.distancia_GPS);
     }
 
     private void configureLocationUpdates(int minTime, int distance){
@@ -130,6 +132,10 @@ public class MonitorService extends Service implements LocationListener {
             return;
         }
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime * 1000 * 60, distance, (LocationListener) this);
+    }
+
+    private void disableGpsUpdates(){
+        locationManager.removeUpdates(this);
     }
 
     @Override
@@ -167,13 +173,7 @@ public class MonitorService extends Service implements LocationListener {
             public void run() {
                 counter++;
 
-                if(MySingletonClass.getInstance().isHibernation()){
-                    configureLocationUpdates(Constants.Interval_Lectura_GPS*60,Constants.distancia_GPS);
-                    SystemUtils.sendLocalNotificationTitle("Hibernation");
-                } else {
-                    configureLocationUpdates(Constants.Interval_Lectura_GPS,Constants.distancia_GPS);
-                    SystemUtils.sendLocalNotificationTitle("High performance");
-                }
+
                 /*if((counter% Constants.Tiempo_Envios) == 0) {
                     // enviar Datos al servidor
                     SystemUtils.enviarDatosServidor(medicion);
@@ -196,6 +196,23 @@ public class MonitorService extends Service implements LocationListener {
         }
     }
 
+    private void checkGps() {
+        if (MySingletonClass.getInstance().isHibernation()) {
+            if (estadoGps != "hibernacion") {
+                SystemUtils.sendLocalNotificationTitle("Hibernation");
+                disableGpsUpdates();
+            }
+            estadoGps = "hibernacion";
+        } else {
+            if (estadoGps != "alto") {
+                configureLocationUpdates(Constants.Interval_Lectura_GPS, Constants.distancia_GPS);
+                SystemUtils.sendLocalNotificationTitle("High performance");
+            }
+            estadoGps = "alto";
+        }
+    }
+
+
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -215,6 +232,7 @@ public class MonitorService extends Service implements LocationListener {
                         String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
                         double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
                         Utilidades.parseRead(name, String.format("%.2f", distant), medicion);
+                        checkGps();
                         Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
                     }
             }

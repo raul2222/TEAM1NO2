@@ -17,7 +17,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
@@ -50,6 +49,7 @@ public class MonitorService extends Service implements LocationListener {
     private long startScanTotalTime = 0;
     private int numCallGps = 0;
 
+
     public MonitorService() {    }
 
     public MonitorService(Context applicationContext) {
@@ -80,8 +80,11 @@ public class MonitorService extends Service implements LocationListener {
         startScanning();
         medicion = new Medicion();
         MySingletonClass.getInstance().setContador_Sensor(0);
+        MySingletonClass.getInstance().setHibernation(false);
+
         return START_STICKY;
     }
+
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -163,10 +166,18 @@ public class MonitorService extends Service implements LocationListener {
         timerTask = new TimerTask() {
             public void run() {
                 counter++;
-                if((counter% Constants.Tiempo_Envios) == 0) {
+
+                if(MySingletonClass.getInstance().isHibernation()){
+                    configureLocationUpdates(Constants.Interval_Lectura_GPS*60,Constants.distancia_GPS);
+                    SystemUtils.sendLocalNotificationTitle("Hibernation");
+                } else {
+                    configureLocationUpdates(Constants.Interval_Lectura_GPS,Constants.distancia_GPS);
+                    SystemUtils.sendLocalNotificationTitle("High performance");
+                }
+                /*if((counter% Constants.Tiempo_Envios) == 0) {
                     // enviar Datos al servidor
                     SystemUtils.enviarDatosServidor(medicion);
-                }
+                }*/
                 if((counter%15 == 0)){
                     SystemUtils.sendLocalNotification("Tiempo BLE: " + (startScanTotalTime/1000) +
                             " Total Gps: " + numCallGps);

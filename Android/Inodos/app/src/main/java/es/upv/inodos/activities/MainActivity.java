@@ -5,8 +5,10 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
@@ -21,11 +23,16 @@ import android.webkit.WebViewClient;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+
+import com.google.android.gms.location.DetectedActivity;
 
 import es.upv.inodos.R;
 import es.upv.inodos.adapters.SystemItemsAdapter;
+import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.SystemItem;
+import es.upv.inodos.services.BackgroundDetectedActivitiesService;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
@@ -64,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         iniciarWebView();
     }
 
-
     private void iniciarWebView(){
         webView = findViewById(R.id.webView);
         webView.setWebViewClient(new MyBrowser());
@@ -96,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
 
     // pedir permisos
     private void darPermisosApp(){
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
+                != PackageManager.PERMISSION_GRANTED) {
+            Log.i(Constants.TAG, "permisos ok para activity");
+        }
+
         String[] permissions = {
                 Manifest.permission.INTERNET,
                 Manifest.permission.ACCESS_NETWORK_STATE,
@@ -103,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.BLUETOOTH,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACTIVITY_RECOGNITION,
         };
         int PERMISSION_ALL = 1;
         if (!hasPermissions(this, permissions)) {

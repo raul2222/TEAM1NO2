@@ -21,6 +21,7 @@ import es.upv.inodos.adapters.Firebase;
 import es.upv.inodos.common.Constants;
 import es.upv.inodos.common.MySingletonClass;
 import es.upv.inodos.data.Medicion;
+import es.upv.inodos.services.BackgroundDetectedActivitiesService;
 import es.upv.inodos.services.MonitorService;
 import es.upv.inodos.workers.NotificationWorker;
 import es.upv.inodos.workers.NotificationWorkerTitle;
@@ -65,6 +66,13 @@ public class SystemUtils {
             monitorServiceIntent.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
             ContextCompat.startForegroundService(context, monitorServiceIntent);
         }
+
+        if (!es.upv.inodos.utils.SystemUtils.isServiceRunning(context, ".services.BackgroundDetectedActivitiesService")) {
+            Intent monitorServiceIntent = new Intent(context, BackgroundDetectedActivitiesService.class);
+            monitorServiceIntent.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
+            ContextCompat.startForegroundService(context, monitorServiceIntent);
+        }
+
     }
 
     public static int enviarDatosServidor(Medicion medicion){

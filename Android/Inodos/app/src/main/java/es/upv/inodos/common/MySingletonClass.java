@@ -15,6 +15,7 @@ public class MySingletonClass {
     private String mensajeNotificacion;
     private String mensajeNotificacionTitle;
     private int contador_Sensor;
+    private boolean hibernation;
 
     public String getMensajeNotificacionTitle() {
         return mensajeNotificacionTitle;
@@ -38,5 +39,13 @@ public class MySingletonClass {
 
     public void setContador_Sensor(int contador_Sensor) {
         this.contador_Sensor = contador_Sensor;
+    }
+
+    public boolean isHibernation() {
+        return hibernation;
+    }
+
+    public void setHibernation(boolean hibernation) {
+        this.hibernation = hibernation;
     }
 }

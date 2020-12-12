@@ -3,7 +3,7 @@ package es.upv.inodos.common;
 public class Constants {
     public static final String TAG = "Inodos";
     public static final String MONITOR_SERVICE_DESCRIPTION = "Servicios habilitados correctamente";
-    public static final int TIMER_DELAY = 10000;
+    public static final int TIMER_DELAY = 2000;
     public static final int TIMER_INTERVAL = 1000*60*1;
     public static final String CHANNEL_ID = "MonitorServiceChannel";
     public static final String name_notification = "Inodos";
@@ -19,6 +19,21 @@ public class Constants {
 
 
     public static final int Tiempo_Envios = 60;
+
+    public static final String BROADCAST_DETECTED_ACTIVITY = "activity_intent";
+
+    public static final long DETECTION_INTERVAL_IN_MILLISECONDS = 30 * 1000;
+
+    public static final int CONFIDENCE = 70;
+
+    public static final int IN_VEHICLE = 0;
+    public static final int ON_BICYCLE = 1;
+    public static final int ON_FOOT = 2;
+    public static final int STILL = 3;
+    public static final int UNKNOWN = 4;
+    public static final int TILTING = 5;
+    public static final int WALKING = 7;
+    public static final int RUNNING = 8;
 
 
 

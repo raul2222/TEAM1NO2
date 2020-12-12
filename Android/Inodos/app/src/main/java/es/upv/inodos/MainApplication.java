@@ -13,7 +13,6 @@ import io.realm.RealmConfiguration;
 
 public class MainApplication  extends Application {
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate() {
         super.onCreate();

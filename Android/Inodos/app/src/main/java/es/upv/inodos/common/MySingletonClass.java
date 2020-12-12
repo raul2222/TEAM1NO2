@@ -14,6 +14,7 @@ public class MySingletonClass {
 
     private String mensajeNotificacion;
     private String mensajeNotificacionTitle;
+    private int contador_Sensor;
 
     public String getMensajeNotificacionTitle() {
         return mensajeNotificacionTitle;
@@ -29,5 +30,13 @@ public class MySingletonClass {
 
     public void setmensajeNotificacion(String value) {
         this.mensajeNotificacion = value;
+    }
+
+    public int getContador_Sensor() {
+        return contador_Sensor;
+    }
+
+    public void setContador_Sensor(int contador_Sensor) {
+        this.contador_Sensor = contador_Sensor;
     }
 }

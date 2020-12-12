@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 
 import es.upv.inodos.common.Constants;
 import es.upv.inodos.data.SystemItem;
+import es.upv.inodos.utils.SystemUtils;
 import es.upv.inodos.workers.NotificationWorker;
 import io.realm.Realm;
 
@@ -59,7 +60,8 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
         }else{
             value = "Bluetooth ins'n connected";
         }
-
+        SystemUtils.sendLocalNotification(value);
+        /*
         OneTimeWorkRequest.Builder workBuilder = new OneTimeWorkRequest.Builder(NotificationWorker.class)
                 .setInitialDelay(15, TimeUnit.SECONDS)
                 .setInputData(new Data.Builder().putString("text",value)
@@ -67,8 +69,8 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver {
 
         WorkManager.getInstance().enqueueUniqueWork("Notification",  ExistingWorkPolicy.REPLACE,
                 workBuilder.build());
-
-        //TODO: DE MOMENTO NO SE GRABAN ESTOS EVENTOS
+*/
+        //TODO: DE MOMENTO NO SE GRABAN ESTOS DATOS
         /*
         Realm realm = Realm.getDefaultInstance();
         realm.beginTransaction();

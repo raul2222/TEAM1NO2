@@ -1,11 +1,9 @@
 package es.upv.no2v1;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -14,13 +12,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Firebase  {
-    private static final String CHANNEL_ID = "112";
+public class Firebase {
     private static String ETIQUETA_LOG = "no2";
     FirebaseFirestore db = FirebaseFirestore.getInstance(); //inicializamos aqui firebase para almacenar
-    private int LimiteConcentracion = 100;
-    private MainActivity main;
-
     public Firebase(){
 
     }
@@ -34,6 +28,7 @@ public class Firebase  {
         dato.put("Valor", valor);
         dato.put("Momento", momento);
         dato.put("Bateria", bateria);
+
 
 
         db.collection("Mediciones").document().set(dato)//aqui accedemos a la coleccion creada en firebase donde se almacenaran los valores anterrioires
@@ -51,33 +46,8 @@ public class Firebase  {
                 });
 
         //Comprobar valor máximo y si supera el límite llamar a EnviarNotificación
-        /*
-        LimiteConcentracion = 101;
-        if (Integer.parseInt( valor) > LimiteConcentracion){
-            notificacionLimite();
-        }*/
-
 
     }
-/*
-    private void notificacionLimite(){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                .setSmallIcon(R.drawable.common_google_signin_btn_icon_light_normal)
-                .setContentTitle("Limite excedido")
-                .setContentText("Aire tóxico")
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText("Aire tóxico"))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        //NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-
-        // notificationId is a unique int for each notification that you must define
-        //notificationManager.notify(notificationId, builder.build());
-        builder.notify();
-
-    }*/
-
-
 }
 
 

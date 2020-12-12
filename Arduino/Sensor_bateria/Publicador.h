@@ -26,7 +26,7 @@ public:
   EmisoraBLE laEmisora {
 	"TEAM1NO2", //  nombre emisora
 	  0xF11F, // fabricanteID
-	  4 // txPower
+	  3 // txPower
 	  };
   
   const int RSSI = -53; // por poner algo, de momento no lo uso

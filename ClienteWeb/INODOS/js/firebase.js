@@ -1,16 +1,13 @@
 var db = firebase.firestore();
 
-var res = [];
-
 function getMediciones(){
     console.log("hola");
     heatMapData = [];
     db.collection("Mediciones").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
-            var w = 1;
+            var w = (doc.data().Medicion * 3)/100;
             heatMapData.push({location: new google.maps.LatLng(doc.data().Latitud, doc.data().Longitud), weight: w})
-            res.push({location: new google.maps.LatLng(doc.data().Latitud, doc.data().Longitud), weight: w, date: doc.data().Momento})
         })
         
         heatmap = new google.maps.visualization.HeatmapLayer({
@@ -61,30 +58,5 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     }).catch(function(error) {
         console.log("Error intentando coger el documento: ", error);
     });
-<<<<<<< HEAD
-}
->>>>>>> develop
-=======
-
-    
-}
-
-function aplicarIntervaloDeTiempo(){
-    heatMapData = []
-    heatmap.setMap(null)
-    var fechaInicio = new Date(document.getElementById("fechaInicio").value).getTime() / 1000
-    var fechaFin = new Date(document.getElementById("fechaFin").value).getTime() / 1000
-    console.log(fechaInicio + " " + fechaFin)
-    console.log(res)
-    for(var i = 0; i < res.length; i++){
-        if(res[i].date >= fechaInicio && res[i].date <= fechaFin){
-            heatMapData.push({location: res[i].location, weight: res[i].weight})
-        }
-    }
-    console.log(heatMapData)
-    heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatMapData
-    });
-    heatmap.setMap(map);
 }
 >>>>>>> develop

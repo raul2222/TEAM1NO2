@@ -13,9 +13,13 @@ public class Constants {
     // TODO
     public static final String SerialNumber = "F5:81:CF:8C:08:78";
 
-    public static final int tiempo = 1;
-    public static final int distancia = 20;
-    public static final int Tiempo_Envios = 59;
+    public static final int Interval_Lectura_GPS = 1;
+    public static final int distancia_GPS = 15;
+    public static final int Min_Radius_GPS_Accuracy = 25;
+
+
+    public static final int Tiempo_Envios = 60;
+
 
 
 }

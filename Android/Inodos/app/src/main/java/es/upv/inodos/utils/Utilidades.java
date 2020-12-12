@@ -2,14 +2,47 @@
 package es.upv.inodos.utils;
 
 
+import android.content.ContentValues;
+import android.util.Log;
+
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.util.UUID;
+
+import es.upv.inodos.common.MySingletonClass;
+import es.upv.inodos.data.Medicion;
 
 // -----------------------------------------------------------------------------------
 // @author: Jordi Bataller i Mascarell
 // -----------------------------------------------------------------------------------
 public class Utilidades {
+
+    public static void parseRead(String name, String distan, Medicion medicion){
+        try {
+            String[] parts = name.split(" ");
+            String cont = parts[0];
+            String valor = parts[1];
+            String temperatura = parts[2];
+            String bateria = parts[3];
+            if (MySingletonClass.getInstance().getContador_Sensor() != Integer.valueOf(parts[0])) { // si no se repite el cont
+                MySingletonClass.getInstance().setContador_Sensor(Integer.valueOf(parts[0]));
+                medicion.setValor(valor);
+                medicion.setBat(bateria);
+                medicion.setContador(Integer.valueOf(cont));
+                medicion.setTemperatura(temperatura);
+                medicion.setDistancia(distan);
+                medicion.setIdsen("1"); // TODO
+                medicion.setMomento(String.valueOf(Utilidades.getMomento()));
+            }
+        } catch (Exception ex){
+            Log.i(ContentValues.TAG, ex.toString());
+        }
+    }
+
+    public static long getMomento() {
+        // devuelve el tiempo en formato unix
+        return System.currentTimeMillis()/1000;
+    }
 
     public static double calculateDistance(int txPower, double rssi) {
         if (rssi == 0) {

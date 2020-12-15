@@ -7,6 +7,7 @@ body {
     background-size: cover;
     font-family: 'Raleway', sans-serif;
 }
+
 h1 {
     margin: 0;
     color: #ffffff;
@@ -33,6 +34,15 @@ p.w3l-register-p {
     text-align: center;
     margin-top: 1em;
 }
+
+.close {
+    top: 2px;
+    width: 10px;
+    height: 90px;
+    position: relative;
+    bottom: 50px;
+}
+
 
 .w3l-login-form {
     background: rgba(0, 0, 0, 0.4117647058823529);
@@ -134,10 +144,14 @@ p.copyright-agileinfo {
     font-weight: 300;
 }
 
+
+
 footer p a {
     display: inline-block;
     color: #000;
     text-decoration: underline;
+    font-weight: bold;
+    text-shadow: #7ac143;
 }
 
 footer p a:hover {
@@ -148,12 +162,19 @@ footer p a:hover {
     -moz-transition: 0.5s all;
     -ms-transition: 0.5s all;
     transition: 0.5s all;
+    text-shadow: #7ac143;
+    font-weight: bold;
 }
 
 footer {
     padding: 4em 0;
     text-align: center;
+    text-shadow: #7ac143;
+    font-weight: bold;
+
 }
+
+
 /*--//footer--*/
 
 /*-- /responsive design --*/

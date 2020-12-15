@@ -47,9 +47,6 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
               // doc.data() is never undefined for query doc snapshots
               console.log(doc.id, " => ", doc.data());
           });*/
-      
-
-
       .catch(function(error) {
           console.log("Error getting documents: ", error);
       })

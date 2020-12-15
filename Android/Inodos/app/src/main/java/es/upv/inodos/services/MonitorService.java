@@ -50,6 +50,7 @@ public class MonitorService extends Service implements LocationListener {
     private long startScanTotalTime = 0;
     private int numCallGps = 0;
     private String estadoGps = "";
+    private int valorExcedidoFkae = 700;
 
 
     public MonitorService() {    }
@@ -83,6 +84,7 @@ public class MonitorService extends Service implements LocationListener {
         medicion = new Medicion();
         MySingletonClass.getInstance().setContador_Sensor(0);
         MySingletonClass.getInstance().setHibernation(false);
+        compruebaLimite();
 
         return START_STICKY;
     }
@@ -209,6 +211,13 @@ public class MonitorService extends Service implements LocationListener {
                 SystemUtils.sendLocalNotificationTitle("High performance");
             }
             estadoGps = "alto";
+        }
+    }
+
+    private void compruebaLimite(){
+        if ( valorExcedidoFkae >= 650){
+            SystemUtils.sendLocalNotification("SE ha excedido el limite!!! " + "El valor de NO2 es de:" + valorExcedidoFkae);
+            Log.d("limite excedido","Aqui se envia notificacion por exceso de valor de NO2");
         }
     }
 

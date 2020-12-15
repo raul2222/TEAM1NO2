@@ -41,6 +41,10 @@ public class Avisador {
              @Override
              public void nuevaLocacion() {
                  Log.d(ETIQUETA_LOG,"llamada a enviarFirebase desde cambio de localizacion");
+<<<<<<< HEAD
+=======
+                 ultimaMedicion = medicion.getUltimaMedicion();
+>>>>>>> develop
                  enviarFirebase();
              }
         });

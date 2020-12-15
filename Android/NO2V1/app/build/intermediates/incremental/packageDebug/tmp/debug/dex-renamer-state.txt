@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 #Thu Nov 26 11:15:35 CET 2020
+=======
+<<<<<<< Updated upstream
+#Fri Nov 27 11:29:44 CET 2020
+=======
+#Fri Nov 27 11:31:01 CET 2020
+>>>>>>> Stashed changes
+>>>>>>> develop
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex

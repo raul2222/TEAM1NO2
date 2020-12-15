@@ -13,17 +13,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LMV405UA77e2548a]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -84,7 +79,9 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-26T14:38:09.122Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Inodos" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -212,6 +209,11 @@
       <screen x="2560" y="-476" width="1440" height="2537" />
     </state>
     <state x="2881" y="463" key="AndroidCreateResourceDirectoryDialog/2560.-476.1440.2537/0.23.2560.1364@2560.-476.1440.2537" timestamp="1606567855366" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1608049831959">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1920.6.1920.1040@0.0.1920.1040" timestamp="1608049831959" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608046787782" />
     <state width="1264" height="487" key="GridCell.Tab.0.bottom" timestamp="1606572746444">
       <screen x="2560" y="-476" width="1440" height="2537" />
     </state>

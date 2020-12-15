@@ -34,7 +34,6 @@
 }
 
 .caja {
-    justify-content: center;
     background-color: #F5F5F5;
     width: 250px;
     height: 250px;
@@ -53,7 +52,13 @@
     text-align: center;
 }
 
-
+@media (max-width: 1050px) {
+ 	.contenido {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+}
 
 
 

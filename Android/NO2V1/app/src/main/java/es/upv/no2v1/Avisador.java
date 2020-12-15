@@ -24,7 +24,7 @@ public class Avisador {
     private DetectarBeacon deciBeacon;
     private Firebase fb;
     private int contadorInactividad = 0;
-    private String ultimaMedicion;
+    private Long ultimaMedicion;
 
     // Contructor de la clase
     public Avisador(int minutos, int distancia, Activity mainActivity){
@@ -130,13 +130,13 @@ public class Avisador {
     }
 
     private void comprobarInactividad(){
-        ultimaMedicion = Long.toString(new Momento().getMomento());
+        ultimaMedicion = new Momento().getMomento();
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 Log.d("INACTIVIDAD: ", "entro al run");
-                if(new Momento().getMomento() - Long.parseLong(ultimaMedicion) >= 60){
+                if(new Momento().getMomento() - ultimaMedicion >= 60){
                     Log.d("INACTIVIDAD: ", "hay inactividad de 60s");
                     contadorInactividad++;
                 }

@@ -7,9 +7,14 @@ var cont = 0;
 // markerUbicacion() --> 
 //------------------------------------------//
 //------------------------------------------//
-/*
 
-
+function markerUbicacion(){
+    /*db.collection("Mediciones").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            latlong.push({lat: doc.data().latitud, lng: doc.data().longitud})
+            console.log("pongo una posicion")
+        })
+    })*/
     if(cont > 0){
         marker.setMap(null)
     }
@@ -26,9 +31,20 @@ var cont = 0;
         })
     })
     
-     
+        
+        /*ubicacion = new google.maps.visualization.HeatmapLayer({
+            data: latlong
+        });*/
+        
+    
+        /*const marker = new google.maps.Marker({
+            position: latlong[0],
+            map: map,
+        });*/
+        
+        //ubicacion.setMap(map);
 }
 
+//setInterval(markerUbicacion, 20000);
 
-*/
 

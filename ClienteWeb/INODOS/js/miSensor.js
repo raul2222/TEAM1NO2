@@ -1,24 +1,78 @@
+var db = firebase.firestore();
+
+const ultimasMediciones = [];
+const ultimosMomentos = [];
+var contador = 0; 
+
+function dibujarGraficaConUltimas5Mediciones(){ //Funcion para obtener la información acerca de MiSensor
+    
+    console.log("Si que entra en la función");
+    
+      
+
+    db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+  
+        if(contador <= 4){
+          ultimoValor = doc.data().Valor; // cojo tadas mediciones del sensor
+          ultimoMomento = doc.data().Momento;
+          ultimasMediciones.push(ultimoValor);
+          ultimosMomentos.push(ultimoMomento);
+          contador++;
+        }
+
+        console.log("Ultimas mediciones: " + ultimosMomentos[4]);
+
+        var ctxL = document.getElementById("lineChart").getContext('2d');
+            var myLineChart = new Chart(ctxL, {
+                type: 'line',
+                data: {
+                    labels: [
+                        "", 
+                        "", 
+                        "", 
+                        "", 
+                        ""
+                    ],
+                    datasets: [{
+                        label: "Últimas 5 Mediciones",
+                        data: [
+                            ultimasMediciones[0], 
+                            ultimasMediciones[1], 
+                            ultimasMediciones[2], 
+                            ultimasMediciones[3], 
+                            ultimasMediciones[4]],
+                        backgroundColor: [
+                        'rgba(209, 238, 222, .5)',
+                        ],
+                        borderColor: [
+                        'rgba(209, 238, 222, 1)',
+                        ],
+                        borderWidth: 2
+                    }
+                    ]
+                },
+                options: {
+                responsive: true
+                }
+            });
+      });
+  
+    }).catch(function(error) {
+        console.log("Error getting documents: ", error);
+    })
+    
+  }
+
+
+
 //Aquí vamos a dar los valores para la gráfica
 //line
-var ctxL = document.getElementById("lineChart").getContext('2d');
-var myLineChart = new Chart(ctxL, {
-    type: 'line',
-    data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [{
-            label: "My First dataset",
-            data: [65, 59, 80, 81, 56, 55, 40],
-            backgroundColor: [
-            'rgba(105, 0, 132, .2)',
-            ],
-            borderColor: [
-            'rgba(200, 99, 132, .7)',
-            ],
-            borderWidth: 2
-        }
-        ]
-    },
-    options: {
-    responsive: true
-    }
-});
+
+function dibujarGrafica(){
+
+        console.log("Ultimas mediciones: " + ultimasMediciones);
+
+        
+
+}

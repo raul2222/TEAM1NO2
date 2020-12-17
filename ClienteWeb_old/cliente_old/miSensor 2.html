@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MiSensor</title>
+    
+    <link href="./styles/miSensor.css" rel="stylesheet">
+    
+</head>
+<body onload="getInfoMiSensor()">
+    
+    <header> <!-- Esto es el HEADER -->
+        <img src="./recursos/sensor.png" alt="">
+        <nav>
+            <ul class="nav_links">
+                <li><a href="miSensor.html">Mi Sensor</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="infoPagina">
+       <div class="contenidoInfoPagina">
+            <h1>Información sobre mi sensor</h1>
+            <br>
+            <p>En esta sección de nuestra página web, el usuario podrá acceder a los datos "más" profundos acerca de su sensor.
+                Tendrá la opción de ver datos como la latitud, la longitud, el número de serie... de una manera muy práctica y visual, con iconos que guiarán al usuario a través de la página. <br> 
+       </div>
+    </div>
+    
+    <div class="contenido"> <!-- Esto es el CONTENIDO de la pagina -->
+        <div class="primeraColumna">
+            <div class="caja">
+              <img src="./recursos/location.png" alt="">
+              <br>
+              <p style="font-weight: 700">Latitud:</p>
+               <p id="Latitud"></p>
+            </div>
+            <br>
+            <div class="caja">
+               <img src="./recursos/location.png" alt="">
+               <br>
+               <p style="font-weight: 700">Longitud:</p>
+                <p id="Longitud"></p>
+            </div>
+        </div>
+        <div class="segundaColumna">
+           <div class="caja">
+              <img src="./recursos/numeroSerie.png" alt="">
+              <br>
+              <p style="font-weight: 700">Numero de serie:</p>
+               <p id="NumSerie"></p>
+           </div>
+            <br>
+            <div class="caja">
+               <img src="./recursos/momento.png" alt="">
+               <br>
+               <p style="font-weight: 700">Momento Unix:</p>
+                <p id="MomentoUnix"></p>
+            </div>
+        </div>
+           <div class="terceraColumna">
+           <div class="caja">
+              <img src="./recursos/idsensor.png" alt="">
+              <br>
+              <p style="font-weight: 700">ID del Sensor:</p>
+               <p id="IDSensor"></p>
+           </div>
+            <br>
+            <div class="caja">
+               <img src="./recursos/valor.png" alt="">
+               <br>
+               <p style="font-weight: 700">Valor:</p>
+                <p id="Valor"></p>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <!-- Conexion a Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script><!-- Conectamos con Firestore -->
+      
+        <script>
+            var firebaseConfig = {
+                apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
+                authDomain: "basedatosproyecto3ag1.firebaseapp.com",
+                databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
+                projectId: "basedatosproyecto3ag1",
+                storageBucket: "basedatosproyecto3ag1.appspot.com",
+                messagingSenderId: "765295987499",
+            };
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        
+        <script src="./js/firebase.js"></script> 
+    
+</body>
+</html>

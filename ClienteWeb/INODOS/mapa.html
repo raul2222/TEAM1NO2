@@ -89,6 +89,7 @@
 						alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
+                    <li><a href="login.html">Iniciar Sesión</a></li>
 					<li><a href="index.html">Home</a></li>
 					<li class="fh5co-active"><a href="mapa.html">Mapa</a></li>
 					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#intervalModal">
@@ -115,26 +116,10 @@
 
 		</aside>
 
-		<div class="modal" id="intervalModal" style="z-index: 2000;" tabindex="-1" role="dialog" aria-labelledby="intervalModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-			  <div class="modal-content">
-				<div class="modal-header">
-				  <h5 class="modal-title" id="intervalModalLabel">Elegir intervalo</h5>
-				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="modal-body">
-				  <input type="date" id="fechaInicio" class="form-control">
-				  <input type="date" id="fechaFin" class="form-control">
-				</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-				  <button type="button" id="intervalButton" onclick="aplicarIntervaloDeTiempo()" class="btn btn-primary">Obtener</button>
-				</div>
-			  </div>
-			</div>
-		  </div>
+		<div id="map"></div>
+
+
+		
 
 		<!--
 
@@ -276,8 +261,30 @@
 		</div>
 		-->
 
-		<div id="fh5co-main">
-			<div id="map"></div>
+
+		<div class="modal" id="intervalModal" style="z-index: 2000;" tabindex="-1" role="dialog" aria-labelledby="intervalModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="intervalModalLabel">Elegir intervalo</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <input type="date" id="fechaInicio" class="form-control">
+				  <input type="date" id="fechaFin" class="form-control">
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				  <button type="button" id="intervalButton" onclick="aplicarIntervaloDeTiempo()" class="btn btn-primary">Obtener</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+
+
 
 
 			<!-- Central Modal Medium Info -->
@@ -350,7 +357,6 @@
 			<script src="js/firebase.js"></script>
 
 
-		</div>
 
 	</div>
 

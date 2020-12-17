@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\sauli\\OneDrive\\Escritorio\\GTI\\3 GTI\\1 CUATRI\\PROYECTO BIOMETRIA\\GIT\\TEAM1NO2\\Android\\Inodos\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\sauli\\.gradle\\caches\\transforms-2\\files-2.1\\65657c334d8ee882d7515ad5028f6f19\\appcompat-1.2.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

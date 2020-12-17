@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-#Fri Nov 27 11:29:44 CET 2020
-=======
-#Fri Nov 27 11:31:01 CET 2020
->>>>>>> Stashed changes
+#Mon Dec 07 13:23:28 CET 2020
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex

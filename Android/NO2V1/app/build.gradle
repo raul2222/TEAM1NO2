@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "es.upv.no2v1"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,11 @@ android {
 }
 
 dependencies {
+
+    def work_version = "2.4.0"
+
+    // (Java only)
+    implementation "androidx.work:work-runtime:$work_version"
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.2.1'

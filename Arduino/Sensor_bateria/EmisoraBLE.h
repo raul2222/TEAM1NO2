@@ -24,13 +24,19 @@
 // ----------------------------------------------------------
 class EmisoraBLE {
 private:
-
-  const char * nombreEmisora;
+  
+  String nombreEmisora;
   const uint16_t fabricanteID;
   const int8_t txPower;
 
 public:
 
+  void setNameBle( char  nombreEmisora_[] ){
+      //nombreEmisora = nombreEmisora_;
+          
+      //Bluefruit.setName( nombreEmisora_ );
+      //Bluefruit.ScanResponse.addName(); // para que envíe el nombre de emisora (?!)
+  }
   // .........................................................
   // .........................................................
   using CallbackConexionEstablecida = void ( uint16_t connHandle );
@@ -38,7 +44,7 @@ public:
 
   // .........................................................
   // .........................................................
-  EmisoraBLE( const char * nombreEmisora_, const uint16_t fabricanteID_,
+  EmisoraBLE( String nombreEmisora_, const uint16_t fabricanteID_,
 			  const int8_t txPower_ ) 
 	:
 	nombreEmisora( nombreEmisora_ ) ,
@@ -97,7 +103,8 @@ public:
   void detenerAnuncio() {
 
 	if ( (*this).estaAnunciando() ) {
-	  // Serial.println ( "Bluefruit.Advertising.stop() " );
+
+    
 	  Bluefruit.Advertising.stop(); 
 	}
 
@@ -111,12 +118,15 @@ public:
 
   // .........................................................
   // .........................................................
-  void emitirAnuncioIBeacon( uint8_t * beaconUUID, int16_t major, int16_t minor, uint8_t rssi ) {
+  void emitirAnuncioIBeacon( uint8_t * beaconUUID, int16_t major, int16_t minor, uint8_t rssi , String nom) {
 
 	//
 	//
 	//
+	  //(*this).nombreEmisora = nom;
   	(*this).detenerAnuncio();
+    Bluefruit.Advertising.clearData();
+    Bluefruit.ScanResponse.clearData(); 
   	
   	//
   	// creo el beacon 
@@ -129,7 +139,11 @@ public:
   	//
   
   	Bluefruit.setTxPower( (*this).txPower );
-  	Bluefruit.setName( (*this).nombreEmisora );
+  	//Bluefruit.setName( (*this).nombreEmisora );
+    char nombre[25]; 
+    nom.toCharArray(nombre, nom.length()+1); 
+    //Serial.println(nombre);
+    Bluefruit.setName(nombre);
   	Bluefruit.ScanResponse.addName(); // para que envíe el nombre de emisora (?!)
   
   	//
@@ -141,7 +155,7 @@ public:
   	// ? qué valorers poner aquí
   	//
   	Bluefruit.Advertising.restartOnDisconnect(true); // no hace falta, pero lo pongo
-  	Bluefruit.Advertising.setInterval(100, 100);    // in unit of 0.625 ms
+  	Bluefruit.Advertising.setInterval(120, 120);    // in unit of 0.625 ms
   
   	//
   	// empieza el anuncio, 0 = tiempo indefinido (ya lo pararán)
@@ -202,7 +216,7 @@ public:
 	Bluefruit.ScanResponse.clearData(); // hace falta?
 
 	// Bluefruit.setTxPower( (*this).txPower ); creo que no lo pongo porque es uno de los bytes de la parte de carga que utilizo
-	Bluefruit.setName( (*this).nombreEmisora );
+	//Bluefruit.setName( (*this).nombreEmisora );
 	Bluefruit.ScanResponse.addName();
 
 	Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);

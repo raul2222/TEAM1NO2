@@ -62,16 +62,22 @@ namespace Globales {
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
-  // Esperar 60 minutos para el heater del sensor
-  // delay(60*60*1000);
-
+  setLowPower();
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 
+
   
-  //Configure WDT for 120 seconds
+  // Esperar 200 minutos para el heater del sensor, debe de estabilizarse
+  for(int i = 0 ; i< 400 ; i++){
+    lucecitas();
+    delay(1000*30);
+  }
+
+  
+  //Configure WDT for 60 seconds
   
   NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = (3932159 / 3);    // now(120s/3) CRV = timeout * 32768 + 1
+  NRF_WDT->CRV            = (3932159 / 2);    // now(120s/2) CRV = timeout * 32768 + 1
   NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
   NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
@@ -82,25 +88,34 @@ void inicializarPlaquita () {
 // --------------------------------------------------------------
 void setup() {
 
+  delay(2000);
+  Serial.begin(9600);
+  delay(4000);
+  
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
-  // 
-  // 
+
   inicializarPlaquita();
 
   // Suspend Loop() to save power
   // suspendLoop();
 
-  // 
-  // 
+
   Globales::elPublicador.encenderEmisora();
 
   // Globales::elPublicador.laEmisora.pruebaEmision();
-  // 
-  // 
+
   Globales::elMedidor.iniciarMedidor();
 
+
+/*
+  Serial.println("empieza");delay(2000);
+  Serial.println("calibrando");
+  Globales::elMedidor.calibradoZero();
+  Serial.println("continuaaaa");
+  delay(600*600*600);
+  */
   // 
   // 
   //Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
@@ -111,7 +126,7 @@ void setup() {
 // --------------------------------------------------------------
 inline void lucecitas() {
   using namespace Globales;
-  elLED.brillar( 40 ); // 40 encendido
+  elLED.brillar( 30 ); // 40 encendido
   esperar ( 10 ); //  10 apagado
 } // ()
 
@@ -130,7 +145,7 @@ void loop () {
 
   using namespace Loop;
   using namespace Globales;
-
+  
   cont++;
 
   //elPuerto.escribir( "\n---- loop(): empieza " );
@@ -141,11 +156,37 @@ void loop () {
 
   // 
   // mido y publico
-  // 
-  battery = bat.obtenerPorcentaje();
-  int valorNO2 = elMedidor.medirNO2();
+  //
 
-  elPublicador.publicarNO2( valorNO2,
+  //Serial.println(cont % 5 == 0);
+
+  if(((cont % 150) == 0) || (cont==5)){
+    battery = bat.obtenerPorcentaje();
+  }
+  
+  int valorNO2 [11];
+  elMedidor.medirNO2(valorNO2);
+  
+  // autocalibrado
+
+  if( (millis() > (60 * 1000 * 60 * 8)) && (valorNO2[1] < 0) && ((cont % 220) == 0) ) {
+      elMedidor.calibradoZero();
+  }
+
+  //String data;
+  String data;
+  data = cont; data = data + " ";
+  data = data + valorNO2[1]; data = data + " ";
+  data = data + valorNO2[2]; data = data + " ";
+  data = data + battery; data = data + " ";
+  //relleno hasta 25 con asteriscos
+  for (int i = data.length()+1; i<=25; i++){
+    data = data + "*";
+  }
+
+  elPublicador.setName(data);
+  
+  elPublicador.publicarNO2(1,
 							cont,
 							1000, // intervalo de emisión
 							battery);
@@ -184,7 +225,7 @@ void loop () {
   tiempo = 0;
   while (tiempo <= 2) {
       setLowPower();
-      delay(5900);
+      delay(2000);
       tiempo++;
   }
   

@@ -13,7 +13,7 @@
 #define PIN_VBAT   A3   
 #define PIN_MOSFET   19
 #define VBAT_MV_PER_LSB   (0.73242188F)   // 3.0V ADC range and 12-bit ADC resolution = 3000mV/4096
-#define VBAT_DIVIDER      (0.5F)          // 150K + 150K voltage divider on VBAT
+#define VBAT_DIVIDER      (0.5F)          // 10K + 10K voltage divider on VBAT
 #define VBAT_DIVIDER_COMP (2.0F)          // Compensation factor for the VBAT divider
 #define REAL_VBAT_MV_PER_LSB (VBAT_DIVIDER_COMP * VBAT_MV_PER_LSB)
 
@@ -24,7 +24,7 @@ private:
 
   Arduino_nRF5x_lowPower low;
   uint32_t vbat_pin = PIN_VBAT; 
-
+  
   // readVBAT -> float
   float readVBAT(void) {
       low.enableDCDC();
@@ -45,6 +45,7 @@ private:
       analogReference(AR_DEFAULT);
       analogReadResolution(10);
       //Disable Mosfet because the current flow to ground
+      //Serial.println(raw * REAL_VBAT_MV_PER_LSB);
       stopMosfet();
       low.disableDCDC();
       // Convert the raw value to compensated mv, taking the resistor-
@@ -54,7 +55,8 @@ private:
   }//()
 
   // float -> mvToPercent-> uint8_T
-  uint8_t mvToPercent(float mvolts) {
+  float mvToPercent(float mvolts) {
+      //Serial.println(mvolts);
       if(mvolts<3300)
         return 0;
     
@@ -63,41 +65,49 @@ private:
         return mvolts/30;
       }
       mvolts -= 3600;
-      uint8_t res = 14.7 + (mvolts * 0.15F );
+      float res = 14.7 + (mvolts * 0.15F );
       if (res > 100){
         return 100;
       }
       return res;  // thats mvolts /6.66666666
   }
 
+
+
+     /* nrf_gpio_cfg(PIN_VBAT,
+    NRF_GPIO_PIN_DIR_OUTPUT,
+    NRF_GPIO_PIN_INPUT_DISCONNECT,
+    NRF_GPIO_PIN_NOPULL,
+    NRF_GPIO_PIN_S0D1,*/
+
 public:
+
+  void stopMosfet(void){
+    digitalWrite(PIN_MOSFET, HIGH);
+    //nrf_gpio_cfg(vbat_pin, NRF_GPIO_PIN_INPUT_DISCONNECT);
+  }
 
   // .........................................................
   // .........................................................
   BATTERY () {
+    //nrf_gpio_cfg(PIN_VBAT, NRF_GPIO_PIN_NOPULL);
     pinMode(PIN_MOSFET, OUTPUT);
     digitalWrite(PIN_MOSFET, LOW);
   }
 
-  void stopMosfet(void){
-    digitalWrite(PIN_MOSFET, HIGH);
-  }
-
   // .........................................................
-  // obtenerProcerntaje -> uint8_T
+  // obtenerProcerntaje -> uint8_t
   uint8_t obtenerPorcentaje(){
     float vbat_mv = 0;
-    float vbat_temp = 0;
-    for(int i=0;i<=20;i++){
-      vbat_temp = readVBAT();
-      if(vbat_temp > vbat_mv){
-        vbat_mv = vbat_temp;
-      }
-     delay(2);
+    int i;
+    for(i=0;i<=10;i++){
+      vbat_mv = vbat_mv + readVBAT();
+     delay(1);
     }
-
+    //float res = vbat_mv/i;
+    //Serial.println(res);
     // Convert from raw mv to percentage (based on LIPO chemistry)
-    return mvToPercent(vbat_mv);
+    return mvToPercent(vbat_mv/i);
   }
 
   // .........................................................

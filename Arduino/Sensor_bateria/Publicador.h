@@ -20,27 +20,35 @@ private:
 	'-', '1', 'N', 'O', '2', '-', '3', 'A'
 	};
 
+
   // ............................................................
   // ............................................................
 public:
   EmisoraBLE laEmisora {
-	"TEAM1NO2", //  nombre emisora
+	  buffer1, //  nombre emisora
 	  0xF11F, // fabricanteID
 	  4 // txPower
 	  };
   
   const int RSSI = -53; // por poner algo, de momento no lo uso
-
+  
+  String buffer1 ;
   // ............................................................
   // ............................................................
 public:
+
+    void setName(String nombre ){
+      buffer1 = nombre;
+      //Serial.println(buffer1);
+    }
 
   // ............................................................
   // ............................................................
   enum MedicionesID  {
   	NO2 = 1,
   	TEMPERATURA = 2,
-  	RUIDO = 3
+  	RUIDO = 3,
+    BATTERY = 4
   };
 
   // ............................................................
@@ -72,6 +80,7 @@ public:
 											major,
 											valorNO2, // minor
 											(*this).RSSI // rssi
+                      ,buffer1
 									);
 
 
@@ -102,12 +111,14 @@ public:
 							uint8_t contador, long tiempoEspera ) {
 
 	uint16_t major = (MedicionesID::TEMPERATURA << 8) + contador;
+ /*
 	(*this).laEmisora.emitirAnuncioIBeacon( (*this).beaconUUID, 
 											major,
 											valorTemperatura, // minor
 											(*this).RSSI // rssi
 									);
 	esperar( tiempoEspera );
+  */
 
 	(*this).laEmisora.detenerAnuncio();
   } // ()

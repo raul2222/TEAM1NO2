@@ -251,11 +251,17 @@ height: 100%;
 }
 
 .titulo {
-  color: #7fffd4;
   font-size: 80px;
   text-align: center;
-  margin: 20px;
-  text-decoration: underline wavy;  
+  margin: 30px;
+  text-shadow: -1px 0 #414D68, 0 1px #414D68, 1px 0 #414D68, 0 -1px #414D68, -2px 2px 0 #414D68, 2px 2px 0 #414D68, 1px 1px #414D68, 2px 2px #414D68, 3px 3px #414D68, 4px 4px #414D68, 5px 5px #414D68, 6px 6px #414D68, 7px 7px #414D68, 8px 8px #414D68, 9px 9px #414D68
+}
+
+#home-principal {
+  display:block;
+  margin:auto;
+  margin-top: 50px;
+  width: 1300px;
 }
 
 .container {

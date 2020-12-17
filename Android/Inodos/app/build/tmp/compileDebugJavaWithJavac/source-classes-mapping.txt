@@ -1,0 +1,53 @@
+es/upv/inodos/data/DeviceItem.java
+ es.upv.inodos.data.DeviceItem
+es/upv/inodos/activities/MainActivity.java
+ es.upv.inodos.activities.MainActivity
+ es.upv.inodos.activities.MainActivity$1
+ es.upv.inodos.activities.MainActivity$MyBrowser
+es/upv/inodos/data/Medicion.java
+ es.upv.inodos.data.Medicion
+es/upv/inodos/MainApplication.java
+ es.upv.inodos.MainApplication
+es/upv/inodos/workers/NotificationWorker.java
+ es.upv.inodos.workers.NotificationWorker
+es/upv/inodos/utils/Utilidades.java
+ es.upv.inodos.utils.Utilidades
+es/upv/inodos/receivers/BluetoothBroadcastReceiver.java
+ es.upv.inodos.receivers.BluetoothBroadcastReceiver
+es/upv/inodos/services/BackgroundDetectedActivitiesService.java
+ es.upv.inodos.services.BackgroundDetectedActivitiesService
+ es.upv.inodos.services.BackgroundDetectedActivitiesService$1
+ es.upv.inodos.services.BackgroundDetectedActivitiesService$2
+ es.upv.inodos.services.BackgroundDetectedActivitiesService$3
+ es.upv.inodos.services.BackgroundDetectedActivitiesService$4
+ es.upv.inodos.services.BackgroundDetectedActivitiesService$LocalBinder
+es/upv/inodos/services/DetectedActivitiesIntentService.java
+ es.upv.inodos.services.DetectedActivitiesIntentService
+es/upv/inodos/workers/SystemCheckWorker.java
+ es.upv.inodos.workers.SystemCheckWorker
+es/upv/inodos/adapters/SystemItemsAdapter.java
+ es.upv.inodos.adapters.SystemItemsAdapter
+ es.upv.inodos.adapters.SystemItemsAdapter$1
+ es.upv.inodos.adapters.SystemItemsAdapter$ViewHolder
+es/upv/inodos/common/Constants.java
+ es.upv.inodos.common.Constants
+es/upv/inodos/common/MySingletonClass.java
+ es.upv.inodos.common.MySingletonClass
+es/upv/inodos/BuildConfig.java
+ es.upv.inodos.BuildConfig
+es/upv/inodos/receivers/BootCompletedReceiver.java
+ es.upv.inodos.receivers.BootCompletedReceiver
+es/upv/inodos/workers/NotificationWorkerTitle.java
+ es.upv.inodos.workers.NotificationWorkerTitle
+es/upv/inodos/adapters/Firebase.java
+ es.upv.inodos.adapters.Firebase
+ es.upv.inodos.adapters.Firebase$1
+ es.upv.inodos.adapters.Firebase$2
+es/upv/inodos/data/SystemItem.java
+ es.upv.inodos.data.SystemItem
+es/upv/inodos/services/MonitorService.java
+ es.upv.inodos.services.MonitorService
+ es.upv.inodos.services.MonitorService$1
+ es.upv.inodos.services.MonitorService$2
+es/upv/inodos/utils/SystemUtils.java
+ es.upv.inodos.utils.SystemUtils

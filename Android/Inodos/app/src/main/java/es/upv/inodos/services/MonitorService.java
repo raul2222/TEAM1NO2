@@ -18,6 +18,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import androidx.annotation.Nullable;
@@ -50,7 +51,6 @@ public class MonitorService extends Service implements LocationListener {
     private long startScanTotalTime = 0;
     private int numCallGps = 0;
     private String estadoGps = "";
-
 
     public MonitorService() {    }
 
@@ -172,12 +172,11 @@ public class MonitorService extends Service implements LocationListener {
         timerTask = new TimerTask() {
             public void run() {
                 counter++;
-
-
                 /*if((counter% Constants.Tiempo_Envios) == 0) {
                     // enviar Datos al servidor
                     SystemUtils.enviarDatosServidor(medicion);
                 }*/
+
                 if((counter%15 == 0)){
                     SystemUtils.sendLocalNotification("Tiempo BLE: " + (startScanTotalTime/1000) +
                             " Total Gps: " + numCallGps);
@@ -196,7 +195,7 @@ public class MonitorService extends Service implements LocationListener {
         }
     }
 
-    private void checkGps() {
+    public void checkGps() {
         if (MySingletonClass.getInstance().isHibernation()) {
             if (estadoGps != "hibernacion") {
                 SystemUtils.sendLocalNotificationTitle("Hibernation");
@@ -212,7 +211,6 @@ public class MonitorService extends Service implements LocationListener {
         }
     }
 
-
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -221,6 +219,7 @@ public class MonitorService extends Service implements LocationListener {
                 if (state == BluetoothAdapter.STATE_ON) { }
                 } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
                     startScanAnterior = System.currentTimeMillis();
+                    checkGps();
                 } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                     startScanTotalTime = startScanTotalTime + (System.currentTimeMillis() - startScanAnterior);
                     //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class); //newIntent.putParcelableArrayListExtra("device.list", mDeviceList); //startActivity(newIntent);
@@ -232,14 +231,11 @@ public class MonitorService extends Service implements LocationListener {
                         String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
                         double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
                         Utilidades.parseRead(name, String.format("%.2f", distant), medicion);
-                        checkGps();
                         Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
                     }
             }
         }
     };
-
-
 
 
 

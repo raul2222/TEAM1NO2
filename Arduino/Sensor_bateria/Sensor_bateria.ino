@@ -68,13 +68,13 @@ void inicializarPlaquita () {
   
   // Esperar 200 minutos para el heater del sensor, debe de estabilizarse
   // Aparece 400 porque se incrementa en 30 seguntos
-  for(int i = 0 ; i< 400 ; i++){
+  for(int i = 0 ; i< 3 ; i++){
     lucecitas();
     delay(1000*20);
     NRF_WDT->RR[0] = WDT_RR_RR_Reload; 
   }
 
-
+  Serial.println("fin inicio");
 } // ()
 
 // --------------------------------------------------------------
@@ -135,6 +135,12 @@ namespace Loop {
   int tiempo = 0;
   uint8_t battery = 0;
   long baterryVolt = 0.0;
+  int exposicion_media_diaria_actual = 0;
+  int res_exposicion_media_diaria_actual = 0;
+  //uint16_t exposicion_media_diaria_actual_sentinel = 0;
+  int cont_diario = 0;
+  long previus_mills = 0;
+  int every_day = 1;
 };
 
 // ..............................................................
@@ -165,6 +171,7 @@ void loop () {
   
   int valorNO2 [11];
   elMedidor.medirNO2(valorNO2);
+
   
   // autocalibrado
 
@@ -175,6 +182,12 @@ void loop () {
 
   if(valorNO2[1] >= 0){
 
+      //estimacion media diaria
+    res_exposicion_media_diaria_actual = 0;  
+    cont_diario++;
+    exposicion_media_diaria_actual = exposicion_media_diaria_actual + valorNO2[1];
+    res_exposicion_media_diaria_actual = exposicion_media_diaria_actual / cont_diario;
+
     //String data;
     String data;
     data = cont; data = data + " ";
@@ -182,9 +195,11 @@ void loop () {
     data = data + valorNO2[2]; data = data + " ";
     data = data + battery; data = data + " ";
     data = data + baterryVolt; data = data + " ";
+    data = data + res_exposicion_media_diaria_actual; data = data + " ";
+    //data = data + cont_diario; data = data + " ";
     
-    //relleno hasta 25 con asteriscos
-    for (int i = data.length()+1; i<=25; i++){
+    //relleno hasta 29 con asteriscos
+    for (int i = data.length()+1; i<=29; i++){
       data = data + "*";
     }
     //Serial.println(data);
@@ -192,7 +207,7 @@ void loop () {
     
     elPublicador.publicarNO2(1,
   							cont,
-  							1000, // intervalo de emisión
+  							1150, // intervalo de emisión
   							battery);
     /*
     // mido y publico
@@ -223,6 +238,13 @@ void loop () {
     // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
     elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
     */
+    if( (millis() > (60 * 1000 * 60 * 24)) && (previus_mills > ((60 * 1000 * 60 * 24)*every_day)) ) {
+        previus_mills = millis();
+        every_day++;
+        // puesta a 0 los contadores despues de 24 horas para la exposion diaria
+        exposicion_media_diaria_actual = 0;
+        cont_diario = 0;
+    }
   
     elPublicador.laEmisora.detenerAnuncio();
   }

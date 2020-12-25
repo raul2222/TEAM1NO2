@@ -123,7 +123,6 @@ public class HeartService extends Service implements LocationListener {
 
         // configurar localizacion
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        //configureLocationUpdates(Constants.Interval_Lectura_GPS, Constants.distancia_GPS);
     }
 
     private void configureLocationUpdates(int minTime, int distance){
@@ -199,10 +198,12 @@ public class HeartService extends Service implements LocationListener {
             if (estadoGps != "hibernacion") {
                 SystemUtils.sendLocalNotificationTitle("Hibernation");
                 disableGpsUpdates();
+                //stopTimer(); // paramos el bluetooth
             }
             estadoGps = "hibernacion";
         } else {
             if (estadoGps != "alto") {
+                //startTimer();// marcha
                 configureLocationUpdates(Constants.Interval_Lectura_GPS, Constants.distancia_GPS);
                 SystemUtils.sendLocalNotificationTitle("High performance");
             }
@@ -214,26 +215,19 @@ public class HeartService extends Service implements LocationListener {
 
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            Log.d(TAG, action);
             if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-                if (state == BluetoothAdapter.STATE_ON) {
-
-                }
+                if (state == BluetoothAdapter.STATE_ON) {                }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
                 startScanAnterior = System.currentTimeMillis();
-                checkGps();
-                Log.d(TAG, "android 10 blue");
+                checkGps(); //TODO: NO ES LUGAR, HAY QUE PONERLO BIEN
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 startScanTotalTime = startScanTotalTime + (System.currentTimeMillis() - startScanAnterior);
                 //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class); //newIntent.putParcelableArrayListExtra("device.list", mDeviceList); //startActivity(newIntent);
             } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                Log.d(TAG, "llega");
-
                 BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.d(TAG, device.getAddress());
                 if(device.getAddress().equals(Constants.SerialNumber)) {
-                    Log.d(TAG, "llega2");
                     blueToothAdapter.cancelDiscovery();
                     String name = device.getName(); String address = device.getAddress();
                     String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));

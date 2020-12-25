@@ -24,6 +24,7 @@ public class Utilidades {
             String valor = parts[1];
             String temperatura = parts[2];
             String bateria = parts[3];
+            String bateriaVolt = parts[4];
             if (MySingletonClass.getInstance().getContador_Sensor() != Integer.valueOf(parts[0])) { // si no se repite el cont
                 MySingletonClass.getInstance().setContador_Sensor(Integer.valueOf(parts[0]));
                 medicion.setValor(valor);
@@ -33,6 +34,7 @@ public class Utilidades {
                 medicion.setDistancia(distan);
                 medicion.setIdsen("1"); // TODO
                 medicion.setMomento(String.valueOf(Utilidades.getMomento()));
+                medicion.setBatVolt(bateriaVolt);
             }
         } catch (Exception ex){
             Log.i(ContentValues.TAG, ex.toString());

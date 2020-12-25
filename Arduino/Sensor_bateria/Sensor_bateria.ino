@@ -65,21 +65,15 @@ void inicializarPlaquita () {
   setLowPower();
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 
-
   
   // Esperar 200 minutos para el heater del sensor, debe de estabilizarse
+  // Aparece 400 porque se incrementa en 30 seguntos
   for(int i = 0 ; i< 400 ; i++){
     lucecitas();
-    delay(1000*30);
+    delay(1000*20);
+    NRF_WDT->RR[0] = WDT_RR_RR_Reload; 
   }
 
-  
-  //Configure WDT for 60 seconds
-  
-  NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
-  NRF_WDT->CRV            = (3932159 / 2);    // now(120s/2) CRV = timeout * 32768 + 1
-  NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
-  NRF_WDT->TASKS_START    = 1;        // Start WDT    
 
 } // ()
 
@@ -88,6 +82,12 @@ void inicializarPlaquita () {
 // --------------------------------------------------------------
 void setup() {
 
+  //Configure WDT for 60 seconds
+  NRF_WDT->CONFIG         = 0x01;     // Configure WDT to run when CPU is asleep
+  NRF_WDT->CRV            = (3932159 / 2);    // now(120s/2) CRV = timeout * 32768 + 1
+  NRF_WDT->RREN           = 0x01;     // Enable the RR[0] reload register
+  NRF_WDT->TASKS_START    = 1;        // Start WDT    
+
   delay(2000);
   Serial.begin(9600);
   delay(4000);
@@ -95,19 +95,16 @@ void setup() {
   //comentado para arrancar sin encender el minitor serial
   //Globales::elPuerto.esperarDisponible();
 
-
   inicializarPlaquita();
 
   // Suspend Loop() to save power
   // suspendLoop();
-
 
   Globales::elPublicador.encenderEmisora();
 
   // Globales::elPublicador.laEmisora.pruebaEmision();
 
   Globales::elMedidor.iniciarMedidor();
-
 
 /*
   Serial.println("empieza");delay(2000);
@@ -137,6 +134,7 @@ namespace Loop {
   uint8_t cont = 0;
   int tiempo = 0;
   uint8_t battery = 0;
+  long baterryVolt = 0.0;
 };
 
 // ..............................................................
@@ -160,8 +158,9 @@ void loop () {
 
   //Serial.println(cont % 5 == 0);
 
-  if(((cont % 150) == 0) || (cont==5)){
+  if(((cont % 200) == 0) || (cont==1)){
     battery = bat.obtenerPorcentaje();
+    baterryVolt = bat.obtenerVolt();
   }
   
   int valorNO2 [11];
@@ -169,58 +168,64 @@ void loop () {
   
   // autocalibrado
 
-  if( (millis() > (60 * 1000 * 60 * 8)) && (valorNO2[1] < 0) && ((cont % 220) == 0) ) {
+  if( (millis() > (60 * 1000 * 60 * 8)) && (valorNO2[1] < 0)  ) {
       elMedidor.calibradoZero();
+      valorNO2[1] = 0;
   }
 
-  //String data;
-  String data;
-  data = cont; data = data + " ";
-  data = data + valorNO2[1]; data = data + " ";
-  data = data + valorNO2[2]; data = data + " ";
-  data = data + battery; data = data + " ";
-  //relleno hasta 25 con asteriscos
-  for (int i = data.length()+1; i<=25; i++){
-    data = data + "*";
+  if(valorNO2[1] >= 0){
+
+    //String data;
+    String data;
+    data = cont; data = data + " ";
+    data = data + valorNO2[1]; data = data + " ";
+    data = data + valorNO2[2]; data = data + " ";
+    data = data + battery; data = data + " ";
+    data = data + baterryVolt; data = data + " ";
+    
+    //relleno hasta 25 con asteriscos
+    for (int i = data.length()+1; i<=25; i++){
+      data = data + "*";
+    }
+    //Serial.println(data);
+    elPublicador.setName(data);
+    
+    elPublicador.publicarNO2(1,
+  							cont,
+  							1000, // intervalo de emisión
+  							battery);
+    /*
+    // mido y publico
+    // 
+    int valorTemperatura = elMedidor.medirTemperatura();
+    
+    elPublicador.publicarTemperatura( valorTemperatura, 
+  									cont,
+  									1000 // intervalo de emisión
+  									);
+  
+    // 
+    // prueba para emitir un iBeacon y poner
+    // en la carga (21 bytes = uuid 16 major 2 minor 2 txPower 1 )
+    // lo que queramos (sin seguir dicho formato)
+    // 
+    // Al terminar la prueba hay que hacer Publicador::laEmisora privado
+    // 
+    char datos[21] = {
+  	'H', 'o', 'l', 'a',
+  	'H', 'o', 'l', 'a',
+  	'H', 'o', 'l', 'a',
+  	'H', 'o', 'l', 'a',
+  	'H', 'o', 'l', 'a',
+  	'H'
+    };
+  
+    // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
+    elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
+    */
+  
+    elPublicador.laEmisora.detenerAnuncio();
   }
-
-  elPublicador.setName(data);
-  
-  elPublicador.publicarNO2(1,
-							cont,
-							1000, // intervalo de emisión
-							battery);
-  /*
-  // mido y publico
-  // 
-  int valorTemperatura = elMedidor.medirTemperatura();
-  
-  elPublicador.publicarTemperatura( valorTemperatura, 
-									cont,
-									1000 // intervalo de emisión
-									);
-
-  // 
-  // prueba para emitir un iBeacon y poner
-  // en la carga (21 bytes = uuid 16 major 2 minor 2 txPower 1 )
-  // lo que queramos (sin seguir dicho formato)
-  // 
-  // Al terminar la prueba hay que hacer Publicador::laEmisora privado
-  // 
-  char datos[21] = {
-	'H', 'o', 'l', 'a',
-	'H', 'o', 'l', 'a',
-	'H', 'o', 'l', 'a',
-	'H', 'o', 'l', 'a',
-	'H', 'o', 'l', 'a',
-	'H'
-  };
-
-  // elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( &datos[0], 21 );
-  elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
-  */
-
-  elPublicador.laEmisora.detenerAnuncio();
 
   tiempo = 0;
   while (tiempo <= 2) {

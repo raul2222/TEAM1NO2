@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 
     <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
 
@@ -31,6 +32,7 @@
                    android:value="AIzaSyBinhlarGMu1Yhfvi1KrVEiuSdmGujJuII" />
        -->
 
+        <service android:name=".services.HeartService" />
 
         <activity android:name=".activities.MainActivity">
             <intent-filter>
@@ -38,15 +40,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name=".services.MonitorService"
-            android:icon="@mipmap/ic_launcher"
-            android:label="MonitorService"
-            android:enabled="true"
-            android:exported="true">
-
-        </service>
 
         <receiver android:name="es.upv.inodos.receivers.BootCompletedReceiver"
             android:enabled="true"

@@ -25,7 +25,7 @@ public class Firebase {
     }
 
     public static void enviarMedicion(String idsen, String lat, String longi, String valor, String momento,
-                               String bateria, String temperatura, String distancia, String accu) {
+                               String bateria, String temperatura, String distancia, String accu, String battVolt) {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance(); //inicializamos aqui firebase para almacenar
         Log.d(ETIQUETA_LOG, "empiezo a enviar a Firebase");
@@ -38,7 +38,8 @@ public class Firebase {
         dato.put("Temperatura", temperatura);
         dato.put("Momento", momento);
         dato.put("Bateria", bateria);
-        dato.put("Distancia", distancia);
+        dato.put("BateriaVolt", battVolt);
+        dato.put("DistanciaMovilSensor", distancia);
 
         db.collection("Mediciones").document().set(dato)//aqui accedemos a la coleccion creada en firebase donde se almacenaran los valores anterrioires
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

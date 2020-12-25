@@ -1,6 +1,6 @@
 package es.upv.inodos.services;
+
 import android.Manifest;
-import android.app.AsyncNotedAppOp;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -18,14 +18,16 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+
 import java.util.Timer;
 import java.util.TimerTask;
+
 import es.upv.inodos.R;
 import es.upv.inodos.activities.MainActivity;
 import es.upv.inodos.common.Constants;
@@ -35,12 +37,9 @@ import es.upv.inodos.receivers.BluetoothBroadcastReceiver;
 import es.upv.inodos.utils.SystemUtils;
 import es.upv.inodos.utils.Utilidades;
 
+import static es.upv.inodos.services.DetectedActivitiesIntentService.TAG;
 
-// *********************************************************
-//  RAUL SANTOS LOPEZ       07/12/2020
-// *********************************************************
-
-public class MonitorService extends Service implements LocationListener {
+public class HeartService extends Service implements LocationListener {
     public int counter = 0;
     private Timer timer;
     private TimerTask timerTask;
@@ -52,9 +51,9 @@ public class MonitorService extends Service implements LocationListener {
     private int numCallGps = 0;
     private String estadoGps = "";
 
-    public MonitorService() {    }
+    public HeartService() {    }
 
-    public MonitorService(Context applicationContext) {
+    public HeartService(Context applicationContext) {
         super();
     }
 
@@ -92,7 +91,7 @@ public class MonitorService extends Service implements LocationListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
                     Constants.CHANNEL_ID,
-                    "Monitor Service Active",
+                    "Heart Service Active",
                     NotificationManager.IMPORTANCE_DEFAULT
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
@@ -212,27 +211,36 @@ public class MonitorService extends Service implements LocationListener {
     }
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
+            Log.d(TAG, action);
             if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
                 final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
-                if (state == BluetoothAdapter.STATE_ON) { }
-                } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
-                    startScanAnterior = System.currentTimeMillis();
-                    checkGps();
-                } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
-                    startScanTotalTime = startScanTotalTime + (System.currentTimeMillis() - startScanAnterior);
-                    //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class); //newIntent.putParcelableArrayListExtra("device.list", mDeviceList); //startActivity(newIntent);
-                } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
-                    BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                    if(device.getAddress().equals(Constants.SerialNumber)) {
-                        blueToothAdapter.cancelDiscovery();
-                        String name = device.getName(); String address = device.getAddress();
-                        String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
-                        double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
-                        Utilidades.parseRead(name, String.format("%.2f", distant), medicion);
-                        Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
-                    }
+                if (state == BluetoothAdapter.STATE_ON) {
+
+                }
+            } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
+                startScanAnterior = System.currentTimeMillis();
+                checkGps();
+                Log.d(TAG, "android 10 blue");
+            } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
+                startScanTotalTime = startScanTotalTime + (System.currentTimeMillis() - startScanAnterior);
+                //Intent newIntent = new Intent(MainActivity.this, DeviceListActivity.class); //newIntent.putParcelableArrayListExtra("device.list", mDeviceList); //startActivity(newIntent);
+            } else if (BluetoothDevice.ACTION_FOUND.equals(action)) {
+                Log.d(TAG, "llega");
+
+                BluetoothDevice device = (BluetoothDevice) intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+                Log.d(TAG, device.getAddress());
+                if(device.getAddress().equals(Constants.SerialNumber)) {
+                    Log.d(TAG, "llega2");
+                    blueToothAdapter.cancelDiscovery();
+                    String name = device.getName(); String address = device.getAddress();
+                    String rssi = Integer.toString(intent.getShortExtra(BluetoothDevice.EXTRA_RSSI, Short.MIN_VALUE));
+                    double distant = Utilidades.calculateDistance(-55,Double.parseDouble(rssi));
+                    Utilidades.parseRead(name, String.format("%.2f", distant), medicion);
+                    Log.i("Device FOUND!", "Name: " + name + " Address: " + address + " RSSI: " + rssi + " Distancia: " + String.format("%.2f", distant) + " meters");
+                }
             }
         }
     };

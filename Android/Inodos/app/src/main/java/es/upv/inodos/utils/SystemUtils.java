@@ -22,7 +22,8 @@ import es.upv.inodos.common.Constants;
 import es.upv.inodos.common.MySingletonClass;
 import es.upv.inodos.data.Medicion;
 import es.upv.inodos.services.BackgroundDetectedActivitiesService;
-import es.upv.inodos.services.MonitorService;
+
+import es.upv.inodos.services.HeartService;
 import es.upv.inodos.workers.NotificationWorker;
 import es.upv.inodos.workers.NotificationWorkerTitle;
 import es.upv.inodos.workers.SystemCheckWorker;
@@ -61,17 +62,20 @@ public class SystemUtils {
 
     public static void launchMonitorService(Context context) {
 
-        if (!es.upv.inodos.utils.SystemUtils.isServiceRunning(context, ".services.MonitorService")) {
-            Intent monitorServiceIntent = new Intent(context, MonitorService.class);
+        if (!es.upv.inodos.utils.SystemUtils.isServiceRunning(context, ".services.HeartService")) {
+            Intent monitorServiceIntent = new Intent(context, HeartService.class);
             monitorServiceIntent.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
             ContextCompat.startForegroundService(context, monitorServiceIntent);
         }
+
 
         if (!es.upv.inodos.utils.SystemUtils.isServiceRunning(context, ".services.BackgroundDetectedActivitiesService")) {
             Intent monitorServiceIntent = new Intent(context, BackgroundDetectedActivitiesService.class);
             monitorServiceIntent.putExtra("inputExtra", Constants.MONITOR_SERVICE_DESCRIPTION);
             ContextCompat.startForegroundService(context, monitorServiceIntent);
         }
+
+
 
     }
 
@@ -95,10 +99,11 @@ public class SystemUtils {
             Log.i(TAG, medicion.getMomento());
             Log.i(TAG, medicion.getDistancia());
             Log.i(TAG, medicion.getBat());
+            Log.i(TAG, medicion.getBatVolt());
 
             Firebase.enviarMedicion(medicion.getIdsen(),medicion.getLat(),medicion.getLongi(),
                     medicion.getValor(),medicion.getMomento(),medicion.getBat(),medicion.getTemperatura(),
-                    medicion.getDistancia(),medicion.getAccuracy());
+                    medicion.getDistancia(),medicion.getAccuracy(), medicion.getBatVolt());
             medicion.borrarMedicion();
             return 2;
         }
@@ -140,7 +145,5 @@ public class SystemUtils {
             MySingletonClass.getInstance().setMensajeNotificacionTitle(textOfContent);
         }
     }
-
-
 
 }

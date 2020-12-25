@@ -12,7 +12,16 @@ public class Medicion {
     private String temperatura;
     private String distancia;
     private String bat;
+    private String batVolt;
 
+
+    public String getBatVolt() {
+        return batVolt;
+    }
+
+    public void setBatVolt(String batVolt) {
+        this.batVolt = batVolt;
+    }
 
     public String getAccuracy() {
         return accuracy;

@@ -14,9 +14,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf031bd7-1141-423f-924c-928fac7908df" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/HeartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/adapters/Firebase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/adapters/Firebase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/common/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/common/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/data/Medicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/data/Medicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/services/MonitorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/SystemUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/SystemUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/Utilidades.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/app/src/main/java/es/upv/inodos/utils/Utilidades.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Inodos/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Inodos/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Battery.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Battery.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Sensor_bateria.ino" beforeDir="false" afterPath="$PROJECT_DIR$/../../Arduino/Sensor_bateria/Sensor_bateria.ino" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

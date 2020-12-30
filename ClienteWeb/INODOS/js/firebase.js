@@ -5,7 +5,7 @@ var cont = 0;
 
 function getMediciones(){
     console.log("hola");
-    heatMapData = [];
+    heatMapData = []
     db.collection("Mediciones").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
@@ -80,4 +80,11 @@ function aplicarIntervaloDeTiempo(){
         data: heatMapData
     });
     heatmap.setMap(map);
+}
+
+function vaciarYNO2(){
+    console.log("Intento vaciar");
+    heatMapData = []
+    heatmap.setMap(null)
+    getMediciones();
 }

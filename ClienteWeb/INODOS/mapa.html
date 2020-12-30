@@ -279,7 +279,6 @@
 		<div id="fh5co-main">
 			<div id="map"></div>
 
-
 			<!-- Central Modal Medium Info -->
 			<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 				aria-hidden="true" style="z-index: 2000;">
@@ -319,7 +318,11 @@
 				</div>
 			</div>
 
-
+			<div class="botonesGases">
+				<button type="button" id="btn_NO2" onclick="getMediciones()" class="btn btn-success">NO2</button>
+				<button type="button" id="btn_SO2" onclick="medidasSO2()" class="btn btn-success">SO2</button>
+				<button type="button" id="btn_CO" onclick="medidasSO2()" class="btn btn-success">CO</button>
+			</div>
 
 
 			<script src="js/mapa.js"></script>
@@ -342,12 +345,13 @@
 				};
 				firebase.initializeApp(firebaseConfig);
 			</script>
-			<p><a href="informacion.html" class="btn btn-primary btn-outline">Leer más</a></p>
+			
 
 
 			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 			<script src="scripts.js"></script>
 			<script src="js/firebase.js"></script>
+			<script src="js/mapa.js"></script>
 
 
 		</div>

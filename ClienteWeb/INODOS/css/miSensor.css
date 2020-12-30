@@ -91,7 +91,7 @@
 .myTabs input[type="radio"]:checked + label {
     background: #abdbc1;
     
-    border-bottom: 5px solid ;
+    border-bottom: 5px  ;
 }
 
 

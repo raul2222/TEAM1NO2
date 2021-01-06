@@ -254,7 +254,7 @@ height: 100%;
   font-size: 80px;
   text-align: center;
   margin: 30px;
-  font-family: 'icomoon';
+  font-family: "kollektif";
 }
 
 #home-principal {
@@ -378,28 +378,6 @@ height: 100%;
   #fh5co-main .segundo2 {
     width: 100%;
 	text-align: center;
-  }
-}
-@media screen and (max-width: 1200px) {
-  #fh5co-main {
-    width: 70%;
-  }
-}
-@media screen and (max-width: 768px) {
-  #fh5co-main {
-    width: 100%;
-  }
-}
-#fh5co-main .fh5co-narrow-content {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 4em 0;
-}
-@media screen and (max-width: 768px) {
-  #fh5co-main .fh5co-narrow-content {
-    width: 100%;
-    padding: 3.5em 1em;
   }
 }
 

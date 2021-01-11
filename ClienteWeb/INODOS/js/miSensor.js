@@ -37,11 +37,11 @@ function dibujarGraficaConUltimas5Mediciones(){ //Funcion para obtener la inform
                     datasets: [{
                         label: "Últimas 5 Mediciones",
                         data: [
-                            ultimasMediciones[0], 
-                            ultimasMediciones[1], 
-                            ultimasMediciones[2], 
+                            ultimasMediciones[4], 
                             ultimasMediciones[3], 
-                            ultimasMediciones[4]],
+                            ultimasMediciones[2], 
+                            ultimasMediciones[1], 
+                            ultimasMediciones[0]],
                         backgroundColor: [
                         'rgba(209, 238, 222, .5)',
                         ],
@@ -76,3 +76,6 @@ function dibujarGrafica(){
         
 
 }
+
+
+

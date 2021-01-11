@@ -200,31 +200,61 @@ function initMap() {
     });
 }
 
-
-function medidasRandom(){
-    heatMapData = [
-  new google.maps.LatLng(38.9920962, -0.179),
-  new google.maps.LatLng(38.9920962, -0.177),
-  new google.maps.LatLng(38.9920962, -0.175),
-  new google.maps.LatLng(38.9920962, -0.173),
-  new google.maps.LatLng(38.9920962, -0.171),
-  new google.maps.LatLng(38.9920962, -0.169),
-  new google.maps.LatLng(38.9920962, -0.167),
-  new google.maps.LatLng(38.9941875, -0.165),
-  new google.maps.LatLng(38.9941875, -0.163),
-  new google.maps.LatLng(38.9941875, -0.161),
-  new google.maps.LatLng(38.9941875, -0.159),
-  new google.maps.LatLng(38.9941875, -0.157),
-  new google.maps.LatLng(38.9941875, -0.155),
-  new google.maps.LatLng(38.9941875, -0.153)
+function medidasSO2(){
+  heatMapData = []
+    heatmap.setMap(null)
+  heatMapData = [
+new google.maps.LatLng(38.9920962, -0.179),
+new google.maps.LatLng(38.9920962, -0.177),
+new google.maps.LatLng(38.9920962, -0.175),
+new google.maps.LatLng(38.9920962, -0.173),
+new google.maps.LatLng(38.9920962, -0.171),
+new google.maps.LatLng(38.9920962, -0.169),
+new google.maps.LatLng(38.9920962, -0.167),
+new google.maps.LatLng(38.9941875, -0.165),
+new google.maps.LatLng(38.9941875, -0.163),
+new google.maps.LatLng(38.9941875, -0.161),
+new google.maps.LatLng(38.9941875, -0.159),
+new google.maps.LatLng(38.9941875, -0.157),
+new google.maps.LatLng(38.9941875, -0.155),
+new google.maps.LatLng(38.9941875, -0.153)
 ];
 
-/*heatmap = new google.maps.visualization.HeatmapLayer({
-    data: heatMapData
-});*/
+heatmap = new google.maps.visualization.HeatmapLayer({
+  data: heatMapData
+});
+
+heatmap.setMap(map);
+
 }
 
+function medidasCO(){
+  heatMapData = []
+    heatmap.setMap(null)
+  heatMapData = [
+new google.maps.LatLng(38.9920962, -0.18),
+new google.maps.LatLng(38.9920962, -0.187),
+new google.maps.LatLng(38.9920962, -0.185),
+new google.maps.LatLng(38.9920962, -0.183),
+new google.maps.LatLng(38.9920962, -0.181),
+new google.maps.LatLng(38.9920962, -0.179),
+new google.maps.LatLng(38.9920962, -0.167),
+new google.maps.LatLng(38.9941875, -0.165),
+new google.maps.LatLng(38.9941865, -0.163),
+new google.maps.LatLng(38.9941875, -0.161),
+new google.maps.LatLng(38.9941872, -0.159),
+new google.maps.LatLng(38.9941871, -0.157),
+new google.maps.LatLng(38.9941875, -0.155),
+new google.maps.LatLng(38.9941878, -0.153)
+];
 
+heatmap = new google.maps.visualization.HeatmapLayer({
+  data: heatMapData
+});
+
+heatmap.setMap(map);
+
+}
 
 
 

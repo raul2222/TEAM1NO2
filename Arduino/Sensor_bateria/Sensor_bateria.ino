@@ -66,15 +66,14 @@ void inicializarPlaquita () {
   //nRF5x_lowPower.enableDCDC(); to enable the DC/DC converter
   Globales::lowPower52840.disableDCDC(); 
   
-  // Esperar 200 minutos para el heater del sensor, debe de estabilizarse
-  // Aparece 400 porque se incrementa en 30 seguntos
-  for(int i = 0 ; i< 3 ; i++){
+  // Esperar 200 minutos para el heater del sensor, debe de estabilizarse// Aparece 400 porque se incrementa en 30 seguntos
+  for(int i = 0 ; i< 250 ; i++){
     lucecitas();
     delay(1000*20);
     NRF_WDT->RR[0] = WDT_RR_RR_Reload; 
   }
 
-  Serial.println("fin inicio");
+  Serial.println("fin inicio HEATER");
 } // ()
 
 // --------------------------------------------------------------
@@ -106,13 +105,6 @@ void setup() {
 
   Globales::elMedidor.iniciarMedidor();
 
-/*
-  Serial.println("empieza");delay(2000);
-  Serial.println("calibrando");
-  Globales::elMedidor.calibradoZero();
-  Serial.println("continuaaaa");
-  delay(600*600*600);
-  */
   // 
   // 
   //Globales::elPuerto.escribir( "---- setup(): fin ---- \n " );
@@ -137,7 +129,6 @@ namespace Loop {
   long baterryVolt = 0.0;
   int exposicion_media_diaria_actual = 0;
   int res_exposicion_media_diaria_actual = 0;
-  //uint16_t exposicion_media_diaria_actual_sentinel = 0;
   int cont_diario = 0;
   long previus_mills = 0;
   int every_day = 1;
@@ -183,8 +174,7 @@ void loop () {
   if(valorNO2[1] >= 0){
 
       //estimacion media diaria
-    res_exposicion_media_diaria_actual = 0;  
-    cont_diario++;
+    cont_diario++; res_exposicion_media_diaria_actual = 0;  
     exposicion_media_diaria_actual = exposicion_media_diaria_actual + valorNO2[1];
     res_exposicion_media_diaria_actual = exposicion_media_diaria_actual / cont_diario;
 
@@ -196,7 +186,7 @@ void loop () {
     data = data + battery; data = data + " ";
     data = data + baterryVolt; data = data + " ";
     data = data + res_exposicion_media_diaria_actual; data = data + " ";
-    //data = data + cont_diario; data = data + " ";
+    data = data + every_day; data = data + " ";
     
     //relleno hasta 29 con asteriscos
     for (int i = data.length()+1; i<=29; i++){
@@ -239,11 +229,9 @@ void loop () {
     elPublicador.laEmisora.emitirAnuncioIBeaconLibre ( "MolaMolaMolaMolaMolaM", 21 );
     */
     if( (millis() > (60 * 1000 * 60 * 24)) && (previus_mills > ((60 * 1000 * 60 * 24)*every_day)) ) {
-        previus_mills = millis();
-        every_day++;
-        // puesta a 0 los contadores despues de 24 horas para la exposion diaria
-        exposicion_media_diaria_actual = 0;
-        cont_diario = 0;
+        // Es para llevar la cuenta de la exposicion media
+        every_day++; previus_mills = millis();
+        cont_diario = 1;
     }
   
     elPublicador.laEmisora.detenerAnuncio();

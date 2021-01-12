@@ -19,29 +19,63 @@
   }
 
   header.masthead h1 {
-    font-size: 2rem;
-    color: rgb(17, 16, 16);
+    font-size: 6rem;
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
     font-family: "Roboto", Arial, sans-serif;
   }
 
   header.masthead h4 {
     font-size: 2rem;
-    color: rgb(17, 16, 16);
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
     font-family: "Roboto", Arial, sans-serif;
   }
 
   header.masthead h5 {
     font-size: 2rem;
-    color: rgb(17, 16, 16);
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
     font-family: "Roboto", Arial, sans-serif;
   }
   
   @media (min-width: 768px) {
     header.masthead {
-      padding-top: 22rem;
+      padding-top: 20rem;
       padding-bottom: 12rem;
     }
     header.masthead h1 {
-      font-size: 5rem;
+      font-size: 6rem;
+    }
+    header.masthead h4 {
+      font-size: 3rem;
+    }
+    header.masthead h5 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header.masthead {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    header.masthead h1 {
+      padding-top: 30px;
+      font-size: 2rem;
+      text-align: center;
+      margin: 3px;
+    }
+    header.masthead h4 {
+      padding-top: 30px;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 20px;
+    }
+    header.masthead h5 {
+      padding-top: 30px;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 20px;
     }
   }

@@ -21,16 +21,19 @@
   header.masthead h1 {
     font-size: 2rem;
     color: rgb(17, 16, 16);
+    font-family: "Roboto", Arial, sans-serif;
   }
 
   header.masthead h4 {
     font-size: 2rem;
     color: rgb(17, 16, 16);
+    font-family: "Roboto", Arial, sans-serif;
   }
 
   header.masthead h5 {
     font-size: 2rem;
     color: rgb(17, 16, 16);
+    font-family: "Roboto", Arial, sans-serif;
   }
   
   @media (min-width: 768px) {

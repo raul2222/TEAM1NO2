@@ -1,0 +1,44 @@
+    header.masthead {
+    position: relative;
+    background-color: #82E0AA;
+    background: url("../images/pollution.jpg") no-repeat center center;
+    background-size: cover;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  
+  header.masthead .overlay {
+    position: absolute;
+    background-color: #73a095;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+    color: aliceblue;
+  }
+
+  header.masthead h1 {
+    font-size: 2rem;
+    color: rgb(17, 16, 16);
+  }
+
+  header.masthead h4 {
+    font-size: 2rem;
+    color: rgb(17, 16, 16);
+  }
+
+  header.masthead h5 {
+    font-size: 2rem;
+    color: rgb(17, 16, 16);
+  }
+  
+  @media (min-width: 768px) {
+    header.masthead {
+      padding-top: 22rem;
+      padding-bottom: 12rem;
+    }
+    header.masthead h1 {
+      font-size: 5rem;
+    }
+  }

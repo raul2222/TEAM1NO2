@@ -44,7 +44,11 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
                         IDSensor.innerHTML += "<p> " + doc2.data().IDSensor + " </p>";
                         Latitud.innerHTML += "<p> " + doc2.data().Latitud + " </p>";
                         Longitud.innerHTML += "<p> " + doc2.data().Longitud + " </p>";
-                        MomentoUnix.innerHTML += "<p> " + doc2.data().Momento + " </p>";
+                        //Convertimos Unix a Fecha
+                        var fechaInt = parseInt(doc2.data().Momento);
+                        var fecha = new Date(fechaInt * 1000);
+                        console.log("Unix to Fecha: ", fecha);
+                        MomentoUnix.innerHTML += "<p> " +fecha+ " </p>";
                         Valor.innerHTML += "<p> " + doc2.data().Valor + " </p>";
                         NumSerie.innerHTML += "<p> " + "03Kl7siezTOx8iCP9itf" + " </p>";
                         cont++;

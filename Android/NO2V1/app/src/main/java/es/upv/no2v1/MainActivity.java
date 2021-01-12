@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //iniciar Webview
         iniciarWebView();
         //encender el avisador
+<<<<<<< Updated upstream
         new Avisador(1, 25, this).encenderAvisador();
     }
 
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             winParams.flags &= ~bits;
         }
         win.setAttributes(winParams);
+=======
+        new Avisador(3, 15, this).encenderAvisador();
+>>>>>>> Stashed changes
     }
 
     // pedir permisos

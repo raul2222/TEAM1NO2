@@ -11,7 +11,7 @@ function dibujarGraficaConUltimas5Mediciones(){ //Funcion para obtener la inform
     
     console.log("Si que entra en la función");
 
-    db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+    db.collection("Mediciones2").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
   
         if(contador <= 4){   
@@ -88,7 +88,7 @@ function obtenerMediaUltimasHoras (){
   console.log("El momento Unix de hace 24h es de: " + momentoUnDiaAntes); //momento hace 24h en Unix
 
 
-  db.collection("Mediciones").where("Momento", ">=", momentoUnDiaAntes && "<=", momentoActual).get().then((querySnapshot) => { //queremos los valores de las ultimas 24h
+  db.collection("Mediciones2").where("Momento", ">=", momentoUnDiaAntes && "<=", momentoActual).get().then((querySnapshot) => { //queremos los valores de las ultimas 24h
     querySnapshot.forEach((doc) => {
 
       //guardamos los valores en el array que estan dentro del rango

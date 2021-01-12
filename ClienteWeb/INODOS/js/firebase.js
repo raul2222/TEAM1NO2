@@ -31,13 +31,14 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     const MomentoUnix = document.querySelector("#MomentoUnix");
     const Valor = document.querySelector("#Valor");
     const NumSerie = document.querySelector("#NumSerie");
+    const Media = document.querySelector("#Media");
     
     db.collection("Usuarios").doc("te1zEDApDxBgwMRihthy").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
         if (doc.exists) {
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
             
-            db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+            db.collection("Mediciones2").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc2) => { //Comprobamos que ese Usuario tiene una Medicion
                     var IDSensor3 = doc2.data().IDSensor;
                     if(IDSensor3 == IDSensor2 && cont == 0){ //Aqui dentro pondremos la info del sensor a la pagina web
@@ -51,6 +52,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
                         MomentoUnix.innerHTML += "<p> " +fecha+ " </p>";
                         Valor.innerHTML += "<p> " + doc2.data().Valor + " </p>";
                         NumSerie.innerHTML += "<p> " + "03Kl7siezTOx8iCP9itf" + " </p>";
+                        Media.innerHTML += "<p> " + doc2.data().Media_diaria_sensor + " </p>";
                         cont++;
                     }
                 });

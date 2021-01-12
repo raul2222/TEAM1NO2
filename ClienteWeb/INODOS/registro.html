@@ -1,43 +1,44 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 
-    <!-- meta tags -->
-    <meta charset="UTF-8" />
+	<!-- meta tags -->
+	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- /meta tags -->
-    <!-- custom style sheet -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <!-- Theme style  -->
-    <!-- /meta tags -->
-    <!-- custom style sheet -->
-    <link href="css/style.css"/>
-    <!-- /custom style sheet -->
-    <!-- fontawesome css -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic,700' rel='stylesheet'
+		type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+	<!-- /meta tags -->
+	<!-- custom style sheet -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Theme style  -->
+	<!-- /meta tags -->
+	<!-- custom style sheet -->
+	<link href="css/style.css" />
+	<!-- /custom style sheet -->
+	<!-- fontawesome css -->
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<link href="css/registro.css" rel="stylesheet">
-	
 
-    <!-- /fontawesome css -->
-    <!-- google fonts-->
-    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
 
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="./js/jquery.min.js"></script>
-    <!-- /google fonts-->
+	<!-- /fontawesome css -->
+	<!-- google fonts-->
+	<link
+		href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+		rel="stylesheet">
+
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<!-- /google fonts-->
 
 </head>
 
@@ -45,78 +46,116 @@
 <body>
 
 
-<!--- <h1>Iniciar Sesión</h1> -->
-<div class=" w3l-register-form" id="registro">
-	
-<div class="close">
-	<a href="index.html">
-		<img src="css/closenuevo.png">
-	</a>
-</div>
-	<h2>Registrarse</h2>
-	<form>
-		<div class=" w3l-form-group">
-			<label>Nombre</label>
-			<div class="group">
-				<i class="fas fa-user"></i>
-				<input type="text" class="form-control" placeholder="Nombre" required="required" id="nombre" />
-			</div>
-		</div>
+	<!--- <h1>Iniciar Sesión</h1> -->
+	<div class=" w3l-register-form" id="registro">
 
-		<div class=" w3l-form-group">
-			<label>Apellido</label>
-			<div class="group">
-				<i class="fas fa-user"></i>
-				<input type="text" placeholder="Primer apellido" class="form-control" placeholder="Número de teléfono"  required="required" id="apellido" />
+		<div class="close">
+			<a href="index.html">
+				<img src="css/closenuevo.png">
+			</a>
+		</div>
+		<h2>Registrarse</h2>
+		<form>
+			<div class=" w3l-form-group">
+				<label>Nombre</label>
+				<div class="group">
+					<i class="fas fa-user"></i>
+					<input type="text" class="form-control" placeholder="Nombre" required="required" id="nombre" />
+				</div>
 			</div>
-		</div>
 
-		<div class=" w3l-form-group">
-			<label>Teléfono</label>
-			<div class="group">
-				<i class="fas fa-user"></i>
-				<input type="number"  class="form-control" placeholder="Número de teléfono"  required="required" id="telefono" />
+			<div class=" w3l-form-group">
+				<label>Apellido</label>
+				<div class="group">
+					<i class="fas fa-user"></i>
+					<input type="text" placeholder="Primer apellido" class="form-control" placeholder="Apellido"
+						required="required" id="apellido" />
+				</div>
 			</div>
-		</div>
 
-
-		<div class=" w3l-form-group">
-			<label>Contraseña</label>
-			<div class="group">
-				<i class="fas fa-unlock"></i>
-				<input type="password" class="form-control" placeholder="Contraseña"  required="required" id="password" />
+			<div class=" w3l-form-group">
+				<label>Email</label>
+				<div class="group">
+					<i class="fas fa-user"></i>
+					<input type="text" class="form-control" placeholder="email" required="required" id="email" />
+				</div>
 			</div>
-		</div>
-		<div class="forgot">
-			<a href="login.html">Iniciar Sesión</a>
-		</div>
-		<button onclick="registrarse()" type="button" id="btn-iniciarSesion">Registrarse</button>
-	</form>
-</div>
-<footer>
-	<p class="copyright-agileinfo"> &copy; 2020 INODOS free HTML5. Todos los derechos reservados.</p>
-</footer>
+
+			<div class=" w3l-form-group">
+				<label>Contraseña</label>
+				<div class="group">
+					<i class="fas fa-user"></i>
+					<input type="password" class="form-control" placeholder="contraseña" required="required"
+						id="password" />
+				</div>
+			</div>
+
+
+			<div class=" w3l-form-group">
+				<label>Teléfono</label>
+				<div class="group">
+					<i class="fas fa-unlock"></i>
+					<input type="text" class="form-control" placeholder="Teléfono" required="required" id="telefono" />
+				</div>
+			</div>
+
+
+			<div class=" w3l-form-group">
+				<label>IDSensor</label>
+				<div class="group">
+					<i class="fas fa-unlock"></i>
+					<input type="text" class="form-control" placeholder="IDSensor" required="required" id="idsensor" />
+				</div>
+			</div>
+
+
+
+			<div class="forgot">
+				<a href="login.html">Iniciar Sesión</a>
+			</div>
+
+			<div>
+				<label id="label" hidden>Campos incompletos</label>
+			</div>
+
+			<div>
+				<label id="label2" hidden>Registro completado correctamente</label>
+			</div>
+
+
+			<button onclick="registrarse()" type="button" id="btn-iniciarSesion">Registrarse</button>
+		</form>
+	</div>
+	<footer>
+		<p class="copyright-agileinfo"> &copy; 2020 INODOS free HTML5. Todos los derechos reservados.</p>
+	</footer>
 
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-			<!-- Conectamos con Firestore -->
 
-			<script>
-				var firebaseConfig = {
-					apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
-					authDomain: "basedatosproyecto3ag1.firebaseapp.com",
-					databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
-					projectId: "basedatosproyecto3ag1",
-					storageBucket: "basedatosproyecto3ag1.appspot.com",
-					messagingSenderId: "765295987499",
-				};
-				firebase.initializeApp(firebaseConfig);
-			</script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
 
+
+<script src=" https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+
+
+<!-- Conectamos con Firestore -->
+
+<script>
+	var firebaseConfig = {
+		apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
+		authDomain: "basedatosproyecto3ag1.firebaseapp.com",
+		databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
+		projectId: "basedatosproyecto3ag1",
+		storageBucket: "basedatosproyecto3ag1.appspot.com",
+		messagingSenderId: "765295987499",
+	};
+	firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="./js/firebase.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="./js/firebase.js"></script>
 
 </html>

@@ -1,9 +1,21 @@
 var db = firebase.firestore();
 
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
 var res = [];
 var cont = 0;
 
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
 function getMediciones() {
+    
     console.log("hola");
     heatMapData = [];
     db.collection("Mediciones").get().then((querySnapshot) => {
@@ -27,6 +39,11 @@ function getMediciones() {
         heatmap.setMap(map);
     })
 }
+
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
 
 
 function getInfoMiSensor() { //Funcion para obtener la información acerca de MiSensor
@@ -70,6 +87,12 @@ function getInfoMiSensor() { //Funcion para obtener la información acerca de Mi
 
 }
 
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
 function aplicarIntervaloDeTiempo() {
     heatMapData = []
     heatmap.setMap(null)
@@ -93,11 +116,12 @@ function aplicarIntervaloDeTiempo() {
 }
 
 
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
 
 
-
-function login() {
-
+/*function login() {
 
     var label = document.getElementById("errorlogin");
     console.log("Si que entra en la función");
@@ -131,11 +155,101 @@ function login() {
         console.log(error.message);
     })
     label.style.display = "block";
+}*/
+
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
+function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var user = firebase.auth().currentUser;
+    console.log(user)
+    firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {  //login bien hecho
+            console.log(user.user.email);
+            db.collection("Usuarios").where('email', '==', user.user.email).limit(1).get()
+            .then((query) =>{
+                query.forEach(function(doc){
+                    console.log(doc.data());
+                    sessionStorage.setItem("idsensor", doc.data().idsensor);
+                    sessionStorage.setItem("email", doc.data().email);
+                    window.location.href = "./index.html";
+
+                })
+            })
+        })
+        .catch((error) => { //errores
+            label.style.display = "block";
+            console.log("email o contraseña incorrecto")
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+        });
 }
 
 
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
 
-function registrarse() {
+
+
+ function registrarse() {
+
+            const nombre = document.getElementById("nombre").value;
+            const apellido = document.getElementById("apellido").value;
+            const email = document.getElementById("email").value;
+            const telefono = document.getElementById("telefono").value;
+            const contrasenya = document.getElementById("password").value;
+            const idsensor = document.getElementById("idsensor").value;
+
+            firebase.auth().createUserWithEmailAndPassword(email, contrasenya)
+                .then((user) => {
+                    var user = firebase.auth().currentUser;
+                    var uid = user.uid;
+                    console.log(uid);
+
+                    db.collection("Usuarios").add({
+                        nombre: nombre,
+                        apellido: apellido,
+                        email: email,
+                        id: uid,
+                        idsensor: idsensor,
+                        telefono: telefono
+
+                    }).then(function (docRef) {
+                        console.log(docRef.id);
+                        label2.style.display = "block";
+
+
+                    }).catch(function (error) {
+                        console.log(error.message);
+                    })
+
+                    console.log();
+                })
+                .catch((error) => {
+                    //if(nombre && apellido && email && telefono && contrasenya && idsensor === ''){
+                        label.style.display = "block";
+                        console.log("campos incompletos")
+                    //} else{
+                        //label2.style.display = "block";
+                        //console.log("registrado correctamente")
+                    //}
+                    
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        }
+
+
+        
+
+/*function registrarse() {
 
     const nombre = document.getElementById("nombre").value;
     const apellido = document.getElementById("apellido").value;
@@ -168,4 +282,4 @@ function registrarse() {
                 });
         })
     }
-}
+}*/

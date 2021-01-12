@@ -67,19 +67,28 @@
 
 </head>
 
-<body>
+<body onload="administrarBarraLateral()">
     <div id="fh5co-page">
         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
         <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-            <h1 id="fh5co-logo"><a href="index.html"><img src="images/logo_Verde.png" alt="Free HTML5 Bootstrap Website Template"></a></h1>
+
+            <h1 id="fh5co-logo"><a href="index.html"> 
+
+                <img  width="150px" height="150px" src="images/logo_svg_sinfondo.svg" alt="Free HTML5 Bootstrap Website Template">
+            
+            
+            </a></h1>
             <nav id="fh5co-main-menu" role="navigation">
                 <ul>
-                    <li><a href="login.html">Iniciar Sesión</a></li>
+                    <li id="btn_iniciar_sesion"><a href="login.html">Iniciar Sesión</a></li>
+                    <li onclick="cerrarSesion()" id="btn_cerrar_sesion" hidden><a href="#">Cerrar Sesión</a></li>
                     <li class="fh5co-active"><a href="index.html">Home</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
+                    <li hidden id="btn_mi_sensor"><a href="miSensor.html">Mi Sensor</a></li>
                     <li><a href="informacion.html">Información</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
+                    
                 </ul>
             </nav>
 
@@ -422,6 +431,7 @@
 
     <!-- MAIN JS -->
     <script src="js/main.js"></script>
+    <script src="js/sesion.js"></script>
     <!-- SCRAPING PHP -->
     <?php
     include("scraping.php");

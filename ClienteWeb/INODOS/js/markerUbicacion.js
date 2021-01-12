@@ -19,14 +19,20 @@ function markerUbicacion(){
         marker.setMap(null)
     }
     
-    db.collection("Sensores").where("serialnumber", "==", "erwtfw4352452").get().then(function(querySnapshot){ //ultima lat i long
+    db.collection("Mediciones").where("IDSensor", "==", "1").get().then(function(querySnapshot){ //ultima lat i long
         querySnapshot.forEach(function(doc){
-            console.log(doc.data().ultimalat + ", " + doc.data().ultimalng)
+            console.log(doc.data().Latitud + ", " + doc.data().Longitud)
+            if(cont > 0){
+                console.log("No hago nada")
+            } else{
             marker = new google.maps.Marker({
-                position: {lat: doc.data().ultimalat, lng: doc.data().ultimalng},
+                position: {lat:parseFloat(doc.data().Latitud), lng:parseFloat(doc.data().Longitud) },
+                
+                //position: {lat: doc.data().latitud, lng: doc.data().longitud},
                 map: map,
                 title: "Mi posición"
             });
+             }
             cont++;
         })
     })

@@ -31,7 +31,7 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body onload="getInfoMiSensor(); dibujarGraficaConUltimas5Mediciones()">
+<body onload="getInfoMiSensor(); dibujarGraficaConUltimas5Mediciones(); obtenerMediaUltimasHoras()">
     <div id="fh5co-page">
     
     <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
@@ -77,15 +77,16 @@
                 <div class="caja">
                 <img src="./images/location.png" alt="">
                 <br>
-                <p style="font-weight: 700">Latitud:</p>
+                <p style="font-weight: 700">Ubicación:</p>
                 <p id="Latitud"></p>
+                <p id="Longitud"></p>
                 </div>
                 <br>
                 <div class="caja">
                 <img src="./images/location.png" alt="">
                 <br>
-                <p style="font-weight: 700">Longitud:</p>
-                    <p id="Longitud"></p>
+                <p style="font-weight: 700">Media Estación:</p>
+                    <p id=""></p>
                 </div>
             </div>
             <div class="segundaColumna">
@@ -99,7 +100,7 @@
                 <div class="caja">
                 <img src="./images/momento.png" alt="">
                 <br>
-                <p style="font-weight: 700">Momento Unix:</p>
+                <p style="font-weight: 700">Momento:</p>
                     <p id="MomentoUnix"></p>
                 </div>
             </div>

@@ -33,7 +33,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     const NumSerie = document.querySelector("#NumSerie");
     const Media = document.querySelector("#Media");
     
-    db.collection("Usuarios").doc("te1zEDApDxBgwMRihthy").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
+    db.collection("Usuarios").doc("wk9JFDojK8wGIZOONPh0").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
         if (doc.exists) {
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;

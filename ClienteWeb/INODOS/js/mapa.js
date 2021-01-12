@@ -3,12 +3,29 @@ let map;
 var heatMapData = [];
 var heatmap;
 
+const limitesGandia = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.201845,
+  east: -0.143217
+}
+
+const esquinasImagen = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.242204,
+  east: -0.100732
+}
+
 const locationEstacion = { lat: 38.96819788848196, lng: -0.19047359706012285 };
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 38.981761, lng: -0.169679 },
-	disableDefaultUI: true,
+    restriction:{
+      latLngBounds: limitesGandia
+    } ,
+	  disableDefaultUI: true,
     gestureHandling: "greedy",
     zoom: 14,
     styles: [

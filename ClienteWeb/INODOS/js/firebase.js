@@ -1,5 +1,9 @@
 var db = firebase.firestore();
+var storage = firebase.storage();
+var storageRef = storage.ref();
+var pathRef = storageRef.child('mapas_gandia/actual.png');
 
+let imagenMapa;
 var res = [];
 var cont = 0;
 
@@ -21,6 +25,18 @@ function getMediciones(){
     })
 }
 
+function getImagenDelMapa(){
+    pathRef.getDownloadURL().then(function(url){
+        imagenMapa = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
+        imagenMapa.setMap(map);
+        imagenMapa.setOpacity(0.6);
+    }).catch(function(error){
+        console.error(error);
+    })
+}
 
 function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiSensor
     console.log("Si que entra en la función");

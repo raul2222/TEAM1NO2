@@ -1,0 +1,108 @@
+<html>
+
+<head>
+
+	<title>INODOS</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link href="./styles/popup.css" rel="stylesheet">
+	<link href="./styles/estilos.css" rel="stylesheet">
+
+</head>
+
+<body onload="getMediciones() ; markerUbicacion(); /*openForm()*/">
+
+	<header>
+
+		<img class="logo" src="./recursos/LOGOTIPO.jpeg" alt="logo">
+		<nav>
+			<ul class="nav-botones">
+				<li><a id="popup" href="#">Mi Sensor</a></li>
+				<li><a href="#">Mostrar Estaciones</a></li>
+				<li><a href="#">Centrar Mapa</a></li>
+				<li><a href="#">Vista Satélite</a></li>
+			</ul>
+		</nav>
+		<a class="inicio-sesion" href="#"><button>Iniciar Sesión</button></a>
+	</header>
+
+	<!-- Modal content 
+	<div class="padre">
+
+		<a href="#" class="btn-flotante">GAS2</a>
+		<a href="#" class="btn-flotante2">NO2</a>
+		<a href="#" class="btn-flotante3">GAS3</a>
+
+
+
+	</div> -->
+
+
+	<div id="map"></div>
+
+
+	<div id="myModal" class="modal">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="contenido"> <!-- Esto es el CONTENIDO de la pagina -->
+				<div class="primeraColumna">
+					<p style="font-weight: 700"></p>
+					<br>
+					<p id="IDSensor">ID del Sensor:</p>
+					<br>
+					<p id="Latitud">Latitud:</p>
+					<br>
+					<p id="Longitud">Longitud:</p>
+				</div>
+				<div class="segundaColumna">
+					<p style="font-weight: 700"></p>
+					<br>
+					<p id="NumSerie">Numero de Serie:</p>
+					<br>
+					<p id="MomentoUnix">Momento Unix:</p>
+					<br>
+					<p id="Valor">Valor:</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="./js/mapa.js"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRSSIm-4PpXMn23vNcaPQKbqCnRvMN9Ww&libraries=visualization&callback=initMap">
+	</script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+	<!-- Conectamos con Firestore -->
+
+
+	<script>
+		var firebaseConfig = {
+			apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
+			authDomain: "basedatosproyecto3ag1.firebaseapp.com",
+			databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
+			projectId: "basedatosproyecto3ag1",
+			storageBucket: "basedatosproyecto3ag1.appspot.com",
+			messagingSenderId: "765295987499",
+		};
+		firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="./js/scripts.js"></script>
+	<script src="./js/firebase.js"></script>
+	<script src="./js/markerUbicacion.js"></script>
+	<script src="./js/popup.js"></script>
+
+
+
+
+
+</body>
+
+</html>

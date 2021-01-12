@@ -5,7 +5,7 @@ var cont = 0;
 
 function getMediciones(){
     console.log("hola");
-    heatMapData = [];
+    heatMapData = []
     db.collection("Mediciones").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             console.log(`${doc.id} => ${doc.data()}`);
@@ -32,7 +32,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     const Valor = document.querySelector("#Valor");
     const NumSerie = document.querySelector("#NumSerie");
     
-    db.collection("Usuarios").doc("FXT3LMEeACdvG8A8Mi5Q").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
+    db.collection("Usuarios").doc("te1zEDApDxBgwMRihthy").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
         if (doc.exists) {
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
@@ -80,4 +80,11 @@ function aplicarIntervaloDeTiempo(){
         data: heatMapData
     });
     heatmap.setMap(map);
+}
+
+function vaciarYNO2(){
+    console.log("Intento vaciar");
+    heatMapData = []
+    heatmap.setMap(null)
+    getMediciones();
 }

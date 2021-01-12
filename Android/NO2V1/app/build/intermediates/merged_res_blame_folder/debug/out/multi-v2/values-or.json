@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-or/values-or.xml",
+            "outputFile": "/Users/raul/Desktop/Grupo1_3A/Proyecto3A/TEAM1NO2/Android/NO2V1/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-or/values-or.xml",
             "map": [
                 {
                     "source": "/Users/raul/Desktop/Proyecto3A/android-service-ble-master/caches/transforms-2/files-2.1/ce53febe539132800a46a9079cdd025f/jetified-play-services-basement-17.0.0/res/values-or/values.xml",

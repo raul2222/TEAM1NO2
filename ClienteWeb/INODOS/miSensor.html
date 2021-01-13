@@ -31,7 +31,7 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body onload="getInfoMiSensor(); dibujarGraficaConUltimas5Mediciones(); obtenerMediaUltimasHoras()">
+<body onload="getInfoMiSensor(); dibujarGraficaConUltimas5Mediciones(); leerDatoCsv()">
     <div id="fh5co-page">
     
     <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
@@ -87,6 +87,8 @@
                 <br>
                 <p style="font-weight: 700">Media Sensor:</p>
                     <p id="Media"></p>
+                    <p style="font-weight: 700">Media Estación:</p>
+                    <p id="MediaEstacion"></p>
                 </div>
             </div>
             <div class="segundaColumna">

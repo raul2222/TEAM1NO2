@@ -11,7 +11,7 @@ function dibujarGraficaConUltimas5Mediciones(){ //Funcion para obtener la inform
     
     console.log("Si que entra en la función");
 
-    db.collection("Mediciones2").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+    db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
   
         if(contador <= 4){   

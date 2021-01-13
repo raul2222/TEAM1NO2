@@ -38,7 +38,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
             
-            db.collection("Mediciones2").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
+            db.collection("Mediciones").where("IDSensor", "==", "1" ).get().then((querySnapshot) => {
                 querySnapshot.forEach((doc2) => { //Comprobamos que ese Usuario tiene una Medicion
                     var IDSensor3 = doc2.data().IDSensor;
                     if(IDSensor3 == IDSensor2 && cont == 0){ //Aqui dentro pondremos la info del sensor a la pagina web

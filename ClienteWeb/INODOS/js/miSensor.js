@@ -76,7 +76,7 @@ function dibujarGrafica(){
 
 }
 
-function obtenerMediaUltimasHoras (){
+/*function obtenerMediaUltimasHoras (){
 
   const dateTime = Date.now();
   const momentoActual = Math.floor(dateTime / 1000);
@@ -121,7 +121,7 @@ function obtenerMediaUltimasHoras (){
               document.write("<br>"+ultimosUnix[i]+" esta por encima de la media")
           else
               document.write("<br>"+ultimosUnix[i]+" es el mismo valor que la media");
-      }*/
+      }
       
     });
 
@@ -130,6 +130,20 @@ function obtenerMediaUltimasHoras (){
   })
 
 
+}*/
+
+
+$.ajax({
+  url: 'last_NO2.csv',
+  dataType: 'text',
+}).done(leerDatoCsv);
+
+function leerDatoCsv(data) {
+  //console.log(data);
+  var datoFinal = document.getElementById('MediaEstacion');
+  data.toString();
+  //console.log(data);
+  datoFinal.innerText = data;
 }
 
 

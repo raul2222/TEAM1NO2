@@ -3,12 +3,29 @@ let map;
 var heatMapData = [];
 var heatmap;
 
+const limitesGandia = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.201845,
+  east: -0.143217
+}
+
+const esquinasImagen = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.242204,
+  east: -0.100732
+}
+
 const locationEstacion = { lat: 38.96819788848196, lng: -0.19047359706012285 };
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 38.981761, lng: -0.169679 },
-	disableDefaultUI: true,
+    restriction:{
+      latLngBounds: limitesGandia
+    } ,
+	  disableDefaultUI: true,
     gestureHandling: "greedy",
     zoom: 14,
     styles: [
@@ -215,6 +232,25 @@ function initMap() {
 
 
     
+}
+
+function cambiarMapa(gas){
+    if(gas == "NO2"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaNO2.setMap(map);
+      imagenMapaNO2.setOpacity(0.6);
+    } else if(gas == "SO2"){
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaSO2.setMap(map);
+      imagenMapaSO2.setOpacity(0.6);
+    } else if(gas == "CO"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(map);
+      imagenMapaCO.setOpacity(0.6);
+    }
 }
 
 function medidasSO2(){

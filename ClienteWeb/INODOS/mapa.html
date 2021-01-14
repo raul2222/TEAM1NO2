@@ -76,7 +76,7 @@
 
 	</head>
 
-<body onload="getMediciones(); markerUbicacion()">
+<body onload="getImagenDelMapa(); markerUbicacion()">
 
 
 
@@ -91,12 +91,12 @@
 				<ul>
 					<li><a href="index.html">Home</a></li>
 					<li class="fh5co-active"><a href="mapa.html">Mapa</a></li>
-					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#intervalModal">
+					<!--<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#intervalModal">
 						Elegir intervalo de tiempo
 					</a></li>
 					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#myModal" onclick="getInfoMiSensor()">
 						Mi sensor
-					</a></li>
+					</a></li>-->
 					<li><a href="informacion.html">Información</a></li>
 					<li><a href="contacto.html">Contacto</a></li>
 				</ul>
@@ -319,9 +319,9 @@
 			</div>
 
 			<div class="botonesGases">
-				<button type="button" id="btn_NO2" onclick="vaciarYNO2()" class="btn btn-success">NO2</button>
-				<button type="button" id="btn_SO2" onclick="medidasSO2()" class="btn btn-success">SO2</button>
-				<button type="button" id="btn_CO" onclick="medidasCO()" class="btn btn-success">CO</button>
+				<button type="button" id="btn_NO2" onclick="cambiarMapa('NO2')" class="btn btn-success">NO2</button>
+				<button type="button" id="btn_SO2" onclick="cambiarMapa('SO2')" class="btn btn-success">SO2</button>
+				<button type="button" id="btn_CO" onclick="cambiarMapa('CO')" class="btn btn-success">CO</button>
 			</div>
 
 
@@ -332,6 +332,7 @@
 
 			<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
 			<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+			<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-storage.js"></script>
 			<!-- Conectamos con Firestore -->
 
 			<script>
@@ -349,7 +350,7 @@
 
 
 			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script src="scripts.js"></script>
+			<!--<script src="scripts.js"></script>-->
 			<script src="js/firebase.js"></script>
 			<script src="js/mapa.js"></script>
 

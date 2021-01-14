@@ -1,0 +1,81 @@
+    header.masthead {
+    position: relative;
+    background-color: #82E0AA;
+    background: url("../images/pollution.jpg") no-repeat center center;
+    background-size: cover;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+  
+  header.masthead .overlay {
+    position: absolute;
+    background-color: #73a095;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+    color: aliceblue;
+  }
+
+  header.masthead h1 {
+    font-size: 6rem;
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
+    font-family: "Roboto", Arial, sans-serif;
+  }
+
+  header.masthead h4 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
+    font-family: "Roboto", Arial, sans-serif;
+  }
+
+  header.masthead h5 {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 0 0.2em rgb(30, 26, 59), 0 0 0.2em #87F, 0 0 0.2em rgb(30, 26, 59);
+    font-family: "Roboto", Arial, sans-serif;
+  }
+  
+  @media (min-width: 768px) {
+    header.masthead {
+      padding-top: 20rem;
+      padding-bottom: 12rem;
+    }
+    header.masthead h1 {
+      font-size: 6rem;
+    }
+    header.masthead h4 {
+      font-size: 3rem;
+    }
+    header.masthead h5 {
+      font-size: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header.masthead {
+      padding-top: 30rem;
+      padding-bottom: 30rem;
+    }
+    header.masthead h1 {
+      padding-top: 30px;
+      font-size: 2rem;
+      text-align: center;
+      margin: 3px;
+    }
+    header.masthead h4 {
+      padding-top: 30px;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 20px;
+    }
+    header.masthead h5 {
+      padding-top: 30px;
+      font-size: 1.7rem;
+      text-align: center;
+      margin: 20px;
+    }
+  }

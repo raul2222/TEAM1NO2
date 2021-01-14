@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/raul/Desktop/Proyecto3A/TEAM1NO2/Android/NO2V1/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/raul/Desktop/Grupo1_3A/Proyecto3A/TEAM1NO2/Android/NO2V1/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/raul/Desktop/Proyecto3A/android-service-ble-master/caches/transforms-2/files-2.1/3c19552e32e4f551dd7c1739664fa1e4/work-runtime-2.4.0/res/values-v23/values-v23.xml",

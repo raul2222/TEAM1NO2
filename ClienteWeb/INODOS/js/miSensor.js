@@ -133,6 +133,7 @@ function dibujarGrafica(){
 }*/
 
 
+
 $.ajax({
   url: 'last_NO2.csv',
   dataType: 'text',

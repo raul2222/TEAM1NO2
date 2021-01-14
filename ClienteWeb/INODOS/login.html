@@ -56,10 +56,10 @@
         <h2>Iniciar Sesión</h2>
         <form>
             <div class=" w3l-form-group">
-                <label>Nombre</label>
+                <label>Email</label>
                 <div class="group">
                     <i class="fas fa-user"></i>
-                    <input type="number" class="form-control" placeholder="Número de teléfono" required="required" id="telefono" />
+                    <input type="text" class="form-control" placeholder="Email" required="required" id="email" />
                 </div>
             </div>
             <div class=" w3l-form-group">
@@ -72,6 +72,9 @@
             <div class="forgot">
                 <a href="registro.html">Registrarse</a>
             </div>
+            <div>
+                <label id="label" hidden >Email o contraseña incorrecto</label>
+            </div>
             <button onclick="login()" type="button" id="btn-iniciarSesion">Iniciar Sesión</button>
             <label style="display: none" id="errorlogin">Teléfono o contraseña incorrectos</label>
 
@@ -83,8 +86,12 @@
 
 </body>
 
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+
+<script src=" https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+
 <!-- Conectamos con Firestore -->
 
 <script>

@@ -197,8 +197,9 @@ function initMap() {
   //subirMedidas();
  
   var valorEstacion;
+  
 
-  db.collection("Estaciones").doc("3Mzdz3UKk0uYQ9I6UghP").get().then(function(doc){
+  db.collection("Estaciones").doc("7cBiyMkFd5MBgNQVcdKA").get().then(function(doc){
     if(doc.exists){
       valorEstacion = doc.data().Valor;
       console.log("Estacion medida oficial: ", valorEstacion);

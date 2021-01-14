@@ -19,7 +19,7 @@ h1 {
 
 h2 {
     margin: 0;
-    color: #7ac143;
+    color: #82E0AA;
     font-size: 40px;
     font-weight: 400;
     text-align: center;
@@ -93,7 +93,7 @@ input[type="password"]:focus {
 }
 
 button {
-    background: #7ac143;
+    background: #82E0AA;
     color: #ffffff;
     font-size: 13px;
     text-transform: uppercase;

@@ -121,41 +121,6 @@ function aplicarIntervaloDeTiempo() {
 //-----------------------------------------------------//
 
 
-/*function login() {
-
-    var label = document.getElementById("errorlogin");
-    console.log("Si que entra en la función");
-
-    const telefono = document.getElementById("telefono").value
-    const contrasena = document.getElementById("password").value;
-
-    db.collection("Usuarios").where("telefono", "==", telefono).get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            if (!querySnapshot.empty) {
-                var data = doc.data();
-                //console.log(data.password);
-                if (data.password == contrasena) {
-                    window.location.href = "./index.html";
-                    return;
-                } else {
-                    label.style.display = "block";
-                    console.log("telefono o contraseña incorrecto")
-                    return;
-                }
-                console.log(doc.data().nombre);
-            } else {
-                console.log("Documento no existe")
-                label.style.display = "block";
-                return;
-            }
-
-        });
-
-    }).catch(function (error) {
-        console.log(error.message);
-    })
-    label.style.display = "block";
-}*/
 
 
 //-----------------------------------------------------//
@@ -249,37 +214,3 @@ function login() {
 
         
 
-/*function registrarse() {
-
-    const nombre = document.getElementById("nombre").value;
-    const apellido = document.getElementById("apellido").value;
-    const telefono = document.getElementById("telefono").value;
-    const contrasena = document.getElementById("password").value;
-
-    if (nombre == "" || apellido == "" || telefono == "" || contrasena == "") {
-        console.log("Los campos estan vacios");
-    } else {
-
-        let a = db.collection("Usuarios");
-        a.get().then(function (documentSnapshots) {
-            let ultimo = documentSnapshots.docs.length + 1;
-
-            db.collection("Usuarios").doc().set({
-                    apellidos: apellido,
-                    idsensor: "1",
-                    idusuario: "" + ultimo,
-                    nombre: nombre,
-                    password: contrasena,
-                    telefono: telefono
-
-                })
-                .then(function () {
-                    console.log("Document successfully written!");
-                    window.location.href = "./login.html";
-                })
-                .catch(function (error) {
-                    console.error("Error writing document: ", error);
-                });
-        })
-    }
-}*/

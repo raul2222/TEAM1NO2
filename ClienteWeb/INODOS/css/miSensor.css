@@ -124,8 +124,15 @@
     }
   }
 
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
     #fh5co-aside #fh5co-main-menu ul {
       margin: 0 0 2em 0;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    #fh5co-aside .fh5co-footer {
+      position: relative;
+      bottom: 0;
     }
   }

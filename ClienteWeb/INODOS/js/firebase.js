@@ -1,13 +1,17 @@
 var db = firebase.firestore();
 var storage = firebase.storage();
 var storageRef = storage.ref();
-var pathRef = storageRef.child('mapas_gandia/actual.png');
+var pathRefNO2 = storageRef.child('mapas_gandia/actual.png');
+var pathRefSO2 = storageRef.child('mapas_gandia/mapaso2.png');
+var pathRefCO = storageRef.child('mapas_gandia/mapaco.png');
 
-let imagenMapa;
+let imagenMapaNO2;
+let imagenMapaSO2;
+let imagenMapaCO;
 var res = [];
 var cont = 0;
 
-function getMediciones(){
+/*function getMediciones(){
     console.log("hola");
     heatMapData = []
     db.collection("Mediciones").get().then((querySnapshot) => {
@@ -23,16 +27,32 @@ function getMediciones(){
         });
         heatmap.setMap(map);
     })
-}
+}*/
 
 function getImagenDelMapa(){
-    pathRef.getDownloadURL().then(function(url){
-        imagenMapa = new google.maps.GroundOverlay(
+    pathRefNO2.getDownloadURL().then(function(url){
+        imagenMapaNO2 = new google.maps.GroundOverlay(
             url,
             esquinasImagen
         );
-        imagenMapa.setMap(map);
-        imagenMapa.setOpacity(0.6);
+        imagenMapaNO2.setMap(map);
+        imagenMapaNO2.setOpacity(0.6);
+    }).catch(function(error){
+        console.error(error);
+    })
+    pathRefSO2.getDownloadURL().then(function(url){
+        imagenMapaSO2 = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
+    }).catch(function(error){
+        console.error(error);
+    })
+    pathRefCO.getDownloadURL().then(function(url){
+        imagenMapaCO = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
     }).catch(function(error){
         console.error(error);
     })

@@ -217,6 +217,25 @@ function initMap() {
     });
 }
 
+function cambiarMapa(gas){
+    if(gas == "NO2"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaNO2.setMap(map);
+      imagenMapaNO2.setOpacity(0.6);
+    } else if(gas == "SO2"){
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaSO2.setMap(map);
+      imagenMapaSO2.setOpacity(0.6);
+    } else if(gas == "CO"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(map);
+      imagenMapaCO.setOpacity(0.6);
+    }
+}
+
 function medidasSO2(){
   heatMapData = []
     heatmap.setMap(null)

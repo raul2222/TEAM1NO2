@@ -67,8 +67,9 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     const MomentoUnix = document.querySelector("#MomentoUnix");
     const Valor = document.querySelector("#Valor");
     const NumSerie = document.querySelector("#NumSerie");
+    const Media = document.querySelector("#Media");
     
-    db.collection("Usuarios").doc("te1zEDApDxBgwMRihthy").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
+    db.collection("Usuarios").doc("wk9JFDojK8wGIZOONPh0").get().then(function(doc) { //Comprobamos que el usuario que buscamos SI que existe
         if (doc.exists) {
             console.log("Document data: ", doc.data());
             var IDSensor2 = doc.data().idsensor;
@@ -80,9 +81,14 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
                         IDSensor.innerHTML += "<p> " + doc2.data().IDSensor + " </p>";
                         Latitud.innerHTML += "<p> " + doc2.data().Latitud + " </p>";
                         Longitud.innerHTML += "<p> " + doc2.data().Longitud + " </p>";
-                        MomentoUnix.innerHTML += "<p> " + doc2.data().Momento + " </p>";
+                        //Convertimos Unix a Fecha
+                        var fechaInt = parseInt(doc2.data().Momento);
+                        var fecha = new Date(fechaInt * 1000);
+                        console.log("Unix to Fecha: ", fecha);
+                        MomentoUnix.innerHTML += "<p> " +fecha+ " </p>";
                         Valor.innerHTML += "<p> " + doc2.data().Valor + " </p>";
                         NumSerie.innerHTML += "<p> " + "03Kl7siezTOx8iCP9itf" + " </p>";
+                        Media.innerHTML += "<p> " + doc2.data().Media_diaria_sensor + " </p>";
                         cont++;
                     }
                 });

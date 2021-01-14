@@ -4,7 +4,7 @@ const ultimasMediciones = [];
 const ultimosMomentos = [];
 var contador = 0; 
 
-const ultimosUnix = [];
+const arrayUnix = [];
 var contadorUnix = 0;
 
 function dibujarGraficaConUltimas5Mediciones(){ //Funcion para obtener la información acerca de MiSensor
@@ -76,42 +76,40 @@ function dibujarGrafica(){
 
 }
 
-function obtenerMediaUltimasHoras (){
+/*function obtenerMediaUltimasHoras (){
 
   const dateTime = Date.now();
   const momentoActual = Math.floor(dateTime / 1000);
   
   console.log("El momento Unix actual es de: " + momentoActual); //momento actual en Unix
 
-  const momentoUnDiaAntes = momentoActual - 86400;
+  const momentoUnDiaAntes = momentoActual - 86400; //diferencia de 24h
 
   console.log("El momento Unix de hace 24h es de: " + momentoUnDiaAntes); //momento hace 24h en Unix
 
 
-  db.collection("Mediciones").where("Momento", ">=", momentoUnDiaAntes && "<=", momentoActual).get().then((querySnapshot) => {
+  db.collection("Mediciones2").where("Momento", ">=", momentoUnDiaAntes && "<=", momentoActual).get().then((querySnapshot) => { //queremos los valores de las ultimas 24h
     querySnapshot.forEach((doc) => {
 
-
-      //guardamos los valores en el array
+      //guardamos los valores en el array que estan dentro del rango
       for (var i = 0; i < 20000000000000000; i++){
-
         valorEnRango = doc.data().Valor; 
-        ultimosUnix.push (valorEnRango);
+        arrayUnix.push (valorEnRango);
       }
 
-      //calculamos la media
+      //calculamos la media de los valores del array
       var total = 0;
-      for( i=0; i < ultimosUnix.length; i++)
+      for( i=0; i < arrayUnix.length; i++)
       {
-          total += parseInt(ultimosUnix[i]);
-          document.write("<br>"+ ultimosUnix[i]);
+          total += parseInt(arrayUnix[i]);
+          document.write("<br>"+ arrayUnix[i]);
       }
 
-      var media = total/ultimosUnix.length
-      const MediaNO2 = document.querySelector("#Media");
-      document.write("<br><br>Media: "+ media +"<br>");
+      var media = total/arrayUnix.length;
+      //const MediaNO2 = document.querySelector("#Media");
+      //document.write("<br><br>Media: "+ media +"<br>");
       console.log("Media de las ultimas 24h: " + media);
-      MediaNO2.innerHTML += "<p> " + media + " </p>";
+      //MediaNO2.innerHTML += "<p> " + media + " </p>";
 
       // indicamos si la media esta por encima o debajo
       //aqui tengo que comparar con la media de la estacion oficial que esta guardada en un array
@@ -123,7 +121,7 @@ function obtenerMediaUltimasHoras (){
               document.write("<br>"+ultimosUnix[i]+" esta por encima de la media")
           else
               document.write("<br>"+ultimosUnix[i]+" es el mismo valor que la media");
-      }*/
+      }
       
     });
 
@@ -132,6 +130,20 @@ function obtenerMediaUltimasHoras (){
   })
 
 
+}*/
+
+
+$.ajax({
+  url: 'last_NO2.csv',
+  dataType: 'text',
+}).done(leerDatoCsv);
+
+function leerDatoCsv(data) {
+  //console.log(data);
+  var datoFinal = document.getElementById('MediaEstacion');
+  data.toString();
+  //console.log(data);
+  datoFinal.innerText = data;
 }
 
 

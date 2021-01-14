@@ -1,9 +1,14 @@
 var db = firebase.firestore();
+var storage = firebase.storage();
+var storageRef = storage.ref();
+var pathRefNO2 = storageRef.child('mapas_gandia/actual.png');
+var pathRefSO2 = storageRef.child('mapas_gandia/mapaso2.png');
+var pathRefCO = storageRef.child('mapas_gandia/mapaco.png');
 
 var res = [];
 var cont = 0;
 
-function getMediciones(){
+/*function getMediciones() {
     console.log("hola");
     heatMapData = []
     db.collection("Mediciones").get().then((querySnapshot) => {
@@ -19,10 +24,39 @@ function getMediciones(){
         });
         heatmap.setMap(map);
     })
+}*/
+
+function getImagenDelMapa(){
+    pathRefNO2.getDownloadURL().then(function(url){
+        imagenMapaNO2 = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
+        imagenMapaNO2.setMap(map);
+        imagenMapaNO2.setOpacity(0.6);
+    }).catch(function(error){
+        console.error(error);
+    })
+    pathRefSO2.getDownloadURL().then(function(url){
+        imagenMapaSO2 = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
+    }).catch(function(error){
+        console.error(error);
+    })
+    pathRefCO.getDownloadURL().then(function(url){
+        imagenMapaCO = new google.maps.GroundOverlay(
+            url,
+            esquinasImagen
+        );
+    }).catch(function(error){
+        console.error(error);
+    })
 }
 
 
-function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiSensor
+function getInfoMiSensor() { //Funcion para obtener la información acerca de MiSensor
     console.log("Si que entra en la función");
     
     const IDSensor = document.querySelector("#IDSensor");
@@ -69,7 +103,7 @@ function getInfoMiSensor(){ //Funcion para obtener la información acerca de MiS
     
 }
 
-function aplicarIntervaloDeTiempo(){
+function aplicarIntervaloDeTiempo() {
     heatMapData = []
     heatmap.setMap(null)
     var fechaInicio = new Date(document.getElementById("fechaInicio").value).getTime() / 1000
@@ -88,9 +122,106 @@ function aplicarIntervaloDeTiempo(){
     heatmap.setMap(map);
 }
 
-function vaciarYNO2(){
-    console.log("Intento vaciar");
-    heatMapData = []
-    heatmap.setMap(null)
-    getMediciones();
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
+
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
+function login() {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    var user = firebase.auth().currentUser;
+    console.log(user)
+    firebase.auth().signInWithEmailAndPassword(email, password).then((user) => {  //login bien hecho
+            console.log(user.user.email);
+            db.collection("Usuarios").where('email', '==', user.user.email).limit(1).get()
+            .then((query) =>{
+                query.forEach(function(doc){
+                    console.log(doc.data());
+                    sessionStorage.setItem("idsensor", doc.data().idsensor);
+                    sessionStorage.setItem("email", doc.data().email);
+                    window.location.href = "./index.html";
+
+                })
+            })
+        })
+        .catch((error) => { //errores
+            label.style.display = "block";
+            console.log("email o contraseña incorrecto")
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+        });
 }
+
+
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+//-----------------------------------------------------//
+
+
+
+function registrarse() {
+
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("telefono").value;
+    const contrasenya = document.getElementById("password").value;
+    const idsensor = document.getElementById("idsensor").value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, contrasenya)
+        .then((user) => {
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+            console.log(uid);
+
+            db.collection("Usuarios").add({
+                nombre: nombre,
+                apellido: apellido,
+                email: email,
+                id: uid,
+                idsensor: idsensor,
+                telefono: telefono
+
+            }).then(function (docRef) {
+                console.log(docRef.id);
+                label2.style.display = "block";
+                window.alert('Registro completado correctamente');
+                window.location.href = "./login.html";
+
+
+
+
+            }).catch(function (error) {
+                console.log(error.message);
+            })
+
+            console.log();
+        })
+        .catch((error) => {
+            //if(nombre && apellido && email && telefono && contrasenya && idsensor === ''){
+                label.style.display = "block";
+                console.log("campos incompletos")
+            //} else{
+                //label2.style.display = "block";
+                //console.log("registrado correctamente")
+            //}
+            
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+        });
+}
+
+
+        
+

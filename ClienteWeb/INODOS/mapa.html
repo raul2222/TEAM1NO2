@@ -69,6 +69,8 @@
 
 		<!-- Modernizr JS -->
 		<script src="js/modernizr-2.6.2.min.js"></script>
+		<script src="js/markerUbicacion.js"></script>
+
 		<!-- FOR IE9 below -->
 		<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -76,7 +78,7 @@
 
 	</head>
 
-<body onload="getMediciones(); markerUbicacion()">
+<body onload=" administrarBarraLateral(); getImagenDelMapa(); markerUbicacion()">
 
 
 
@@ -85,18 +87,16 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href="index.html"><img src="images/logo_Verde.png"
+			<h1 id="fh5co-logo"><a href="index.html"><img width="150px" height="150px" src="images/logo_svg_sinfondo.svg"
 						alt="Free HTML5 Bootstrap Website Template"></a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
+					<li id="btn_iniciar_sesion"><a href="login.html">Iniciar Sesión</a></li>
+					<li onclick="cerrarSesion()" id="btn_cerrar_sesion" hidden><a href="#">Cerrar Sesión</a></li>
 					<li><a href="index.html">Home</a></li>
 					<li class="fh5co-active"><a href="mapa.html">Mapa</a></li>
-					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#intervalModal">
-						Elegir intervalo de tiempo
-					</a></li>
-					<li><a style="font-size: 12px;" href="#" data-toggle="modal" data-target="#myModal" onclick="getInfoMiSensor()">
-						Mi sensor
-					</a></li>
+					<li hidden id="btn_mi_sensor"><a href="miSensor.html">Mi Sensor</a></li>
+
 					<li><a href="informacion.html">Información</a></li>
 					<li><a href="contacto.html">Contacto</a></li>
 				</ul>
@@ -135,6 +135,9 @@
 			  </div>
 			</div>
 		  </div>
+
+
+		
 
 		<!--
 
@@ -279,6 +282,31 @@
 		<div id="fh5co-main">
 			<div id="map"></div>
 
+		<div class="modal" id="intervalModal" style="z-index: 2000;" tabindex="-1" role="dialog" aria-labelledby="intervalModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="intervalModalLabel">Elegir intervalo</h5>
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="modal-body">
+				  <input type="date" id="fechaInicio" class="form-control">
+				  <input type="date" id="fechaFin" class="form-control">
+				</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				  <button type="button" id="intervalButton" onclick="aplicarIntervaloDeTiempo()" class="btn btn-primary">Obtener</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+
+
+
+
 			<!-- Central Modal Medium Info -->
 			<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 				aria-hidden="true" style="z-index: 2000;">
@@ -289,69 +317,72 @@
 						<div class="modal-header">
 							<p class="heading lead">Información</p>
 
-							
-						</div>
 
-						<!--Body-->
-						<div class="modal-body">
-							<div class="text-center">
-								<i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
-								<div class="input-group-prepend">
-									<span class="input-group-text">IDSensor</span>
-								  </div>
-								  <input id="IDSensor" readonly type="text" class="form-control">
-								  <div class="input-group-prepend">
-									<span class="input-group-text">Valor</span>
-								  </div>
-								  <input id="Valor" readonly type="text" class="form-control">
+					</div>
+
+					<!--Body-->
+					<div class="modal-body">
+						<div class="text-center">
+							<i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+							<div class="input-group-prepend">
+								<span class="input-group-text">IDSensor</span>
 							</div>
-						</div>
-
-						<!--Footer-->
-						<div class="modal-footer justify-content-center">
-							<a href="miSensor.html" type="button" class="btn btn-primary">+INFO<i class="far fa-gem ml-1 text-white"></i></a>
-							<a type="button" class="btn btn-outline-primary waves-effect"
-								data-dismiss="modal">CERRAR</a>
+							<input id="IDSensor" readonly type="text" class="form-control">
+							<div class="input-group-prepend">
+								<span class="input-group-text">Valor</span>
+							</div>
+							<input id="Valor" readonly type="text" class="form-control">
 						</div>
 					</div>
-					<!--/.Content-->
+
+					<!--Footer-->
+					<div class="modal-footer justify-content-center">
+						<a href="miSensor.html" type="button" class="btn btn-primary">+INFO<i
+								class="far fa-gem ml-1 text-white"></i></a>
+						<a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">CERRAR</a>
+					</div>
 				</div>
+				<!--/.Content-->
 			</div>
+		</div>
 
 			<div class="botonesGases">
-				<button type="button" id="btn_NO2" onclick="vaciarYNO2()" class="btn btn-success">NO2</button>
-				<button type="button" id="btn_SO2" onclick="medidasSO2()" class="btn btn-success">SO2</button>
-				<button type="button" id="btn_CO" onclick="medidasCO()" class="btn btn-success">CO</button>
+				<button type="button" id="btn_NO2" onclick="cambiarMapa('NO2')" class="btn btn-success">NO2</button>
+				<button type="button" id="btn_SO2" onclick="cambiarMapa('SO2')" class="btn btn-success">SO2</button>
+				<button type="button" id="btn_CO" onclick="cambiarMapa('CO')" class="btn btn-success">CO</button>
 			</div>
 
 
-			<script src="js/mapa.js"></script>
-			<script async defer
-				src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRSSIm-4PpXMn23vNcaPQKbqCnRvMN9Ww&libraries=visualization&callback=initMap">
-			</script>
 
-			<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
-			<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
-			<!-- Conectamos con Firestore -->
+		<script src="js/mapa.js"></script>
+		<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRSSIm-4PpXMn23vNcaPQKbqCnRvMN9Ww&libraries=visualization&callback=initMap">
+		</script>
+		<script src=" https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
 
-			<script>
-				var firebaseConfig = {
-					apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
-					authDomain: "basedatosproyecto3ag1.firebaseapp.com",
-					databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
-					projectId: "basedatosproyecto3ag1",
-					storageBucket: "basedatosproyecto3ag1.appspot.com",
-					messagingSenderId: "765295987499",
-				};
-				firebase.initializeApp(firebaseConfig);
-			</script>
-			
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+		<!-- Conectamos con Firestore -->
 
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
+				authDomain: "basedatosproyecto3ag1.firebaseapp.com",
+				databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
+				projectId: "basedatosproyecto3ag1",
+				storageBucket: "basedatosproyecto3ag1.appspot.com",
+				messagingSenderId: "765295987499",
+			};
+			firebase.initializeApp(firebaseConfig);
+		</script>
+		<p><a href="informacion.html" class="btn btn-primary btn-outline">Leer más</a></p>
 
-			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-			<script src="scripts.js"></script>
-			<script src="js/firebase.js"></script>
-			<script src="js/mapa.js"></script>
+		
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="scripts.js"></script>
+		<script src="js/firebase.js"></script>
+
 
 
 		</div>
@@ -373,9 +404,10 @@
 	<!-- Counters -->
 	<script src="js/jquery.countTo.js"></script>
 
-    <script src="js/popUpInfoSensor.js"></script>
-    <script src="js/markerUbicacion.js"></script>
+	<script src="js/popUpInfoSensor.js"></script>
 
+
+	<script src="js/sesion.js"></script>
 
 
 	<!-- MAIN JS -->

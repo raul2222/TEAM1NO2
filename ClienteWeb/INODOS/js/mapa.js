@@ -3,12 +3,29 @@ let map;
 var heatMapData = [];
 var heatmap;
 
+const limitesGandia = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.201845,
+  east: -0.143217
+}
+
+const esquinasImagen = {
+  north: 39.022936,
+  south: 38.945009,
+  west: -0.242204,
+  east: -0.100732
+}
+
 const locationEstacion = { lat: 38.96819788848196, lng: -0.19047359706012285 };
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 38.981761, lng: -0.169679 },
-	disableDefaultUI: true,
+    restriction:{
+      latLngBounds: limitesGandia
+    } ,
+	  disableDefaultUI: true,
     gestureHandling: "greedy",
     zoom: 14,
     styles: [
@@ -178,8 +195,15 @@ function initMap() {
   //medidasRandom();
   //heatmap.setMap(map);
   //subirMedidas();
-    
-    //Marker en el mapa
+ 
+  var valorEstacion;
+
+  db.collection("Estaciones").doc("3Mzdz3UKk0uYQ9I6UghP").get().then(function(doc){
+    if(doc.exists){
+      valorEstacion = doc.data().Valor;
+      console.log("Estacion medida oficial: ", valorEstacion);
+
+      //Marker en el mapa
     const image =
     'images/iconoEstacion.png'; //Referencia al icono del marker
     
@@ -191,13 +215,42 @@ function initMap() {
     });
     
     //Creamos un pequeño pop-up con la medición de la estación
-    var contentString = '<h5> <br>' + "Valor NO2: 2 " + '<h5>'
+    var contentString = '<h5> <br>' + "Valor NO2: " + valorEstacion + '<h5>'
     var infoEstacion = new google.maps.InfoWindow({ //Añadimos InfoWindow (popup)
         content: contentString
     });
     estacionMarker.addListener('click', function(){ //Le pasamos la info al popup
         infoEstacion.open(map, estacionMarker);
     });
+
+    } else {
+      console.log("No existe documento");
+    }
+  }).catch(function(error){
+      console.log("Error: ", error);
+  });
+
+
+    
+}
+
+function cambiarMapa(gas){
+    if(gas == "NO2"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaNO2.setMap(map);
+      imagenMapaNO2.setOpacity(0.6);
+    } else if(gas == "SO2"){
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(null);
+      imagenMapaSO2.setMap(map);
+      imagenMapaSO2.setOpacity(0.6);
+    } else if(gas == "CO"){
+      imagenMapaSO2.setMap(null);
+      imagenMapaNO2.setMap(null);
+      imagenMapaCO.setMap(map);
+      imagenMapaCO.setOpacity(0.6);
+    }
 }
 
 function medidasSO2(){

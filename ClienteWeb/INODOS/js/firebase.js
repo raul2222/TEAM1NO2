@@ -8,7 +8,7 @@ var pathRefCO = storageRef.child('mapas_gandia/mapaco.png');
 var res = [];
 var cont = 0;
 
-function getMediciones() {
+/*function getMediciones() {
     console.log("hola");
     heatMapData = []
     db.collection("Mediciones").get().then((querySnapshot) => {
@@ -169,54 +169,58 @@ function login() {
 
 
 
- function registrarse() {
+function registrarse() {
 
-            const nombre = document.getElementById("nombre").value;
-            const apellido = document.getElementById("apellido").value;
-            const email = document.getElementById("email").value;
-            const telefono = document.getElementById("telefono").value;
-            const contrasenya = document.getElementById("password").value;
-            const idsensor = document.getElementById("idsensor").value;
+    const nombre = document.getElementById("nombre").value;
+    const apellido = document.getElementById("apellido").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("telefono").value;
+    const contrasenya = document.getElementById("password").value;
+    const idsensor = document.getElementById("idsensor").value;
 
-            firebase.auth().createUserWithEmailAndPassword(email, contrasenya)
-                .then((user) => {
-                    var user = firebase.auth().currentUser;
-                    var uid = user.uid;
-                    console.log(uid);
+    firebase.auth().createUserWithEmailAndPassword(email, contrasenya)
+        .then((user) => {
+            var user = firebase.auth().currentUser;
+            var uid = user.uid;
+            console.log(uid);
 
-                    db.collection("Usuarios").add({
-                        nombre: nombre,
-                        apellido: apellido,
-                        email: email,
-                        id: uid,
-                        idsensor: idsensor,
-                        telefono: telefono
+            db.collection("Usuarios").add({
+                nombre: nombre,
+                apellido: apellido,
+                email: email,
+                id: uid,
+                idsensor: idsensor,
+                telefono: telefono
 
-                    }).then(function (docRef) {
-                        console.log(docRef.id);
-                        label2.style.display = "block";
+            }).then(function (docRef) {
+                console.log(docRef.id);
+                label2.style.display = "block";
+                window.alert('Registro completado correctamente');
+                window.location.href = "./login.html";
 
 
-                    }).catch(function (error) {
-                        console.log(error.message);
-                    })
 
-                    console.log();
-                })
-                .catch((error) => {
-                    //if(nombre && apellido && email && telefono && contrasenya && idsensor === ''){
-                        label.style.display = "block";
-                        console.log("campos incompletos")
-                    //} else{
-                        //label2.style.display = "block";
-                        //console.log("registrado correctamente")
-                    //}
-                    
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorMessage);
-                });
-        }
+
+            }).catch(function (error) {
+                console.log(error.message);
+            })
+
+            console.log();
+        })
+        .catch((error) => {
+            //if(nombre && apellido && email && telefono && contrasenya && idsensor === ''){
+                label.style.display = "block";
+                console.log("campos incompletos")
+            //} else{
+                //label2.style.display = "block";
+                //console.log("registrado correctamente")
+            //}
+            
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage);
+        });
+}
 
 
         

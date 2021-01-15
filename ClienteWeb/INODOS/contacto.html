@@ -84,6 +84,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
                     <li hidden id="btn_mi_sensor"><a href="miSensor.html">Mi Sensor</a></li>
+                    <li onclick="generarInforme()" hidden id="btn_exportar"><a href="#">Exportar informe</a></li>
                     <li><a href="informacion.html">Información</a></li>
                     <li class="fh5co-active"><a href="contacto.html">Contacto</a></li>
                 </ul>
@@ -188,6 +189,27 @@
 
         </div>
     </div>
+
+    <script src=" https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-storage.js"></script>
+		<!-- Conectamos con Firestore -->
+
+		<script>
+			var firebaseConfig = {
+				apiKey: "AIzaSyB-X_JHudgy5sJ51PrlcgcRrIxkwFy9b8o",
+				authDomain: "basedatosproyecto3ag1.firebaseapp.com",
+				databaseURL: "https://basedatosproyecto3ag1.firebaseio.com",
+				projectId: "basedatosproyecto3ag1",
+				storageBucket: "basedatosproyecto3ag1.appspot.com",
+				messagingSenderId: "765295987499",
+			};
+			firebase.initializeApp(firebaseConfig);
+        </script>
+        
+        <script src="js/generarinforme.js"></script>
 
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>

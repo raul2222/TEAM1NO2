@@ -27,8 +27,9 @@ function administrarBarraLateral(){
         document.getElementById("btn_cerrar_sesion").hidden = false;
         document.getElementById("btn_iniciar_sesion").hidden = true;
         document.getElementById("btn_mi_sensor").hidden = false;
-
-
+        if(sessionStorage.getItem("email") == "admin@admin.com"){
+            document.getElementById("btn_exportar").hidden = false;
+        }
     }
 }
 

@@ -45,6 +45,7 @@
                     <li class="fh5co-active"><a href="index.html">Home</a></li>
                     <li><a href="mapa.html">Mapa</a></li>
                     <li hidden id="btn_mi_sensor"><a href="miSensor.html">Mi Sensor</a></li>
+                    <li onclick="generarInforme()" hidden id="btn_exportar"><a href="#">Exportar informe</a></li>
                     <li><a href="informacion.html">Información</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
 				</ul>
@@ -156,6 +157,7 @@
             firebase.initializeApp(firebaseConfig);
         </script>
         
+        <script src="js/generarinforme.js"></script>
         <script src="./js/firebase.js"></script> 
         
     <!-- jQuery -->
